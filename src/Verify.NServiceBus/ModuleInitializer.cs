@@ -1,4 +1,4 @@
-﻿using NServiceBus.ApprovalTests;
+﻿using Verify.NServiceBus;
 
 static class ModuleInitializer
 {

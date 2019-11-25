@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NServiceBus;
 using NServiceBus.Extensibility;
 using NServiceBus.Logging;
 using NServiceBus.ObjectBuilder;
 using NServiceBus.Testing;
 using VerifyXunit;
 
-namespace NServiceBus.ApprovalTests
+namespace Verify.NServiceBus
 {
     public static class TestContextVerifier
     {

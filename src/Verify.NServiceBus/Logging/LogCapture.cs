@@ -2,7 +2,7 @@
 using System.Threading;
 using NServiceBus.Logging;
 
-namespace NServiceBus.ApprovalTests
+namespace Verify.NServiceBus
 {
     public static class LogCapture
     {

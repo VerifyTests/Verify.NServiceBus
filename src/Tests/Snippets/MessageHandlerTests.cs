@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using NServiceBus.ApprovalTests;
 using NServiceBus.Testing;
+using Verify.NServiceBus;
 using VerifyXunit;
 using Xunit;
 using Xunit.Abstractions;

@@ -1,6 +1,6 @@
 ﻿using System;
-using NServiceBus.ApprovalTests;
 using NServiceBus.Logging;
+using Verify.NServiceBus;
 
 class Logger :
     LoggingFactoryDefinition,

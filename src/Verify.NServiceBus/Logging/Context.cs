@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace NServiceBus.ApprovalTests
+namespace Verify.NServiceBus
 {
     class Context
     {

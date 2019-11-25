@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using NServiceBus;
-using NServiceBus.ApprovalTests;
 using NServiceBus.DelayedDelivery;
 using NServiceBus.DeliveryConstraints;
 using NServiceBus.Logging;
@@ -11,6 +10,7 @@ using NServiceBus.Routing;
 using NServiceBus.Testing;
 using NServiceBus.Transport;
 using NServiceBus.Unicast.Messages;
+using Verify.NServiceBus;
 using VerifyXunit;
 using Xunit;
 using Xunit.Abstractions;
