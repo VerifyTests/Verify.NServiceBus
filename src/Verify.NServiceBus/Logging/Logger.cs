@@ -26,77 +26,77 @@ class Logger :
 
     public void Debug(string message)
     {
-        LogCapture.WritableLogMessages.Add(new LogMessage(LogLevel.Debug, message));
+        LogCapture.Add(new LogMessage(LogLevel.Debug, message));
     }
 
     public void Debug(string message, Exception exception)
     {
-        LogCapture.WritableLogMessages.Add(new LogMessage(LogLevel.Debug, message, exception));
+        LogCapture.Add(new LogMessage(LogLevel.Debug, message, exception));
     }
 
     public void DebugFormat(string format, params object[] args)
     {
-        LogCapture.WritableLogMessages.Add(new LogMessage(LogLevel.Debug, format, args));
+        LogCapture.Add(new LogMessage(LogLevel.Debug, format, args));
     }
 
     public void Info(string message)
     {
-        LogCapture.WritableLogMessages.Add(new LogMessage(LogLevel.Info, message));
+        LogCapture.Add(new LogMessage(LogLevel.Info, message));
     }
 
     public void Info(string message, Exception exception)
     {
-        LogCapture.WritableLogMessages.Add(new LogMessage(LogLevel.Info, message, exception));
+        LogCapture.Add(new LogMessage(LogLevel.Info, message, exception));
     }
 
     public void InfoFormat(string format, params object[] args)
     {
-        LogCapture.WritableLogMessages.Add(new LogMessage(LogLevel.Info, format, args));
+        LogCapture.Add(new LogMessage(LogLevel.Info, format, args));
     }
 
     public void Warn(string message)
     {
-        LogCapture.WritableLogMessages.Add(new LogMessage(LogLevel.Warn, message));
+        LogCapture.Add(new LogMessage(LogLevel.Warn, message));
     }
 
     public void Warn(string message, Exception exception)
     {
-        LogCapture.WritableLogMessages.Add(new LogMessage(LogLevel.Warn, message, exception));
+        LogCapture.Add(new LogMessage(LogLevel.Warn, message, exception));
     }
 
     public void WarnFormat(string format, params object[] args)
     {
-        LogCapture.WritableLogMessages.Add(new LogMessage(LogLevel.Warn, format, args));
+        LogCapture.Add(new LogMessage(LogLevel.Warn, format, args));
     }
 
     public void Error(string message)
     {
-        LogCapture.WritableLogMessages.Add(new LogMessage(LogLevel.Error, message));
+        LogCapture.Add(new LogMessage(LogLevel.Error, message));
     }
 
     public void Error(string message, Exception exception)
     {
-        LogCapture.Context.logMessages.Add(new LogMessage(LogLevel.Error, message, exception));
+        LogCapture.Add(new LogMessage(LogLevel.Error, message, exception));
     }
 
     public void ErrorFormat(string format, params object[] args)
     {
-        LogCapture.WritableLogMessages.Add(new LogMessage(LogLevel.Error, format, args));
+        LogCapture.Add(new LogMessage(LogLevel.Error, format, args));
     }
 
     public void Fatal(string message)
     {
-        LogCapture.WritableLogMessages.Add(new LogMessage(LogLevel.Fatal, message));
+        LogCapture.Add(new LogMessage(LogLevel.Fatal, message));
     }
 
     public void Fatal(string message, Exception exception)
     {
-        LogCapture.WritableLogMessages.Add(new LogMessage(LogLevel.Fatal, message, exception));
+        LogCapture.Add(new LogMessage(LogLevel.Fatal, message, exception));
     }
 
     public void FatalFormat(string format, params object[] args)
     {
-        LogCapture.WritableLogMessages.Add(new LogMessage(LogLevel.Fatal, format, args));
+        LogCapture.Add(new LogMessage(LogLevel.Fatal, format, args));
     }
 
     public bool IsDebugEnabled { get; } = true;

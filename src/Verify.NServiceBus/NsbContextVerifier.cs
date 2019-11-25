@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using NServiceBus;
 using NServiceBus.Extensibility;
@@ -49,15 +48,10 @@ namespace Verify.NServiceBus
         {
             Guard.AgainstNull(context, nameof(context));
 
-            List<LogMessage>? logMessages = null;
-            if (includeLogMessages != null)
-            {
-                logMessages = LogCapture.LogMessages
-                    .Where(x => x.Level > includeLogMessages.Value)
+            var logMessages = LogCapture.MessagesForLevel(includeLogMessages)
                     .ToList();
-            }
 
-            if (state == null && logMessages == null)
+            if (state == null && !logMessages.Any())
             {
                 return verifyBase.Verify(context);
             }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using NServiceBus.Logging;
@@ -7,9 +9,9 @@ namespace Verify.NServiceBus
 {
     public static class LogCapture
     {
-        static AsyncLocal<Context> loggingContext = new AsyncLocal<Context>();
+        static AsyncLocal<ConcurrentBag<LogMessage>> loggingContext = new AsyncLocal<ConcurrentBag<LogMessage>>();
 
-        internal static Context Context
+        internal static ConcurrentBag<LogMessage> Context
         {
             get
             {
@@ -19,26 +21,30 @@ namespace Verify.NServiceBus
                     return context;
                 }
 
-                context = new Context();
+                context = new ConcurrentBag<LogMessage>();
                 loggingContext.Value = context;
                 return context;
             }
         }
 
-        public static IEnumerable<LogMessage> MessagesForLevel(LogLevel includeLogMessages)
+        public static IEnumerable<LogMessage> MessagesForLevel(LogLevel? includeLogMessages)
         {
+            if (includeLogMessages == null)
+            {
+                return Array.Empty<LogMessage>();
+            }
             return LogMessages
                 .Where(x => x.Level > includeLogMessages);
         }
 
         public static IReadOnlyList<LogMessage> LogMessages
         {
-            get => Context.logMessages;
+            get => Context.ToList();
         }
 
-        internal static List<LogMessage> WritableLogMessages
+        internal static void Add(LogMessage logMessage)
         {
-            get => Context.logMessages;
+            Context.Add(logMessage);
         }
 
         public static void Initialize()
