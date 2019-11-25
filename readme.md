@@ -52,6 +52,12 @@ Thanks to all the backing developers! Support this project by [becoming a patron
 
 ## Usage
 
+Before any test have run call 
+
+```
+VerifyNServiceBus.Enable();
+```
+
 
 ### Verifying a context
 
@@ -106,10 +112,10 @@ public async Task VerifyHandlerResult()
 
     await handler.Handle(new MyRequest(), context);
 
-    await this.VerifyContext(context);
+    await Verify(context);
 }
 ```
-<sup>[snippet source](/src/Tests/Snippets/MessageHandlerTests.cs#L11-L24) / [anchor](#snippet-handlertest)</sup>
+<sup>[snippet source](/src/Tests/Snippets/MessageHandlerTests.cs#L10-L23) / [anchor](#snippet-handlertest)</sup>
 <!-- endsnippet -->
 
 The resulting context verification file is as follows:

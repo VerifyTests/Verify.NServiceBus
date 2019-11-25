@@ -35,6 +35,12 @@ Thanks to all the backing developers! Support this project by [becoming a patron
 
 ## Usage
 
+Before any test have run call 
+
+```
+VerifyNServiceBus.Enable();
+```
+
 
 ### Verifying a context
 

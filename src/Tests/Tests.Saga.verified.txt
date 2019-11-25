@@ -1,8 +1,5 @@
 {
-  ExtraState: {
-    Member: 'the data'
-  },
-  NsbTestContext: {
+  context: {
     RepliedMessages: [
       {
         Tests+MySagaMessage: {}
@@ -45,5 +42,8 @@
         }
       }
     ]
+  },
+  Data: {
+    Member: 'the data'
   }
 }

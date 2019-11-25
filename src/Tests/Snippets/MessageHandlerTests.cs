@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using NServiceBus.Testing;
-using Verify.NServiceBus;
 using VerifyXunit;
 using Xunit;
 using Xunit.Abstractions;
@@ -18,7 +17,7 @@ public class MessageHandlerTests :
 
         await handler.Handle(new MyRequest(), context);
 
-        await this.VerifyContext(context);
+        await Verify(context);
     }
 
     #endregion
