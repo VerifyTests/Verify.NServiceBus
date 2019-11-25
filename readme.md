@@ -66,35 +66,31 @@ public class MyHandler :
     public async Task Handle(MyRequest message, IMessageHandlerContext context)
     {
         await context.Publish(
-                new MyPublishMessage
-                {
-                    Property = "Value"
-                })
-            .ConfigureAwait(false);
+            new MyPublishMessage
+            {
+                Property = "Value"
+            });
 
         await context.Reply(
-                new MyReplyMessage
-                {
-                    Property = "Value"
-                })
-            .ConfigureAwait(false);
+            new MyReplyMessage
+            {
+                Property = "Value"
+            });
 
         var sendOptions = new SendOptions();
         sendOptions.DelayDeliveryWith(TimeSpan.FromHours(12));
         await context.Send(
-                new MySendMessage
-                {
-                    Property = "Value"
-                },
-                sendOptions)
-            .ConfigureAwait(false);
+            new MySendMessage
+            {
+                Property = "Value"
+            },
+            sendOptions);
 
-        await context.ForwardCurrentMessageTo("newDestination")
-            .ConfigureAwait(false);
+        await context.ForwardCurrentMessageTo("newDestination");
     }
 }
 ```
-<sup>[snippet source](/src/Tests/Snippets/MyHandler.cs#L5-L40) / [anchor](#snippet-simplehandler)</sup>
+<sup>[snippet source](/src/Tests/Snippets/MyHandler.cs#L5-L37) / [anchor](#snippet-simplehandler)</sup>
 <!-- endsnippet -->
 
 The test that verifies the resulting context:
@@ -108,13 +104,12 @@ public async Task VerifyHandlerResult()
     var handler = new MyHandler();
     var context = new TestableMessageHandlerContext();
 
-    await handler.Handle(new MyRequest(), context)
-        .ConfigureAwait(false);
+    await handler.Handle(new MyRequest(), context);
 
     await this.VerifyContext(context);
 }
 ```
-<sup>[snippet source](/src/Tests/Snippets/MessageHandlerTests.cs#L11-L23) / [anchor](#snippet-handlertest)</sup>
+<sup>[snippet source](/src/Tests/Snippets/MessageHandlerTests.cs#L11-L24) / [anchor](#snippet-handlertest)</sup>
 <!-- endsnippet -->
 
 The resulting context verification file is as follows:
@@ -164,33 +159,29 @@ The next time there is a code change, that results in a different resulting inte
 <a id='snippet-simplehandlerv2'/></a>
 ```cs
 await context.Publish(
-        new MyPublishMessage
-        {
-            Property = "Value"
-        })
-    .ConfigureAwait(false);
+    new MyPublishMessage
+    {
+        Property = "Value"
+    });
 
 await context.Reply(
-        new MyReplyMessage
-        {
-            Property = "Value"
-        })
-    .ConfigureAwait(false);
+    new MyReplyMessage
+    {
+        Property = "Value"
+    });
 
 var sendOptions = new SendOptions();
 sendOptions.DelayDeliveryWith(TimeSpan.FromDays(1));
 await context.Send(
-        new MySendMessage
-        {
-            Property = "Value"
-        },
-        sendOptions)
-    .ConfigureAwait(false);
+    new MySendMessage
+    {
+        Property = "Value"
+    },
+    sendOptions);
 
-await context.ForwardCurrentMessageTo("newDestination")
-    .ConfigureAwait(false);
+await context.ForwardCurrentMessageTo("newDestination");
 ```
-<sup>[snippet source](/src/Tests/Snippets/MyHandlerV2.cs#L10-L39) / [anchor](#snippet-simplehandlerv2)</sup>
+<sup>[snippet source](/src/Tests/Snippets/MyHandlerV2.cs#L10-L35) / [anchor](#snippet-simplehandlerv2)</sup>
 <!-- endsnippet -->
 
 Then the resulting visualization diff would look as follows:
