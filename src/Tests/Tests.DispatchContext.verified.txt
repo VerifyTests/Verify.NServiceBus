@@ -1,0 +1,22 @@
+{
+  Operations: [
+    {
+      Message: {
+        Body: 'AQ==',
+        MessageId: 'MessageId',
+        Headers: {
+          key: 'value'
+        }
+      },
+      AddressTag: {
+        Destination: 'destination'
+      },
+      DeliveryConstraints: [
+        {
+          Delay: '1.00:00:00'
+        }
+      ],
+      RequiredDispatchConsistency: 'Isolated'
+    }
+  ]
+}

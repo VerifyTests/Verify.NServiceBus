@@ -1,0 +1,9 @@
+{
+  Extensions: {
+    System.Collections.Generic.List`1[[NServiceBus.DeliveryConstraints.DeliveryConstraint, NServiceBus.Core, Version=7.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c]]: [
+      {
+        Delay: '1.00:00:00'
+      }
+    ]
+  }
+}

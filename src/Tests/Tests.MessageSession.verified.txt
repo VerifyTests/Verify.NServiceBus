@@ -1,0 +1,26 @@
+{
+  Subscriptions: [
+    {
+      MessageType: 'MyMessage',
+      Options: {
+        Extensions: {
+          NServiceBus.RoutingToDispatchConnector+State: {
+            ImmediateDispatch: true
+          }
+        }
+      }
+    }
+  ],
+  Unsubscription: [
+    {
+      MessageType: 'MyMessage',
+      Options: {
+        Extensions: {
+          NServiceBus.RoutingToDispatchConnector+State: {
+            ImmediateDispatch: true
+          }
+        }
+      }
+    }
+  ]
+}

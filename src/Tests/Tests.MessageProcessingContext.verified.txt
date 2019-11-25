@@ -1,0 +1,26 @@
+{
+  RepliedMessages: [
+    {
+      ReplyMessage: {
+        Property: 'Value'
+      }
+    }
+  ],
+  ForwardedMessages: [
+    'newDestination'
+  ],
+  SentMessages: [
+    {
+      SendMessage: {
+        Property: 'Value'
+      }
+    }
+  ],
+  PublishedMessages: [
+    {
+      PublishMessage: {
+        Property: 'Value'
+      }
+    }
+  ]
+}

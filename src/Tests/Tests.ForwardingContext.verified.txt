@@ -1,0 +1,10 @@
+{
+  Message: {
+    Body: 'AQ==',
+    MessageId: 'MessageId',
+    Headers: {
+      key: 'value'
+    }
+  },
+  Address: 'The address'
+}

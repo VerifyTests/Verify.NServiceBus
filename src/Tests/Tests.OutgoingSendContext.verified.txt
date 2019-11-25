@@ -1,0 +1,9 @@
+{
+  Message: {
+    MessageType: 'MyMessage',
+    Instance: {
+      Property: 'Value'
+    }
+  },
+  MessageId: Guid_1
+}

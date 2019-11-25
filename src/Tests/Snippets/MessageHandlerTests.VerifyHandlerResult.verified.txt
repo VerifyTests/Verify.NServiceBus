@@ -1,0 +1,29 @@
+{
+  RepliedMessages: [
+    {
+      MyReplyMessage: {
+        Property: 'Value'
+      }
+    }
+  ],
+  ForwardedMessages: [
+    'newDestination'
+  ],
+  SentMessages: [
+    {
+      MySendMessage: {
+        Property: 'Value'
+      },
+      Options: {
+        DeliveryDelay: '12:00:00'
+      }
+    }
+  ],
+  PublishedMessages: [
+    {
+      MyPublishMessage: {
+        Property: 'Value'
+      }
+    }
+  ]
+}

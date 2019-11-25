@@ -1,0 +1,14 @@
+{
+  Message: {
+    MessageType: 'MyMessage',
+    Metadata: {
+      MessageType: 'MyMessage'
+    },
+    Instance: {
+      Property: 'Value'
+    }
+  },
+  Headers: {
+    Key: 'Value'
+  }
+}
