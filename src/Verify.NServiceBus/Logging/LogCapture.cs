@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using NServiceBus.Logging;
 
@@ -24,7 +25,18 @@ namespace Verify.NServiceBus
             }
         }
 
-        internal static List<LogMessage> LogMessages
+        public static IEnumerable<LogMessage> MessagesForLevel(LogLevel includeLogMessages)
+        {
+            return LogMessages
+                .Where(x => x.Level > includeLogMessages);
+        }
+
+        public static IReadOnlyList<LogMessage> LogMessages
+        {
+            get => Context.logMessages;
+        }
+
+        internal static List<LogMessage> WritableLogMessages
         {
             get => Context.logMessages;
         }
