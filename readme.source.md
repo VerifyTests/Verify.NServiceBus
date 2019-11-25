@@ -1,6 +1,6 @@
 # <img src="/src/icon.png" height="30px"> Verify.NServiceBus
 
-[![Build status](https://ci.appveyor.com/api/projects/status/nohkvrf18rjb90u3/branch/master?svg=true)](https://ci.appveyor.com/project/SimonCropp/Verify-NServiceBus)
+[![Build status](https://ci.appveyor.com/api/projects/status/wwrri8srggv1h56j/branch/master?svg=true)](https://ci.appveyor.com/project/SimonCropp/Verify-NServiceBus)
 [![NuGet Status](https://img.shields.io/nuget/v/Verify.NServiceBus.svg?cacheSeconds=86400)](https://www.nuget.org/packages/Verify.NServiceBus/)
 
 Adds [Verify](https://github.com/SimonCropp/Verify) support to verify [NServiceBus Test Contexts](https://docs.particular.net/nservicebus/samples/unit-testing/).
@@ -48,40 +48,7 @@ snippet: HandlerTest
 
 The resulting context verification file is as follows:
 
-```json
-{
-  "RepliedMessages": [
-    {
-      "MyReplyMessage": {
-        "Property": "Value"
-      }
-    }
-  ],
-  "ForwardedMessages": [
-    "newDestination"
-  ],
-  "MessageId": "Guid 1",
-  "ReplyToAddress": "reply address",
-  "SentMessages": [
-    {
-      "MySendMessage": {
-        "Property": "Value"
-      },
-      "Options": {
-        "DeliveryDelay": "12:00:00"
-      }
-    }
-  ],
-  "PublishedMessages": [
-    {
-      "MyPublishMessage": {
-        "Property": "Value"
-      }
-    }
-  ],
-  "Extensions": {}
-}
-```
+snippet: MessageHandlerTests.VerifyHandlerResult.verified.txt
 
 
 ### Example behavior change

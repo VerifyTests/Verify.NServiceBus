@@ -7,7 +7,7 @@ To change this file edit the source file and then run MarkdownSnippets.
 
 # <img src="/src/icon.png" height="30px"> Verify.NServiceBus
 
-[![Build status](https://ci.appveyor.com/api/projects/status/nohkvrf18rjb90u3/branch/master?svg=true)](https://ci.appveyor.com/project/SimonCropp/Verify-NServiceBus)
+[![Build status](https://ci.appveyor.com/api/projects/status/wwrri8srggv1h56j/branch/master?svg=true)](https://ci.appveyor.com/project/SimonCropp/Verify-NServiceBus)
 [![NuGet Status](https://img.shields.io/nuget/v/Verify.NServiceBus.svg?cacheSeconds=86400)](https://www.nuget.org/packages/Verify.NServiceBus/)
 
 Adds [Verify](https://github.com/SimonCropp/Verify) support to verify [NServiceBus Test Contexts](https://docs.particular.net/nservicebus/samples/unit-testing/).
@@ -119,40 +119,41 @@ public async Task VerifyHandlerResult()
 
 The resulting context verification file is as follows:
 
-```json
+<!-- snippet: MessageHandlerTests.VerifyHandlerResult.verified.txt -->
+<a id='snippet-MessageHandlerTests.VerifyHandlerResult.verified.txt'/></a>
+```txt
 {
-  "RepliedMessages": [
+  RepliedMessages: [
     {
-      "MyReplyMessage": {
-        "Property": "Value"
+      MyReplyMessage: {
+        Property: 'Value'
       }
     }
   ],
-  "ForwardedMessages": [
-    "newDestination"
+  ForwardedMessages: [
+    'newDestination'
   ],
-  "MessageId": "Guid 1",
-  "ReplyToAddress": "reply address",
-  "SentMessages": [
+  SentMessages: [
     {
-      "MySendMessage": {
-        "Property": "Value"
+      MySendMessage: {
+        Property: 'Value'
       },
-      "Options": {
-        "DeliveryDelay": "12:00:00"
+      Options: {
+        DeliveryDelay: '12:00:00'
       }
     }
   ],
-  "PublishedMessages": [
+  PublishedMessages: [
     {
-      "MyPublishMessage": {
-        "Property": "Value"
+      MyPublishMessage: {
+        Property: 'Value'
       }
     }
-  ],
-  "Extensions": {}
+  ]
 }
 ```
+<sup>[snippet source](/src/Tests/Snippets/MessageHandlerTests.VerifyHandlerResult.verified.txt#L1-L29) / [anchor](#snippet-MessageHandlerTests.VerifyHandlerResult.verified.txt)</sup>
+<!-- endsnippet -->
 
 
 ### Example behavior change
