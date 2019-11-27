@@ -75,7 +75,6 @@ public class Tests :
         return Verify(context);
     }
 
-
     [Fact]
     public Task BehaviorContext()
     {

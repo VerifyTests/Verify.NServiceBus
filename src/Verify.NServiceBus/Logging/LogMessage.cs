@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using NServiceBus.Logging;
 
 namespace Verify.NServiceBus
@@ -24,7 +25,7 @@ namespace Verify.NServiceBus
             Exception = exception;
             try
             {
-                Message = string.Format(format, args);
+                Message = string.Format(format, args.ToArray());
             }
             catch (Exception formatException)
             {
