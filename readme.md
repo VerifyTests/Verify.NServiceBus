@@ -20,9 +20,7 @@ Adds [Verify](https://github.com/SimonCropp/Verify) support to verify [NServiceB
     * [Patrons](#patrons)
   * [Usage](#usage)
     * [Verifying a context](#verifying-a-context)
-    * [Example behavior change](#example-behavior-change)
-<!-- endtoc -->
-
+    * [Example behavior change](#example-behavior-change)<!-- endtoc -->
 
 <!--- StartOpenCollectiveBackers -->
 
@@ -96,7 +94,7 @@ public class MyHandler :
     }
 }
 ```
-<sup>[snippet source](/src/Tests/Snippets/MyHandler.cs#L5-L37) / [anchor](#snippet-simplehandler)</sup>
+<sup><a href='/src/Tests/Snippets/MyHandler.cs#L5-L37' title='File snippet `simplehandler` was extracted from'>snippet source</a> | <a href='#snippet-simplehandler' title='Navigate to start of snippet `simplehandler`'>anchor</a></sup>
 <!-- endsnippet -->
 
 The test that verifies the resulting context:
@@ -115,7 +113,7 @@ public async Task VerifyHandlerResult()
     await Verify(context);
 }
 ```
-<sup>[snippet source](/src/Tests/Snippets/MessageHandlerTests.cs#L10-L23) / [anchor](#snippet-handlertest)</sup>
+<sup><a href='/src/Tests/Snippets/MessageHandlerTests.cs#L10-L23' title='File snippet `handlertest` was extracted from'>snippet source</a> | <a href='#snippet-handlertest' title='Navigate to start of snippet `handlertest`'>anchor</a></sup>
 <!-- endsnippet -->
 
 The resulting context verification file is as follows:
@@ -153,7 +151,7 @@ The resulting context verification file is as follows:
   ]
 }
 ```
-<sup>[snippet source](/src/Tests/Snippets/MessageHandlerTests.VerifyHandlerResult.verified.txt#L1-L29) / [anchor](#snippet-MessageHandlerTests.VerifyHandlerResult.verified.txt)</sup>
+<sup><a href='/src/Tests/Snippets/MessageHandlerTests.VerifyHandlerResult.verified.txt#L1-L29' title='File snippet `MessageHandlerTests.VerifyHandlerResult.verified.txt` was extracted from'>snippet source</a> | <a href='#snippet-MessageHandlerTests.VerifyHandlerResult.verified.txt' title='Navigate to start of snippet `MessageHandlerTests.VerifyHandlerResult.verified.txt`'>anchor</a></sup>
 <!-- endsnippet -->
 
 
@@ -187,7 +185,7 @@ await context.Send(
 
 await context.ForwardCurrentMessageTo("newDestination");
 ```
-<sup>[snippet source](/src/Tests/Snippets/MyHandlerV2.cs#L10-L35) / [anchor](#snippet-simplehandlerv2)</sup>
+<sup><a href='/src/Tests/Snippets/MyHandlerV2.cs#L10-L35' title='File snippet `simplehandlerv2` was extracted from'>snippet source</a> | <a href='#snippet-simplehandlerv2' title='Navigate to start of snippet `simplehandlerv2`'>anchor</a></sup>
 <!-- endsnippet -->
 
 Then the resulting visualization diff would look as follows:
