@@ -1,7 +1,7 @@
 # <img src="/src/icon.png" height="30px"> Verify.NServiceBus
 
 [![Build status](https://ci.appveyor.com/api/projects/status/wwrri8srggv1h56j/branch/master?svg=true)](https://ci.appveyor.com/project/SimonCropp/Verify-NServiceBus)
-[![NuGet Status](https://img.shields.io/nuget/v/Verify.NServiceBus.svg?cacheSeconds=86400)](https://www.nuget.org/packages/Verify.NServiceBus/)
+[![NuGet Status](https://img.shields.io/nuget/v/Verify.NServiceBus.svg)](https://www.nuget.org/packages/Verify.NServiceBus/)
 
 Adds [Verify](https://github.com/SimonCropp/Verify) support to verify [NServiceBus Test Contexts](https://docs.particular.net/nservicebus/samples/unit-testing/).
 
