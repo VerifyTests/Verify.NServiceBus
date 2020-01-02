@@ -12,16 +12,6 @@ To change this file edit the source file and then run MarkdownSnippets.
 
 Adds [Verify](https://github.com/SimonCropp/Verify) support to verify [NServiceBus Test Contexts](https://docs.particular.net/nservicebus/samples/unit-testing/).
 
-<!-- toc -->
-## Contents
-
-  * [Community backed](#community-backed)
-    * [Sponsors](#sponsors)
-    * [Patrons](#patrons)
-  * [Usage](#usage)
-    * [Verifying a context](#verifying-a-context)
-    * [Example behavior change](#example-behavior-change)<!-- endtoc -->
-
 <!--- StartOpenCollectiveBackers -->
 
 [Already a Patron? skip past this section](#endofbacking)
@@ -38,6 +28,13 @@ Thanks to the current backers.
 <a href="#" id="endofbacking"></a>
 
 <!--- EndOpenCollectiveBackers -->
+
+<!-- toc -->
+## Contents
+
+  * [Usage](#usage)
+    * [Verifying a context](#verifying-a-context)
+    * [Example behavior change](#example-behavior-change)<!-- endtoc -->
 
 
 ## NuGet package

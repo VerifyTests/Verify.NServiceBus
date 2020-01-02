@@ -5,8 +5,6 @@
 
 Adds [Verify](https://github.com/SimonCropp/Verify) support to verify [NServiceBus Test Contexts](https://docs.particular.net/nservicebus/samples/unit-testing/).
 
-toc
-
 <!--- StartOpenCollectiveBackers -->
 
 [Already a Patron? skip past this section](#endofbacking)
@@ -23,6 +21,8 @@ Thanks to the current backers.
 <a href="#" id="endofbacking"></a>
 
 <!--- EndOpenCollectiveBackers -->
+
+toc
 
 
 ## NuGet package
