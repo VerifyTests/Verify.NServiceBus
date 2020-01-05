@@ -1,10 +1,11 @@
 ﻿using System;
 using Newtonsoft.Json;
 using NServiceBus.Testing;
+using Verify;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class OutgoingMessageConverter :
-    JsonConverter
+    WriteOnlyJsonConverter
 {
     public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
     {

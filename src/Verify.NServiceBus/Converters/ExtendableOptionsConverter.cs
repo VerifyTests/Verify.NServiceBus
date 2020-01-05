@@ -3,10 +3,11 @@ using System.Linq;
 using Newtonsoft.Json;
 using NServiceBus;
 using NServiceBus.Extensibility;
+using Verify;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class ExtendableOptionsConverter :
-    JsonConverter
+    WriteOnlyJsonConverter
 {
     public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
     {
