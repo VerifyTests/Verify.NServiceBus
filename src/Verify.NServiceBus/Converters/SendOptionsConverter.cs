@@ -1,19 +1,17 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using NServiceBus;
 using Verify;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class SendOptionsConverter :
-    WriteOnlyJsonConverter
+    WriteOnlyJsonConverter<SendOptions>
 {
-    public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+    public override void WriteJson(JsonWriter writer, SendOptions? options, JsonSerializer serializer)
     {
-        if (value == null)
+        if (options == null)
         {
             return;
         }
-        var options = (SendOptions) value;
         writer.WriteStartObject();
 
         var deliveryDate = options.GetDeliveryDate();
@@ -31,10 +29,5 @@ class SendOptionsConverter :
         ExtendableOptionsConverter.WriteBaseMembers(writer, serializer, options);
 
         writer.WriteEndObject();
-    }
-
-    public override bool CanConvert(Type type)
-    {
-        return typeof(SendOptions).IsAssignableFrom(type);
     }
 }

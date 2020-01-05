@@ -5,15 +5,14 @@ using Verify;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class UnsubscriptionConverter :
-    WriteOnlyJsonConverter
+    WriteOnlyJsonConverter<Unsubscription>
 {
-    public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+    public override void WriteJson(JsonWriter writer, Unsubscription? unsubscription, JsonSerializer serializer)
     {
-        if (value == null)
+        if (unsubscription == null)
         {
             return;
         }
-        var unsubscription = (Unsubscription) value;
         writer.WriteStartObject();
 
         writer.WritePropertyName("MessageType");

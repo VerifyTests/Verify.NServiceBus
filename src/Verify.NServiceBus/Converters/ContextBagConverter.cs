@@ -1,31 +1,24 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using NServiceBus.Extensibility;
 using Verify;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class ContextBagConverter :
-    WriteOnlyJsonConverter
+    WriteOnlyJsonConverter<ContextBag>
 {
-    public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+    public override void WriteJson(JsonWriter writer, ContextBag? bag, JsonSerializer serializer)
     {
-        if (value == null)
+        if (bag == null)
         {
             return;
         }
 
-        var contextBag = (ContextBag) value;
         writer.WriteStartObject();
-        foreach (var pair in contextBag.GetValues())
+        foreach (var pair in bag.GetValues())
         {
             writer.WritePropertyName(pair.Key);
             serializer.Serialize(writer, pair.Value);
         }
         writer.WriteEndObject();
-    }
-
-    public override bool CanConvert(Type type)
-    {
-        return typeof(ContextBag).IsAssignableFrom(type);
     }
 }

@@ -1,19 +1,17 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using NServiceBus.Testing;
 using Verify;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class SubscriptionConverter :
-    WriteOnlyJsonConverter
+    WriteOnlyJsonConverter<Subscription>
 {
-    public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+    public override void WriteJson(JsonWriter writer, Subscription? subscription, JsonSerializer serializer)
     {
-        if (value == null)
+        if (subscription == null)
         {
             return;
         }
-        var subscription = (Subscription) value;
         writer.WriteStartObject();
 
         writer.WritePropertyName("MessageType");
@@ -26,10 +24,5 @@ class SubscriptionConverter :
         }
 
         writer.WriteEndObject();
-    }
-
-    public override bool CanConvert(Type type)
-    {
-        return typeof(Subscription).IsAssignableFrom(type);
     }
 }

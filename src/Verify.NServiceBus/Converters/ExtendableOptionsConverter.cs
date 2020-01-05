@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Newtonsoft.Json;
 using NServiceBus;
 using NServiceBus.Extensibility;
@@ -7,15 +6,14 @@ using Verify;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class ExtendableOptionsConverter :
-    WriteOnlyJsonConverter
+    WriteOnlyJsonConverter<ExtendableOptions>
 {
-    public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+    public override void WriteJson(JsonWriter writer, ExtendableOptions? options, JsonSerializer serializer)
     {
-        if (value == null)
+        if (options == null)
         {
             return;
         }
-        var options = (ExtendableOptions) value;
         writer.WriteStartObject();
 
         WriteBaseMembers(writer, serializer, options);
@@ -47,10 +45,5 @@ class ExtendableOptionsConverter :
                 serializer.Serialize(writer, extensions);
             }
         }
-    }
-
-    public override bool CanConvert(Type type)
-    {
-        return typeof(ExtendableOptions).IsAssignableFrom(type);
     }
 }
