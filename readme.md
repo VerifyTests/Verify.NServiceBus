@@ -34,7 +34,8 @@ Thanks to the current backers.
 
   * [Usage](#usage)
     * [Verifying a context](#verifying-a-context)
-    * [Example behavior change](#example-behavior-change)<!-- endtoc -->
+    * [Example behavior change](#example-behavior-change)
+  * [Security contact information](#security-contact-information)<!-- endtoc -->
 
 
 ## NuGet package
@@ -188,9 +189,9 @@ Then the resulting visualization diff would look as follows:
 ![visualization diff](/src/approvaltests-diff.png)
 
 
-## Release Notes
+## Security contact information
 
-See [closed milestones](../../milestones?state=closed).
+To report a security vulnerability, use the [Tidelift security contact](https://tidelift.com/security). Tidelift will coordinate the fix and disclosure.
 
 
 ## Icon
