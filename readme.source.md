@@ -66,9 +66,9 @@ Then the resulting visualization diff would look as follows:
 ![visualization diff](/src/approvaltests-diff.png)
 
 
-## Release Notes
+## Security contact information
 
-See [closed milestones](../../milestones?state=closed).
+To report a security vulnerability, use the [Tidelift security contact](https://tidelift.com/security). Tidelift will coordinate the fix and disclosure.
 
 
 ## Icon
