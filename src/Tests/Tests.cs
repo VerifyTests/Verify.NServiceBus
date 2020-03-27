@@ -83,7 +83,8 @@ public class Tests :
         return Verify(context);
     }
 
-    public class TestableBehaviorContextImp : TestableBehaviorContext
+    public class TestableBehaviorContextImp :
+        TestableBehaviorContext
     {
     }
 
