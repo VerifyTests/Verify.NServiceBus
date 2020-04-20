@@ -30,7 +30,6 @@ namespace Verify.NServiceBus
                 settings.IgnoreMember<TestableRoutingContext>(x => x.RoutingStrategies);
                 settings.IgnoreInstance<ContextBag>(x => !ContextBagHelper.HasContent(x));
                 settings.IgnoreMembersWithType<IBuilder>();
-                settings.IgnoreMembersWithType<TransportTransaction>();
                 settings.AddExtraSettings(serializerSettings =>
                 {
                     var converters = serializerSettings.Converters;
