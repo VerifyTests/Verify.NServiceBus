@@ -2,7 +2,6 @@
 using NServiceBus.Extensibility;
 using NServiceBus.ObjectBuilder;
 using NServiceBus.Testing;
-using NServiceBus.Transport;
 
 namespace Verify.NServiceBus
 {
