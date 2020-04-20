@@ -2,6 +2,8 @@
 using NServiceBus.Extensibility;
 using NServiceBus.ObjectBuilder;
 using NServiceBus.Testing;
+using NServiceBus.Transport;
+
 namespace Verify.NServiceBus
 {
     public static class VerifyNServiceBus
@@ -28,6 +30,7 @@ namespace Verify.NServiceBus
                 settings.IgnoreMember<TestableRoutingContext>(x => x.RoutingStrategies);
                 settings.IgnoreInstance<ContextBag>(x => !ContextBagHelper.HasContent(x));
                 settings.IgnoreMembersWithType<IBuilder>();
+                settings.IgnoreMembersWithType<TransportTransaction>();
                 settings.AddExtraSettings(serializerSettings =>
                 {
                     var converters = serializerSettings.Converters;
