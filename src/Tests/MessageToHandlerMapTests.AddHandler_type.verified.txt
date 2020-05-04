@@ -1,7 +1,5 @@
 {
-  Handlers: {
-    MessageToHandlerMapTests.MyHandler: [
-      'MessageToHandlerMapTests.MyMessage'
-    ]
-  }
+  HandledMessages: [
+    'MessageToHandlerMapTests.MyMessage'
+  ]
 }

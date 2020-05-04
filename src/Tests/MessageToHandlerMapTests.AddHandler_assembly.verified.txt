@@ -1,19 +1,8 @@
 {
-  Handlers: {
-    MyHandler: [
-      'MyRequest'
-    ],
-    MyHandlerV2: [
-      'MyRequest'
-    ],
-    MessageToHandlerMapTests.MyHandler: [
-      'MessageToHandlerMapTests.MyMessage'
-    ],
-    Tests.MyHandlerWithLogging: [
-      'MyMessage'
-    ],
-    Tests.MySaga: [
-      'Tests.MySagaMessage'
-    ]
-  }
+  HandledMessages: [
+    'MyRequest',
+    'MessageToHandlerMapTests.MyMessage',
+    'MyMessage',
+    'Tests.MySagaMessage'
+  ]
 }

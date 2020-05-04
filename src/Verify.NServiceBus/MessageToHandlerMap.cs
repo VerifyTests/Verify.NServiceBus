@@ -9,7 +9,7 @@ namespace Verify.NServiceBus
     public class MessageToHandlerMap
     {
         internal HashSet<Type> Messages = new HashSet<Type>();
-        internal Dictionary<Type, List<Type>> Handlers = new Dictionary<Type, List<Type>>();
+        internal HashSet<Type> HandledMessages = new HashSet<Type>();
 
         public void AddMessagesFromAssembly(Assembly assembly)
         {
@@ -39,10 +39,6 @@ namespace Verify.NServiceBus
         public void AddHandler(Type handlerType)
         {
             Guard.AgainstNull(handlerType, nameof(handlerType));
-            if (!Handlers.TryGetValue(handlerType, out var list))
-            {
-                Handlers[handlerType] = list = new List<Type>();
-            }
 
             foreach (var interfaceType in handlerType
                 .GetInterfaces()
@@ -57,7 +53,7 @@ namespace Verify.NServiceBus
                     return typeDefinition == typeof(IHandleMessages<>);
                 }))
             {
-                list.Add(interfaceType.GenericTypeArguments.Single());
+                HandledMessages.Add(interfaceType.GenericTypeArguments.Single());
             }
         }
 

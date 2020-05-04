@@ -14,12 +14,9 @@ class MessageToHandlerMapConverter :
             return;
         }
 
-        var messagesWithNoHandler = map.Messages.Except(map.Handlers.SelectMany(x => x.Value)).ToList();
-        if (!messagesWithNoHandler.Any())
-        {
-            return;
-        }
-
+        var messagesWithNoHandler = map.Messages
+            .Except(map.HandledMessages)
+            .ToList();
         writer.WriteStartObject();
         writer.WritePropertyName("MessagesWithNoHandler");
         serializer.Serialize(writer, messagesWithNoHandler);

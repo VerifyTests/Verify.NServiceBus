@@ -51,7 +51,7 @@ public class MessageToHandlerMapTests :
 
     Task Verify(MessageToHandlerMap map)
     {
-        return Verify(new {map.Handlers, map.Messages});
+        return Verify(new {map.HandledMessages, map.Messages});
     }
 
     public MessageToHandlerMapTests(ITestOutputHelper output) :
