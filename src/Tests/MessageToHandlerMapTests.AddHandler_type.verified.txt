@@ -1,0 +1,7 @@
+{
+  Handlers: {
+    MessageToHandlerMapTests.MyHandler: [
+      'MessageToHandlerMapTests.MyMessage'
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+{
+  MessagesWithNoHandler: [
+    'MessageToHandlerMapTests.MessageWithNoHandler'
+  ]
+}
