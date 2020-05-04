@@ -206,6 +206,10 @@ Then the resulting visualization diff would look as follows:
 
 ### Message to Handler mapping
 
+`MessageToHandlerMap` allows verification of message that do not have a handler.
+
+For example:
+
 <!-- snippet: MessageToHandlerMap -->
 <a id='snippet-messagetohandlermap'/></a>
 ```cs
@@ -216,6 +220,8 @@ await Verify(map);
 ```
 <sup><a href='/src/Tests/MessageToHandlerMapTests.cs#L14-L19' title='File snippet `messagetohandlermap` was extracted from'>snippet source</a> | <a href='#snippet-messagetohandlermap' title='Navigate to start of snippet `messagetohandlermap`'>anchor</a></sup>
 <!-- endsnippet -->
+
+Would result in: 
 
 <!-- snippet: MessageToHandlerMapTests.Integration.verified.txt -->
 <a id='snippet-MessageToHandlerMapTests.Integration.verified.txt'/></a>

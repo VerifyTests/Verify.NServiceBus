@@ -82,7 +82,13 @@ Then the resulting visualization diff would look as follows:
 
 ### Message to Handler mapping
 
+`MessageToHandlerMap` allows verification of message that do not have a handler.
+
+For example:
+
 snippet: MessageToHandlerMap
+
+Would result in: 
 
 snippet: MessageToHandlerMapTests.Integration.verified.txt
 
