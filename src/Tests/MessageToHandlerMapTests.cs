@@ -9,12 +9,14 @@ public class MessageToHandlerMapTests :
     VerifyBase
 {
     [Fact]
-    public Task Integration()
+    public async Task Integration()
     {
+        #region MessageToHandlerMap
         var map = new MessageToHandlerMap();
         map.AddMessagesFromAssembly<MyMessage>();
-        map.AddHandlersFromAssembly<MyMessage>();
-        return base.Verify(map);
+        map.AddHandlersFromAssembly<MyHandler>();
+        await Verify(map);
+        #endregion
     }
 
     [Fact]
@@ -22,7 +24,7 @@ public class MessageToHandlerMapTests :
     {
         var map = new MessageToHandlerMap();
         map.AddMessage<MyMessage>();
-        return Verify(map);
+        return VerifyMap(map);
     }
 
     [Fact]
@@ -30,7 +32,7 @@ public class MessageToHandlerMapTests :
     {
         var map = new MessageToHandlerMap();
         map.AddMessagesFromAssembly<MyMessage>();
-        return Verify(map);
+        return VerifyMap(map);
     }
 
     [Fact]
@@ -38,7 +40,7 @@ public class MessageToHandlerMapTests :
     {
         var map = new MessageToHandlerMap();
         map.AddHandler<MyHandler>();
-        return Verify(map);
+        return VerifyMap(map);
     }
 
     [Fact]
@@ -46,10 +48,10 @@ public class MessageToHandlerMapTests :
     {
         var map = new MessageToHandlerMap();
         map.AddHandlersFromAssembly<MyHandler>();
-        return Verify(map);
+        return VerifyMap(map);
     }
 
-    Task Verify(MessageToHandlerMap map)
+    Task VerifyMap(MessageToHandlerMap map)
     {
         return Verify(new {map.HandledMessages, map.Messages});
     }

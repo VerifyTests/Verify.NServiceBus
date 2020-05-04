@@ -80,6 +80,13 @@ Then the resulting visualization diff would look as follows:
 ![visualization diff](/src/approvaltests-diff.png)
 
 
+### Message to Handler mapping
+
+snippet: MessageToHandlerMap
+
+snippet: MessageToHandlerMapTests.Integration.verified.txt
+
+
 ## Security contact information
 
 To report a security vulnerability, use the [Tidelift security contact](https://tidelift.com/security). Tidelift will coordinate the fix and disclosure.
