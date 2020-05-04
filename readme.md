@@ -49,6 +49,7 @@ Support is available via a [Tidelift Subscription](https://tidelift.com/subscrip
   * [Usage](#usage)
     * [Verifying a context](#verifying-a-context)
     * [Example behavior change](#example-behavior-change)
+    * [Message to Handler mapping](#message-to-handler-mapping)
   * [Security contact information](#security-contact-information)<!-- endtoc -->
 
 
@@ -201,6 +202,32 @@ Then the resulting visualization diff would look as follows:
 
 
 ![visualization diff](/src/approvaltests-diff.png)
+
+
+### Message to Handler mapping
+
+<!-- snippet: MessageToHandlerMap -->
+<a id='snippet-messagetohandlermap'/></a>
+```cs
+var map = new MessageToHandlerMap();
+map.AddMessagesFromAssembly<MyMessage>();
+map.AddHandlersFromAssembly<MyHandler>();
+await Verify(map);
+```
+<sup><a href='/src/Tests/MessageToHandlerMapTests.cs#L14-L19' title='File snippet `messagetohandlermap` was extracted from'>snippet source</a> | <a href='#snippet-messagetohandlermap' title='Navigate to start of snippet `messagetohandlermap`'>anchor</a></sup>
+<!-- endsnippet -->
+
+<!-- snippet: MessageToHandlerMapTests.Integration.verified.txt -->
+<a id='snippet-MessageToHandlerMapTests.Integration.verified.txt'/></a>
+```txt
+{
+  MessagesWithNoHandler: [
+    'MessageToHandlerMapTests.MessageWithNoHandler'
+  ]
+}
+```
+<sup><a href='/src/Tests/MessageToHandlerMapTests.Integration.verified.txt#L1-L5' title='File snippet `MessageToHandlerMapTests.Integration.verified.txt` was extracted from'>snippet source</a> | <a href='#snippet-MessageToHandlerMapTests.Integration.verified.txt' title='Navigate to start of snippet `MessageToHandlerMapTests.Integration.verified.txt`'>anchor</a></sup>
+<!-- endsnippet -->
 
 
 ## Security contact information

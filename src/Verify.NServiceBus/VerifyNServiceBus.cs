@@ -37,6 +37,7 @@ namespace Verify.NServiceBus
                     converters.Add(new ExtendableOptionsConverter());
                     converters.Add(new UnsubscriptionConverter());
                     converters.Add(new TimeoutMessageConverter());
+                    converters.Add(new MessageToHandlerMapConverter());
                     converters.Add(new SubscriptionConverter());
                     converters.Add(new OutgoingMessageConverter());
                 });
