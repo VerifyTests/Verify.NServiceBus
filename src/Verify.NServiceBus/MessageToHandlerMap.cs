@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using NServiceBus;
 
-namespace Verify.NServiceBus
+namespace VerifyTests.NServiceBus
 {
     public class MessageToHandlerMap
     {

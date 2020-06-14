@@ -120,10 +120,10 @@ public async Task VerifyHandlerResult()
 
     await handler.Handle(new MyRequest(), context);
 
-    await Verify(context);
+    await Verifier.Verify(context);
 }
 ```
-<sup><a href='/src/Tests/Snippets/MessageHandlerTests.cs#L10-L23' title='File snippet `handlertest` was extracted from'>snippet source</a> | <a href='#snippet-handlertest' title='Navigate to start of snippet `handlertest`'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/MessageHandlerTests.cs#L9-L22' title='File snippet `handlertest` was extracted from'>snippet source</a> | <a href='#snippet-handlertest' title='Navigate to start of snippet `handlertest`'>anchor</a></sup>
 <!-- endsnippet -->
 
 The resulting context verification file is as follows:
@@ -216,9 +216,9 @@ For example:
 var map = new MessageToHandlerMap();
 map.AddMessagesFromAssembly<MyMessage>();
 map.AddHandlersFromAssembly<MyHandler>();
-await Verify(map);
+await Verifier.Verify(map);
 ```
-<sup><a href='/src/Tests/MessageToHandlerMapTests.cs#L14-L19' title='File snippet `messagetohandlermap` was extracted from'>snippet source</a> | <a href='#snippet-messagetohandlermap' title='Navigate to start of snippet `messagetohandlermap`'>anchor</a></sup>
+<sup><a href='/src/Tests/MessageToHandlerMapTests.cs#L13-L18' title='File snippet `messagetohandlermap` was extracted from'>snippet source</a> | <a href='#snippet-messagetohandlermap' title='Navigate to start of snippet `messagetohandlermap`'>anchor</a></sup>
 <!-- endsnippet -->
 
 Would result in: 

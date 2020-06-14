@@ -1,10 +1,9 @@
-﻿using Verify.NServiceBus;
+﻿using VerifyTests;
 using Xunit;
 
-[GlobalSetUp]
-public static class GlobalSetup
+public static class ModuleInitializer
 {
-    public static void Setup()
+    public static void Initialize()
     {
         VerifyNServiceBus.Enable();
     }

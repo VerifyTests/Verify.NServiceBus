@@ -10,4 +10,4 @@ static class Guard
             throw new ArgumentNullException(argumentName);
         }
     }
-    }
+}

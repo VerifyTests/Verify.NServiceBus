@@ -4,20 +4,14 @@ using NServiceBus.Logging;
 using Verify.NServiceBus;
 using VerifyXunit;
 using Xunit;
-using Xunit.Abstractions;
 
-public class LogMessageTests :
-    VerifyBase
+[UsesVerify]
+public class LogMessageTests
 {
     [Fact]
     public Task Logging()
     {
         var message = new LogMessage(LogLevel.Error,"{0} {1}", new List<string>{"foo", "bar"});
-        return Verify(message.Message);
-    }
-
-    public LogMessageTests(ITestOutputHelper output) :
-        base(output)
-    {
+        return Verifier.Verify(message.Message);
     }
 }

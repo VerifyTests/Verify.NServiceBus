@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using NServiceBus;
 using NServiceBus.Extensibility;
-using Verify;
+using VerifyTests;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class ExtendableOptionsConverter :

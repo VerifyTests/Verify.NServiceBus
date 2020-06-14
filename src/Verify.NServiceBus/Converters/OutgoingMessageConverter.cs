@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 using NServiceBus.Testing;
-using Verify;
+using VerifyTests;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class OutgoingMessageConverter :

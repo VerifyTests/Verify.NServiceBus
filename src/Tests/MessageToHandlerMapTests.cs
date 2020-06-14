@@ -1,12 +1,11 @@
 ﻿using System.Threading.Tasks;
 using NServiceBus;
-using Verify.NServiceBus;
+using VerifyTests.NServiceBus;
 using VerifyXunit;
 using Xunit;
-using Xunit.Abstractions;
 
-public class MessageToHandlerMapTests :
-    VerifyBase
+[UsesVerify]
+public class MessageToHandlerMapTests
 {
     [Fact]
     public async Task Integration()
@@ -15,7 +14,7 @@ public class MessageToHandlerMapTests :
         var map = new MessageToHandlerMap();
         map.AddMessagesFromAssembly<MyMessage>();
         map.AddHandlersFromAssembly<MyHandler>();
-        await Verify(map);
+        await Verifier.Verify(map);
         #endregion
     }
 
@@ -53,14 +52,9 @@ public class MessageToHandlerMapTests :
 
     Task VerifyMap(MessageToHandlerMap map)
     {
-        return Verify(new {map.HandledMessages, map.Messages});
+        return Verifier.Verify(new {map.HandledMessages, map.Messages});
     }
-
-    public MessageToHandlerMapTests(ITestOutputHelper output) :
-        base(output)
-    {
-    }
-
+    
     class MyMessage : IMessage
     {
 

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using NServiceBus.Extensibility;
 using NServiceBus.Transport;
-using Verify;
+using VerifyTests;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class ContextBagConverter :

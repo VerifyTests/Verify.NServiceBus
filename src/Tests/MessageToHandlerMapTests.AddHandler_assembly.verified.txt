@@ -1,7 +1,7 @@
 {
   HandledMessages: [
-    'MyRequest',
     'MessageToHandlerMapTests.MyMessage',
+    'MyRequest',
     'MyMessage',
     'Tests.MySagaMessage'
   ]

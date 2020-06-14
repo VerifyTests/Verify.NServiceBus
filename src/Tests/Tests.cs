@@ -13,10 +13,9 @@ using NServiceBus.Unicast.Messages;
 using Verify.NServiceBus;
 using VerifyXunit;
 using Xunit;
-using Xunit.Abstractions;
 
-public class Tests :
-    VerifyBase
+[UsesVerify]
+public class Tests
 {
     [Fact]
     public async Task Logging()
@@ -25,7 +24,7 @@ public class Tests :
         var context = new TestableMessageHandlerContext();
 
         await handler.Handle(new MyMessage(), context);
-        await Verify(new
+        await Verifier.Verify(new
         {
             context,
             LogCapture.LogMessages
@@ -48,7 +47,7 @@ public class Tests :
     {
         var context = new TestableAuditContext();
         context.AddedAuditData.Add("Key", "Value");
-        return Verify(
+        return Verifier.Verify(
             new
             {
                 context,
@@ -64,7 +63,7 @@ public class Tests :
     {
         var context = new TestableAuditContext();
         context.AddedAuditData.Add("Key", "Value");
-        return Verify(context);
+        return Verifier.Verify(context);
     }
 
     [Fact]
@@ -72,7 +71,7 @@ public class Tests :
     {
         var context = new TestableBatchDispatchContext();
         context.Operations.Add(BuildTransportOperation());
-        return Verify(context);
+        return Verifier.Verify(context);
     }
 
     [Fact]
@@ -80,7 +79,7 @@ public class Tests :
     {
         var context = new TestableBehaviorContextImp();
         context.Extensions.AddDeliveryConstraint(new DelayDeliveryWith(TimeSpan.FromDays(1)));
-        return Verify(context);
+        return Verifier.Verify(context);
     }
 
     public class TestableBehaviorContextImp :
@@ -93,7 +92,7 @@ public class Tests :
     {
         var context = new TestableDispatchContext();
         context.Operations.Add(BuildTransportOperation());
-        return Verify(context);
+        return Verifier.Verify(context);
     }
 
     [Fact]
@@ -101,7 +100,7 @@ public class Tests :
     {
         var context = new TestableEndpointInstance();
         await ((IMessageSession)context).Send(new SendMessage {Property = "Value"});
-        await Verify(context);
+        await Verifier.Verify(context);
     }
 
     [Fact]
@@ -112,7 +111,7 @@ public class Tests :
             Address = "The address",
             Message = BuildOutgoingMessage()
         };
-        return Verify(context);
+        return Verifier.Verify(context);
     }
 
     [Fact]
@@ -123,7 +122,7 @@ public class Tests :
             Message = BuildLogicalMessage(),
             Headers = new Dictionary<string, string> {{"Key", "Value"}}
         };
-        return Verify(context);
+        return Verifier.Verify(context);
     }
 
     [Fact]
@@ -133,7 +132,7 @@ public class Tests :
         {
             Message = BuildIncomingMessage(),
         };
-        return Verify(context);
+        return Verifier.Verify(context);
     }
 
     [Fact]
@@ -144,14 +143,14 @@ public class Tests :
             Headers = new Dictionary<string, string> {{"Key", "Value"}},
         };
         await context.Send(new MyMessage());
-        await Verify(context);
+        await Verifier.Verify(context);
     }
 
     [Fact]
     public Task MessageHandlerContext()
     {
         var context = new TestableMessageHandlerContext();
-        return Verify(context);
+        return Verifier.Verify(context);
     }
 
     [Fact]
@@ -163,7 +162,7 @@ public class Tests :
         await context.Reply(new ReplyMessage {Property = "Value"});
         await context.Send(new SendMessage {Property = "Value"});
         await context.ForwardCurrentMessageTo("newDestination");
-        await Verify(context);
+        await Verifier.Verify(context);
     }
 
     [Fact]
@@ -176,7 +175,7 @@ public class Tests :
         var unsubscribeOptions = new UnsubscribeOptions();
         unsubscribeOptions.RequireImmediateDispatch();
         await context.Unsubscribe(typeof(MyMessage), unsubscribeOptions);
-        await Verify(context);
+        await Verifier.Verify(context);
     }
 
     [Fact]
@@ -184,7 +183,7 @@ public class Tests :
     {
         var context = new TestableOutgoingContext();
         context.Headers.Add("Key", "Value");
-        return Verify(context);
+        return Verifier.Verify(context);
     }
 
     [Fact]
@@ -198,7 +197,7 @@ public class Tests :
 
         await saga.Handle(new MySagaMessage(), context);
 
-        await Verify(new
+        await Verifier.Verify(new
         {
             context,
             saga.Data
@@ -244,7 +243,7 @@ public class Tests :
         {
             Message = BuildOutgoingLogicalMessage()
         };
-        return Verify(context);
+        return Verifier.Verify(context);
     }
 
     [Fact]
@@ -254,7 +253,7 @@ public class Tests :
         {
             Body = new byte[] {1}
         };
-        return Verify(context);
+        return Verifier.Verify(context);
     }
 
     [Fact]
@@ -264,7 +263,7 @@ public class Tests :
         {
             Message = BuildOutgoingLogicalMessage()
         };
-        return Verify(context);
+        return Verifier.Verify(context);
     }
 
     [Fact]
@@ -274,7 +273,7 @@ public class Tests :
         {
             Message = BuildOutgoingLogicalMessage()
         };
-        return Verify(context);
+        return Verifier.Verify(context);
     }
 
     [Fact]
@@ -284,7 +283,7 @@ public class Tests :
         {
             Message = BuildOutgoingLogicalMessage()
         };
-        return Verify(context);
+        return Verifier.Verify(context);
     }
 
     [Fact]
@@ -296,7 +295,7 @@ public class Tests :
         var options = new SendOptions();
         options.DelayDeliveryWith(TimeSpan.FromDays(1));
         await context.Send(new SendMessage {Property = "ValueWithDelay"},options);
-        await Verify(context);
+        await Verifier.Verify(context);
     }
 
     [Fact]
@@ -306,7 +305,7 @@ public class Tests :
         {
             Message = BuildOutgoingMessage()
         };
-        return Verify(context);
+        return Verifier.Verify(context);
     }
 
     [Fact]
@@ -316,7 +315,7 @@ public class Tests :
         {
             EventType = typeof(MyMessage)
         };
-        return Verify(context);
+        return Verifier.Verify(context);
     }
 
     [Fact]
@@ -327,7 +326,7 @@ public class Tests :
             Message = BuildIncomingMessage(),
             ReceiveOperationAborted = true
         };
-        return Verify(context);
+        return Verifier.Verify(context);
     }
 
     [Fact]
@@ -337,7 +336,7 @@ public class Tests :
         {
             EventType = typeof(MyMessage)
         };
-        return Verify(context);
+        return Verifier.Verify(context);
     }
 
     static TransportOperation BuildTransportOperation()
@@ -367,11 +366,6 @@ public class Tests :
     static LogicalMessage BuildLogicalMessage()
     {
         return new LogicalMessage(new MessageMetadata(typeof(MyMessage)), new MyMessage {Property = "Value"});
-    }
-
-    public Tests(ITestOutputHelper output) :
-        base(output)
-    {
     }
 }
 

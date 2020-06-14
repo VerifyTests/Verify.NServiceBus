@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using NServiceBus;
-using Verify;
+using VerifyTests;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class SendOptionsConverter :

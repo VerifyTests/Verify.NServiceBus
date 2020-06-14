@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Newtonsoft.Json;
-using Verify;
-using Verify.NServiceBus;
+using VerifyTests;
+using VerifyTests.NServiceBus;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class MessageToHandlerMapConverter :

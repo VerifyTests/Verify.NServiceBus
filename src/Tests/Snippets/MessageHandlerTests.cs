@@ -2,10 +2,9 @@
 using NServiceBus.Testing;
 using VerifyXunit;
 using Xunit;
-using Xunit.Abstractions;
 
-public class MessageHandlerTests :
-    VerifyBase
+[UsesVerify]
+public class MessageHandlerTests
 {
     #region HandlerTest
 
@@ -17,13 +16,8 @@ public class MessageHandlerTests :
 
         await handler.Handle(new MyRequest(), context);
 
-        await Verify(context);
+        await Verifier.Verify(context);
     }
 
     #endregion
-
-    public MessageHandlerTests(ITestOutputHelper output) :
-        base(output)
-    {
-    }
 }

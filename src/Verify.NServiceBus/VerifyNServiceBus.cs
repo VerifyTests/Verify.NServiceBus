@@ -2,8 +2,9 @@
 using NServiceBus.Extensibility;
 using NServiceBus.ObjectBuilder;
 using NServiceBus.Testing;
+using Verify.NServiceBus;
 
-namespace Verify.NServiceBus
+namespace VerifyTests
 {
     public static class VerifyNServiceBus
     {
@@ -13,7 +14,7 @@ namespace Verify.NServiceBus
             {
                 LogCapture.Initialize();
             }
-            SharedVerifySettings.ModifySerialization(settings =>
+            VerifierSettings.ModifySerialization(settings =>
             {
                 settings.IgnoreMember<TestableInvokeHandlerContext>(x => x.MessageHeaders);
                 settings.IgnoreMember<TestableInvokeHandlerContext>(x => x.Headers);
