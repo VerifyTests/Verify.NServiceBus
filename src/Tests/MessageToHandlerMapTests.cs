@@ -54,7 +54,7 @@ public class MessageToHandlerMapTests
     {
         return Verifier.Verify(new {map.HandledMessages, map.Messages});
     }
-    
+
     class MyMessage : IMessage
     {
 
