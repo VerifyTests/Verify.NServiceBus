@@ -72,7 +72,7 @@ VerifyNServiceBus.Enable();
 Given the following handler:
 
 <!-- snippet: SimpleHandler -->
-<a id='snippet-simplehandler'/></a>
+<a id='snippet-simplehandler'></a>
 ```cs
 public class MyHandler :
     IHandleMessages<MyRequest>
@@ -110,7 +110,7 @@ public class MyHandler :
 The test that verifies the resulting context:
 
 <!-- snippet: HandlerTest -->
-<a id='snippet-handlertest'/></a>
+<a id='snippet-handlertest'></a>
 ```cs
 [Fact]
 public async Task VerifyHandlerResult()
@@ -129,7 +129,7 @@ public async Task VerifyHandlerResult()
 The resulting context verification file is as follows:
 
 <!-- snippet: MessageHandlerTests.VerifyHandlerResult.verified.txt -->
-<a id='snippet-MessageHandlerTests.VerifyHandlerResult.verified.txt'/></a>
+<a id='snippet-MessageHandlerTests.VerifyHandlerResult.verified.txt'></a>
 ```txt
 {
   RepliedMessages: [
@@ -170,7 +170,7 @@ The resulting context verification file is as follows:
 The next time there is a code change, that results in a different resulting interactions with NServiceBus, those changes can be visualized. For example if the `DelayDeliveryWith` is changed from 12 hours to 1 day:
 
 <!-- snippet: SimpleHandlerV2 -->
-<a id='snippet-simplehandlerv2'/></a>
+<a id='snippet-simplehandlerv2'></a>
 ```cs
 await context.Publish(
     new MyPublishMessage
@@ -211,7 +211,7 @@ Then the resulting visualization diff would look as follows:
 For example:
 
 <!-- snippet: MessageToHandlerMap -->
-<a id='snippet-messagetohandlermap'/></a>
+<a id='snippet-messagetohandlermap'></a>
 ```cs
 var map = new MessageToHandlerMap();
 map.AddMessagesFromAssembly<MyMessage>();
@@ -224,7 +224,7 @@ await Verifier.Verify(map);
 Would result in: 
 
 <!-- snippet: MessageToHandlerMapTests.Integration.verified.txt -->
-<a id='snippet-MessageToHandlerMapTests.Integration.verified.txt'/></a>
+<a id='snippet-MessageToHandlerMapTests.Integration.verified.txt'></a>
 ```txt
 {
   MessagesWithNoHandler: [
