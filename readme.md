@@ -50,7 +50,7 @@ Support is available via a [Tidelift Subscription](https://tidelift.com/subscrip
     * [Verifying a context](#verifying-a-context)
     * [Example behavior change](#example-behavior-change)
     * [Message to Handler mapping](#message-to-handler-mapping)
-  * [Security contact information](#security-contact-information)<!-- endtoc -->
+  * [Security contact information](#security-contact-information)<!-- endToc -->
 
 
 ## NuGet package
@@ -105,7 +105,7 @@ public class MyHandler :
 }
 ```
 <sup><a href='/src/Tests/Snippets/MyHandler.cs#L5-L37' title='File snippet `simplehandler` was extracted from'>snippet source</a> | <a href='#snippet-simplehandler' title='Navigate to start of snippet `simplehandler`'>anchor</a></sup>
-<!-- endsnippet -->
+<!-- endSnippet -->
 
 The test that verifies the resulting context:
 
@@ -124,7 +124,7 @@ public async Task VerifyHandlerResult()
 }
 ```
 <sup><a href='/src/Tests/Snippets/MessageHandlerTests.cs#L9-L22' title='File snippet `handlertest` was extracted from'>snippet source</a> | <a href='#snippet-handlertest' title='Navigate to start of snippet `handlertest`'>anchor</a></sup>
-<!-- endsnippet -->
+<!-- endSnippet -->
 
 The resulting context verification file is as follows:
 
@@ -162,7 +162,7 @@ The resulting context verification file is as follows:
 }
 ```
 <sup><a href='/src/Tests/Snippets/MessageHandlerTests.VerifyHandlerResult.verified.txt#L1-L29' title='File snippet `MessageHandlerTests.VerifyHandlerResult.verified.txt` was extracted from'>snippet source</a> | <a href='#snippet-MessageHandlerTests.VerifyHandlerResult.verified.txt' title='Navigate to start of snippet `MessageHandlerTests.VerifyHandlerResult.verified.txt`'>anchor</a></sup>
-<!-- endsnippet -->
+<!-- endSnippet -->
 
 
 ### Example behavior change
@@ -196,7 +196,7 @@ await context.Send(
 await context.ForwardCurrentMessageTo("newDestination");
 ```
 <sup><a href='/src/Tests/Snippets/MyHandlerV2.cs#L10-L35' title='File snippet `simplehandlerv2` was extracted from'>snippet source</a> | <a href='#snippet-simplehandlerv2' title='Navigate to start of snippet `simplehandlerv2`'>anchor</a></sup>
-<!-- endsnippet -->
+<!-- endSnippet -->
 
 Then the resulting visualization diff would look as follows:
 
@@ -219,7 +219,7 @@ map.AddHandlersFromAssembly<MyHandler>();
 await Verifier.Verify(map);
 ```
 <sup><a href='/src/Tests/MessageToHandlerMapTests.cs#L13-L18' title='File snippet `messagetohandlermap` was extracted from'>snippet source</a> | <a href='#snippet-messagetohandlermap' title='Navigate to start of snippet `messagetohandlermap`'>anchor</a></sup>
-<!-- endsnippet -->
+<!-- endSnippet -->
 
 Would result in: 
 
@@ -233,7 +233,7 @@ Would result in:
 }
 ```
 <sup><a href='/src/Tests/MessageToHandlerMapTests.Integration.verified.txt#L1-L5' title='File snippet `MessageToHandlerMapTests.Integration.verified.txt` was extracted from'>snippet source</a> | <a href='#snippet-MessageToHandlerMapTests.Integration.verified.txt' title='Navigate to start of snippet `MessageToHandlerMapTests.Integration.verified.txt`'>anchor</a></sup>
-<!-- endsnippet -->
+<!-- endSnippet -->
 
 
 ## Security contact information
