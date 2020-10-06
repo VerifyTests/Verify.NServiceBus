@@ -72,7 +72,7 @@ VerifyNServiceBus.Enable();
 Given the following handler:
 
 <!-- snippet: SimpleHandler -->
-<a id='snippet-simplehandler'></a>
+<a id='b5ea3c62'></a>
 ```cs
 public class MyHandler :
     IHandleMessages<MyRequest>
@@ -104,13 +104,13 @@ public class MyHandler :
     }
 }
 ```
-<sup><a href='/src/Tests/Snippets/MyHandler.cs#L5-L37' title='File snippet `simplehandler` was extracted from'>snippet source</a> | <a href='#snippet-simplehandler' title='Navigate to start of snippet `simplehandler`'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/MyHandler.cs#L5-L37' title='Snippet source file'>snippet source</a> | <a href='#b5ea3c62' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The test that verifies the resulting context:
 
 <!-- snippet: HandlerTest -->
-<a id='snippet-handlertest'></a>
+<a id='d34161f1'></a>
 ```cs
 [Fact]
 public async Task VerifyHandlerResult()
@@ -123,13 +123,13 @@ public async Task VerifyHandlerResult()
     await Verifier.Verify(context);
 }
 ```
-<sup><a href='/src/Tests/Snippets/MessageHandlerTests.cs#L9-L22' title='File snippet `handlertest` was extracted from'>snippet source</a> | <a href='#snippet-handlertest' title='Navigate to start of snippet `handlertest`'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/MessageHandlerTests.cs#L9-L22' title='Snippet source file'>snippet source</a> | <a href='#d34161f1' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The resulting context verification file is as follows:
 
 <!-- snippet: MessageHandlerTests.VerifyHandlerResult.verified.txt -->
-<a id='snippet-MessageHandlerTests.VerifyHandlerResult.verified.txt'></a>
+<a id='44ccf623'></a>
 ```txt
 {
   RepliedMessages: [
@@ -161,7 +161,7 @@ The resulting context verification file is as follows:
   ]
 }
 ```
-<sup><a href='/src/Tests/Snippets/MessageHandlerTests.VerifyHandlerResult.verified.txt#L1-L29' title='File snippet `MessageHandlerTests.VerifyHandlerResult.verified.txt` was extracted from'>snippet source</a> | <a href='#snippet-MessageHandlerTests.VerifyHandlerResult.verified.txt' title='Navigate to start of snippet `MessageHandlerTests.VerifyHandlerResult.verified.txt`'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/MessageHandlerTests.VerifyHandlerResult.verified.txt#L1-L29' title='Snippet source file'>snippet source</a> | <a href='#44ccf623' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -170,7 +170,7 @@ The resulting context verification file is as follows:
 The next time there is a code change, that results in a different resulting interactions with NServiceBus, those changes can be visualized. For example if the `DelayDeliveryWith` is changed from 12 hours to 1 day:
 
 <!-- snippet: SimpleHandlerV2 -->
-<a id='snippet-simplehandlerv2'></a>
+<a id='7d490e84'></a>
 ```cs
 await context.Publish(
     new MyPublishMessage
@@ -195,7 +195,7 @@ await context.Send(
 
 await context.ForwardCurrentMessageTo("newDestination");
 ```
-<sup><a href='/src/Tests/Snippets/MyHandlerV2.cs#L10-L35' title='File snippet `simplehandlerv2` was extracted from'>snippet source</a> | <a href='#snippet-simplehandlerv2' title='Navigate to start of snippet `simplehandlerv2`'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/MyHandlerV2.cs#L10-L35' title='Snippet source file'>snippet source</a> | <a href='#7d490e84' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Then the resulting visualization diff would look as follows:
@@ -211,20 +211,20 @@ Then the resulting visualization diff would look as follows:
 For example:
 
 <!-- snippet: MessageToHandlerMap -->
-<a id='snippet-messagetohandlermap'></a>
+<a id='2f73c8b3'></a>
 ```cs
 var map = new MessageToHandlerMap();
 map.AddMessagesFromAssembly<MyMessage>();
 map.AddHandlersFromAssembly<MyHandler>();
 await Verifier.Verify(map);
 ```
-<sup><a href='/src/Tests/MessageToHandlerMapTests.cs#L13-L18' title='File snippet `messagetohandlermap` was extracted from'>snippet source</a> | <a href='#snippet-messagetohandlermap' title='Navigate to start of snippet `messagetohandlermap`'>anchor</a></sup>
+<sup><a href='/src/Tests/MessageToHandlerMapTests.cs#L13-L18' title='Snippet source file'>snippet source</a> | <a href='#2f73c8b3' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Would result in: 
 
 <!-- snippet: MessageToHandlerMapTests.Integration.verified.txt -->
-<a id='snippet-MessageToHandlerMapTests.Integration.verified.txt'></a>
+<a id='bdf4908e'></a>
 ```txt
 {
   MessagesWithNoHandler: [
@@ -232,7 +232,7 @@ Would result in:
   ]
 }
 ```
-<sup><a href='/src/Tests/MessageToHandlerMapTests.Integration.verified.txt#L1-L5' title='File snippet `MessageToHandlerMapTests.Integration.verified.txt` was extracted from'>snippet source</a> | <a href='#snippet-MessageToHandlerMapTests.Integration.verified.txt' title='Navigate to start of snippet `MessageToHandlerMapTests.Integration.verified.txt`'>anchor</a></sup>
+<sup><a href='/src/Tests/MessageToHandlerMapTests.Integration.verified.txt#L1-L5' title='Snippet source file'>snippet source</a> | <a href='#bdf4908e' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
