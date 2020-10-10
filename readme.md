@@ -72,7 +72,7 @@ VerifyNServiceBus.Enable();
 Given the following handler:
 
 <!-- snippet: SimpleHandler -->
-<a id='b5ea3c62'></a>
+<a id='simplehandler'></a>
 ```cs
 public class MyHandler :
     IHandleMessages<MyRequest>
@@ -104,13 +104,13 @@ public class MyHandler :
     }
 }
 ```
-<sup><a href='/src/Tests/Snippets/MyHandler.cs#L5-L37' title='Snippet source file'>snippet source</a> | <a href='#b5ea3c62' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/MyHandler.cs#L5-L37' title='Snippet source file'>snippet source</a> | <a href='#simplehandler' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The test that verifies the resulting context:
 
 <!-- snippet: HandlerTest -->
-<a id='d34161f1'></a>
+<a id='handlertest'></a>
 ```cs
 [Fact]
 public async Task VerifyHandlerResult()
@@ -123,13 +123,13 @@ public async Task VerifyHandlerResult()
     await Verifier.Verify(context);
 }
 ```
-<sup><a href='/src/Tests/Snippets/MessageHandlerTests.cs#L9-L22' title='Snippet source file'>snippet source</a> | <a href='#d34161f1' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/MessageHandlerTests.cs#L9-L22' title='Snippet source file'>snippet source</a> | <a href='#handlertest' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The resulting context verification file is as follows:
 
 <!-- snippet: MessageHandlerTests.VerifyHandlerResult.verified.txt -->
-<a id='44ccf623'></a>
+<a id='MessageHandlerTests.VerifyHandlerResult.verified.txt'></a>
 ```txt
 {
   RepliedMessages: [
@@ -161,7 +161,7 @@ The resulting context verification file is as follows:
   ]
 }
 ```
-<sup><a href='/src/Tests/Snippets/MessageHandlerTests.VerifyHandlerResult.verified.txt#L1-L29' title='Snippet source file'>snippet source</a> | <a href='#44ccf623' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/MessageHandlerTests.VerifyHandlerResult.verified.txt#L1-L29' title='Snippet source file'>snippet source</a> | <a href='#MessageHandlerTests.VerifyHandlerResult.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -170,7 +170,7 @@ The resulting context verification file is as follows:
 The next time there is a code change, that results in a different resulting interactions with NServiceBus, those changes can be visualized. For example if the `DelayDeliveryWith` is changed from 12 hours to 1 day:
 
 <!-- snippet: SimpleHandlerV2 -->
-<a id='7d490e84'></a>
+<a id='simplehandlerv2'></a>
 ```cs
 await context.Publish(
     new MyPublishMessage
@@ -195,7 +195,7 @@ await context.Send(
 
 await context.ForwardCurrentMessageTo("newDestination");
 ```
-<sup><a href='/src/Tests/Snippets/MyHandlerV2.cs#L10-L35' title='Snippet source file'>snippet source</a> | <a href='#7d490e84' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/MyHandlerV2.cs#L10-L35' title='Snippet source file'>snippet source</a> | <a href='#simplehandlerv2' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Then the resulting visualization diff would look as follows:
@@ -211,20 +211,20 @@ Then the resulting visualization diff would look as follows:
 For example:
 
 <!-- snippet: MessageToHandlerMap -->
-<a id='2f73c8b3'></a>
+<a id='messagetohandlermap'></a>
 ```cs
 var map = new MessageToHandlerMap();
 map.AddMessagesFromAssembly<MyMessage>();
 map.AddHandlersFromAssembly<MyHandler>();
 await Verifier.Verify(map);
 ```
-<sup><a href='/src/Tests/MessageToHandlerMapTests.cs#L13-L18' title='Snippet source file'>snippet source</a> | <a href='#2f73c8b3' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/MessageToHandlerMapTests.cs#L13-L18' title='Snippet source file'>snippet source</a> | <a href='#messagetohandlermap' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Would result in: 
 
 <!-- snippet: MessageToHandlerMapTests.Integration.verified.txt -->
-<a id='bdf4908e'></a>
+<a id='MessageToHandlerMapTests.Integration.verified.txt'></a>
 ```txt
 {
   MessagesWithNoHandler: [
@@ -232,7 +232,7 @@ Would result in:
   ]
 }
 ```
-<sup><a href='/src/Tests/MessageToHandlerMapTests.Integration.verified.txt#L1-L5' title='Snippet source file'>snippet source</a> | <a href='#bdf4908e' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/MessageToHandlerMapTests.Integration.verified.txt#L1-L5' title='Snippet source file'>snippet source</a> | <a href='#MessageToHandlerMapTests.Integration.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
