@@ -24,7 +24,8 @@ public class Tests
         var context = new TestableMessageHandlerContext();
 
         await handler.Handle(new MyMessage(), context);
-        await Verifier.Verify(new
+        await Verifier.Verify(
+            new
         {
             context,
             LogCapture.LogMessages
@@ -99,7 +100,12 @@ public class Tests
     public async Task EndpointInstance()
     {
         var context = new TestableEndpointInstance();
-        await ((IMessageSession)context).Send(new SendMessage {Property = "Value"});
+        var session = (IMessageSession)context;
+        await session.Send(
+            new SendMessage
+            {
+                Property = "Value"
+            });
         await Verifier.Verify(context);
     }
 

@@ -24,7 +24,8 @@ class OutgoingMessageConverter :
 
         var type = message.GetType();
 
-        writer.WritePropertyName(type.FullName);
+        var name = TypeNameConverter.GetName(type);
+        writer.WritePropertyName(name);
         serializer.Serialize(writer, message);
 
         var options = OutgoingMessageHelper.GetOptions(value);
