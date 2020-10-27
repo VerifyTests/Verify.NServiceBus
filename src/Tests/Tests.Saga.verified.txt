@@ -2,13 +2,13 @@
   context: {
     RepliedMessages: [
       {
-        Tests+MySagaMessage: {}
+        Tests.MySagaMessage: {}
       }
     ],
     TimeoutMessages: [
       {
         Within: '01:00:00',
-        Tests+MySagaMessage: {},
+        Tests.MySagaMessage: {},
         Options: {
           DeliveryDelay: '01:00:00',
           Headers: {
@@ -26,7 +26,7 @@
     ],
     SentMessages: [
       {
-        Tests+MySagaMessage: {},
+        Tests.MySagaMessage: {},
         Options: {
           DeliveryDelay: '01:00:00',
           Headers: {
