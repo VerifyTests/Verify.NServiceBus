@@ -13,12 +13,12 @@
           DeliveryDelay: '01:00:00',
           Headers: {
             SagaId: Guid_1,
-            IsSagaTimeoutMessage: 'True',
-            SagaType: 'Tests+MySaga'
+            IsSagaTimeoutMessage: True,
+            SagaType: Tests+MySaga
           },
           Extensions: {
             NServiceBus.UnicastSendRouter+State: {
-              Option: 'RouteToAnyInstanceOfThisEndpoint'
+              Option: RouteToAnyInstanceOfThisEndpoint
             }
           }
         }
@@ -31,12 +31,12 @@
           DeliveryDelay: '01:00:00',
           Headers: {
             SagaId: Guid_1,
-            IsSagaTimeoutMessage: 'True',
-            SagaType: 'Tests+MySaga'
+            IsSagaTimeoutMessage: True,
+            SagaType: Tests+MySaga
           },
           Extensions: {
             NServiceBus.UnicastSendRouter+State: {
-              Option: 'RouteToAnyInstanceOfThisEndpoint'
+              Option: RouteToAnyInstanceOfThisEndpoint
             }
           }
         }
@@ -44,6 +44,6 @@
     ]
   },
   Data: {
-    Member: 'the data'
+    Member: the data
   }
 }

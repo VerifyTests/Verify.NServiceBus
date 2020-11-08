@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using NServiceBus.Testing;
 using VerifyTests;
@@ -7,7 +8,7 @@ using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 class OutgoingMessageConverter :
     WriteOnlyJsonConverter
 {
-    public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+    public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer, IReadOnlyDictionary<string, object> context)
     {
         if (value == null)
         {

@@ -1,10 +1,10 @@
 {
   Message: {
-    MessageId: 'MessageId',
-    NativeMessageId: 'MessageId',
+    MessageId: MessageId,
+    NativeMessageId: MessageId,
     Headers: {
-      key: 'value',
-      NServiceBus.MessageId: 'MessageId'
+      key: value,
+      NServiceBus.MessageId: MessageId
     },
     Body: 'AQ=='
   }

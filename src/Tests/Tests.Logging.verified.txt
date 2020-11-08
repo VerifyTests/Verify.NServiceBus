@@ -2,8 +2,8 @@
   context: {},
   LogMessages: [
     {
-      Level: 'Warn',
-      Message: 'The log message'
+      Level: Warn,
+      Message: The log message
     }
   ]
 }

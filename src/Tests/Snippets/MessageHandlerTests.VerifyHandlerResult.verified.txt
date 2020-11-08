@@ -2,17 +2,17 @@
   RepliedMessages: [
     {
       MyReplyMessage: {
-        Property: 'Value'
+        Property: Value
       }
     }
   ],
   ForwardedMessages: [
-    'newDestination'
+    newDestination
   ],
   SentMessages: [
     {
       MySendMessage: {
-        Property: 'Value'
+        Property: Value
       },
       Options: {
         DeliveryDelay: '12:00:00'
@@ -22,7 +22,7 @@
   PublishedMessages: [
     {
       MyPublishMessage: {
-        Property: 'Value'
+        Property: Value
       }
     }
   ]

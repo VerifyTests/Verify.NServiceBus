@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 using NServiceBus.Extensibility;
 using NServiceBus.Transport;
 using VerifyTests;
@@ -7,7 +8,7 @@ using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 class ContextBagConverter :
     WriteOnlyJsonConverter<ContextBag>
 {
-    public override void WriteJson(JsonWriter writer, ContextBag? bag, JsonSerializer serializer)
+    public override void WriteJson(JsonWriter writer, ContextBag? bag, JsonSerializer serializer, IReadOnlyDictionary<string, object> context)
     {
         if (bag == null)
         {

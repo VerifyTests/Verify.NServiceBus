@@ -1,5 +1,5 @@
 {
   HandledMessages: [
-    'MessageToHandlerMapTests.MyMessage'
+    MessageToHandlerMapTests.MyMessage
   ]
 }

@@ -2,24 +2,24 @@
   RepliedMessages: [
     {
       ReplyMessage: {
-        Property: 'Value'
+        Property: Value
       }
     }
   ],
   ForwardedMessages: [
-    'newDestination'
+    newDestination
   ],
   SentMessages: [
     {
       SendMessage: {
-        Property: 'Value'
+        Property: Value
       }
     }
   ],
   PublishedMessages: [
     {
       PublishMessage: {
-        Property: 'Value'
+        Property: Value
       }
     }
   ]

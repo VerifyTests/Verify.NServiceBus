@@ -1,14 +1,14 @@
 {
   context: {
     AddedAuditData: {
-      Key: 'Value'
+      Key: Value
     },
-    AuditAddress: 'audit queue address',
+    AuditAddress: audit queue address,
     Message: {
       MessageId: Guid_1
     }
   },
   state: {
-    Property: 'Value'
+    Property: Value
   }
 }

@@ -2,12 +2,12 @@
   SentMessages: [
     {
       SendMessage: {
-        Property: 'Value'
+        Property: Value
       }
     },
     {
       SendMessage: {
-        Property: 'ValueWithDelay'
+        Property: ValueWithDelay
       },
       Options: {
         DeliveryDelay: '1.00:00:00'
@@ -17,7 +17,7 @@
   PublishedMessages: [
     {
       PublishMessage: {
-        Property: 'Value'
+        Property: Value
       }
     }
   ]

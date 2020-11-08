@@ -128,17 +128,17 @@ The resulting context verification file is as follows:
   RepliedMessages: [
     {
       MyReplyMessage: {
-        Property: 'Value'
+        Property: Value
       }
     }
   ],
   ForwardedMessages: [
-    'newDestination'
+    newDestination
   ],
   SentMessages: [
     {
       MySendMessage: {
-        Property: 'Value'
+        Property: Value
       },
       Options: {
         DeliveryDelay: '12:00:00'
@@ -148,7 +148,7 @@ The resulting context verification file is as follows:
   PublishedMessages: [
     {
       MyPublishMessage: {
-        Property: 'Value'
+        Property: Value
       }
     }
   ]
@@ -221,7 +221,7 @@ Would result in:
 ```txt
 {
   MessagesWithNoHandler: [
-    'MessageToHandlerMapTests.MessageWithNoHandler'
+    MessageToHandlerMapTests.MessageWithNoHandler
   ]
 }
 ```

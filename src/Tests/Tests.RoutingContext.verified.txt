@@ -1,9 +1,9 @@
 {
   Message: {
     Body: 'AQ==',
-    MessageId: 'MessageId',
+    MessageId: MessageId,
     Headers: {
-      key: 'value'
+      key: value
     }
   }
 }

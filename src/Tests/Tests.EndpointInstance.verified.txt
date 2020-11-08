@@ -2,7 +2,7 @@
   SentMessages: [
     {
       SendMessage: {
-        Property: 'Value'
+        Property: Value
       }
     }
   ]

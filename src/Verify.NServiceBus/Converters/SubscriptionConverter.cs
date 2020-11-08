@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 using NServiceBus.Testing;
 using VerifyTests;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
@@ -6,7 +7,7 @@ using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 class SubscriptionConverter :
     WriteOnlyJsonConverter<Subscription>
 {
-    public override void WriteJson(JsonWriter writer, Subscription? subscription, JsonSerializer serializer)
+    public override void WriteJson(JsonWriter writer, Subscription? subscription, JsonSerializer serializer, IReadOnlyDictionary<string, object> context)
     {
         if (subscription == null)
         {

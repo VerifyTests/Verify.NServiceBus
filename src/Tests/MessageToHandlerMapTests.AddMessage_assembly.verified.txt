@@ -1,6 +1,6 @@
 {
   Messages: [
-    'MessageToHandlerMapTests.MyMessage',
-    'MessageToHandlerMapTests.MessageWithNoHandler'
+    MessageToHandlerMapTests.MyMessage,
+    MessageToHandlerMapTests.MessageWithNoHandler
   ]
 }

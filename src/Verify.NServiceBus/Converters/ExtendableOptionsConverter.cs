@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using NServiceBus;
 using NServiceBus.Extensibility;
@@ -8,7 +9,7 @@ using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 class ExtendableOptionsConverter :
     WriteOnlyJsonConverter<ExtendableOptions>
 {
-    public override void WriteJson(JsonWriter writer, ExtendableOptions? options, JsonSerializer serializer)
+    public override void WriteJson(JsonWriter writer, ExtendableOptions? options, JsonSerializer serializer, IReadOnlyDictionary<string, object> context)
     {
         if (options == null)
         {

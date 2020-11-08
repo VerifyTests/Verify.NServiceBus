@@ -1,7 +1,7 @@
 {
   Subscriptions: [
     {
-      MessageType: 'MyMessage',
+      MessageType: MyMessage,
       Options: {
         Extensions: {
           NServiceBus.RoutingToDispatchConnector+State: {
@@ -13,7 +13,7 @@
   ],
   Unsubscription: [
     {
-      MessageType: 'MyMessage',
+      MessageType: MyMessage,
       Options: {
         Extensions: {
           NServiceBus.RoutingToDispatchConnector+State: {

@@ -1,6 +1,6 @@
 {
   MessageId: Guid_1,
   Headers: {
-    Key: 'Value'
+    Key: Value
   }
 }

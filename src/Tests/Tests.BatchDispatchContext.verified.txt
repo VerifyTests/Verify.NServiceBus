@@ -3,20 +3,20 @@
     {
       Message: {
         Body: 'AQ==',
-        MessageId: 'MessageId',
+        MessageId: MessageId,
         Headers: {
-          key: 'value'
+          key: value
         }
       },
       AddressTag: {
-        Destination: 'destination'
+        Destination: destination
       },
       DeliveryConstraints: [
         {
           Delay: '1.00:00:00'
         }
       ],
-      RequiredDispatchConsistency: 'Isolated'
+      RequiredDispatchConsistency: Isolated
     }
   ]
 }
