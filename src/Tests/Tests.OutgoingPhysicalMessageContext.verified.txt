@@ -1,4 +1,4 @@
 {
-  Body: 'AQ==',
+  Body: AQ==,
   MessageId: Guid_1
 }

@@ -2,7 +2,7 @@
   Operations: [
     {
       Message: {
-        Body: 'AQ==',
+        Body: AQ==,
         MessageId: MessageId,
         Headers: {
           key: value
@@ -13,7 +13,7 @@
       },
       DeliveryConstraints: [
         {
-          Delay: '1.00:00:00'
+          Delay: 1.00:00:00
         }
       ],
       RequiredDispatchConsistency: Isolated

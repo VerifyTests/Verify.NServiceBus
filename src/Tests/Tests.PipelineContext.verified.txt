@@ -10,7 +10,7 @@
         Property: ValueWithDelay
       },
       Options: {
-        DeliveryDelay: '1.00:00:00'
+        DeliveryDelay: 1.00:00:00
       }
     }
   ],

@@ -141,7 +141,7 @@ The resulting context verification file is as follows:
         Property: Value
       },
       Options: {
-        DeliveryDelay: '12:00:00'
+        DeliveryDelay: 12:00:00
       }
     }
   ],

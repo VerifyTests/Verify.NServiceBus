@@ -1,6 +1,6 @@
 {
   Message: {
-    Body: 'AQ==',
+    Body: AQ==,
     MessageId: MessageId,
     Headers: {
       key: value
