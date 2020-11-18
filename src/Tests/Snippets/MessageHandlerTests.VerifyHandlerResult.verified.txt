@@ -15,7 +15,7 @@
         Property: Value
       },
       Options: {
-        DeliveryDelay: '12:00:00'
+        DeliveryDelay: 12:00:00
       }
     }
   ],

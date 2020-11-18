@@ -7,6 +7,6 @@
       key: value,
       NServiceBus.MessageId: MessageId
     },
-    Body: 'AQ=='
+    Body: AQ==
   }
 }
