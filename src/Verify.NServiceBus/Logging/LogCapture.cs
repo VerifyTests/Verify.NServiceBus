@@ -9,7 +9,7 @@ namespace Verify.NServiceBus
 {
     public static class LogCapture
     {
-        static AsyncLocal<ConcurrentBag<LogMessage>> loggingContext = new AsyncLocal<ConcurrentBag<LogMessage>>();
+        static AsyncLocal<ConcurrentBag<LogMessage>> loggingContext = new();
 
         internal static ConcurrentBag<LogMessage> Context
         {

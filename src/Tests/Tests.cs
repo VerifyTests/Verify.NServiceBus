@@ -356,22 +356,22 @@ public class Tests
 
     static OutgoingMessage BuildOutgoingMessage()
     {
-        return new OutgoingMessage("MessageId", new Dictionary<string, string> {{"key", "value"}}, new byte[] {1});
+        return new("MessageId", new Dictionary<string, string> {{"key", "value"}}, new byte[] {1});
     }
 
     static OutgoingLogicalMessage BuildOutgoingLogicalMessage()
     {
-        return new OutgoingLogicalMessage(typeof(MyMessage), new MyMessage {Property = "Value"});
+        return new(typeof(MyMessage), new MyMessage {Property = "Value"});
     }
 
     static IncomingMessage BuildIncomingMessage()
     {
-        return new IncomingMessage("MessageId", new Dictionary<string, string> {{"key", "value"}}, new byte[] {1});
+        return new("MessageId", new Dictionary<string, string> {{"key", "value"}}, new byte[] {1});
     }
 
     static LogicalMessage BuildLogicalMessage()
     {
-        return new LogicalMessage(new MessageMetadata(typeof(MyMessage)), new MyMessage {Property = "Value"});
+        return new(new MessageMetadata(typeof(MyMessage)), new MyMessage {Property = "Value"});
     }
 }
 

@@ -7,7 +7,7 @@ class Logger :
     ILoggerFactory,
     ILog
 {
-    static Logger instance = new Logger();
+    static Logger instance = new();
 
     protected override ILoggerFactory GetLoggingFactory()
     {

@@ -8,8 +8,8 @@ namespace VerifyTests.NServiceBus
 {
     public class MessageToHandlerMap
     {
-        internal HashSet<Type> Messages = new HashSet<Type>();
-        internal HashSet<Type> HandledMessages = new HashSet<Type>();
+        internal HashSet<Type> Messages = new();
+        internal HashSet<Type> HandledMessages = new();
 
         public void AddMessagesFromAssembly(Assembly assembly)
         {

@@ -12,8 +12,8 @@ static class ContextBagHelper
     static ContextBagHelper()
     {
         var bindingFlags = BindingFlags.Instance | BindingFlags.NonPublic;
-        stashField = typeof(ContextBag).GetField("stash", bindingFlags);
-        parentBagField = typeof(ContextBag).GetField("parentBag", bindingFlags);
+        stashField = typeof(ContextBag).GetField("stash", bindingFlags)!;
+        parentBagField = typeof(ContextBag).GetField("parentBag", bindingFlags)!;
     }
 
     public static bool HasContent(ContextBag contextBag)
@@ -44,15 +44,16 @@ static class ContextBagHelper
 
     public static IEnumerable<KeyValuePair<string, object>> GetValues(this ContextBag value)
     {
+         var current = (ContextBag?)value;
         do
         {
-            var stash = (Dictionary<string, object>) stashField.GetValue(value);
+            var stash = (Dictionary<string, object>) stashField.GetValue(current);
             foreach (var item in stash)
             {
                  yield return new KeyValuePair<string, object>(item.Key, item.Value);
             }
-            value = (ContextBag) parentBagField.GetValue(value);
-        } while (value != null);
+            current = (ContextBag?) parentBagField.GetValue(current);
+        } while (current != null);
     }
 
     static bool TryGetParentBag(object value, [NotNullWhen(true)] out ContextBag? parentBag)
