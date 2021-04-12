@@ -50,7 +50,7 @@ public class MessageToHandlerMapTests
         return VerifyMap(map);
     }
 
-    Task VerifyMap(MessageToHandlerMap map)
+    static Task VerifyMap(MessageToHandlerMap map)
     {
         return Verifier.Verify(new {map.HandledMessages, map.Messages});
     }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 using NServiceBus.Testing;
 using VerifyTests;
@@ -26,10 +25,5 @@ class UnsubscriptionConverter :
         }
 
         writer.WriteEndObject();
-    }
-
-    public override bool CanConvert(Type type)
-    {
-        return typeof(Unsubscription).IsAssignableFrom(type);
     }
 }
