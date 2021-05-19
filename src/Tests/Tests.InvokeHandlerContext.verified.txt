@@ -1,7 +1,10 @@
-{
+﻿{
   SentMessages: [
     {
       MyMessage: {}
     }
-  ]
+  ],
+  Extensions: {
+    key: value
+  }
 }

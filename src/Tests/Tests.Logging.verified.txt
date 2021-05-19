@@ -1,5 +1,9 @@
-{
-  context: {},
+﻿{
+  context: {
+    Extensions: {
+      key: value
+    }
+  },
   LogMessages: [
     {
       Level: Warn,

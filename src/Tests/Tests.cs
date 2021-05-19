@@ -22,6 +22,7 @@ public class Tests
     {
         var handler = new MyHandlerWithLogging();
         var context = new TestableMessageHandlerContext();
+        context.Extensions.Set("key", "value");
 
         await handler.Handle(new MyMessage(), context);
         await Verifier.Verify(
@@ -48,6 +49,7 @@ public class Tests
     {
         var context = new TestableAuditContext();
         context.AddedAuditData.Add("Key", "Value");
+        context.Extensions.Set("key", "value");
         return Verifier.Verify(
             new
             {
@@ -64,6 +66,7 @@ public class Tests
     {
         var context = new TestableAuditContext();
         context.AddedAuditData.Add("Key", "Value");
+        context.Extensions.Set("key", "value");
         return Verifier.Verify(context);
     }
 
@@ -72,6 +75,7 @@ public class Tests
     {
         var context = new TestableBatchDispatchContext();
         context.Operations.Add(BuildTransportOperation());
+        context.Extensions.Set("key", "value");
         return Verifier.Verify(context);
     }
 
@@ -80,6 +84,7 @@ public class Tests
     {
         var context = new TestableBehaviorContextImp();
         context.Extensions.AddDeliveryConstraint(new DelayDeliveryWith(TimeSpan.FromDays(1)));
+        context.Extensions.Set("key", "value");
         return Verifier.Verify(context);
     }
 
@@ -93,6 +98,7 @@ public class Tests
     {
         var context = new TestableDispatchContext();
         context.Operations.Add(BuildTransportOperation());
+        context.Extensions.Set("key", "value");
         return Verifier.Verify(context);
     }
 
@@ -106,6 +112,7 @@ public class Tests
             {
                 Property = "Value"
             });
+        context.Extensions.Set("key", "value");
         await Verifier.Verify(context);
     }
 
@@ -117,6 +124,7 @@ public class Tests
             Address = "The address",
             Message = BuildOutgoingMessage()
         };
+        context.Extensions.Set("key", "value");
         return Verifier.Verify(context);
     }
 
@@ -128,6 +136,7 @@ public class Tests
             Message = BuildLogicalMessage(),
             Headers = new Dictionary<string, string> {{"Key", "Value"}}
         };
+        context.Extensions.Set("key", "value");
         return Verifier.Verify(context);
     }
 
@@ -138,6 +147,7 @@ public class Tests
         {
             Message = BuildIncomingMessage(),
         };
+        context.Extensions.Set("key", "value");
         return Verifier.Verify(context);
     }
 
@@ -149,6 +159,7 @@ public class Tests
             Headers = new Dictionary<string, string> {{"Key", "Value"}},
         };
         await context.Send(new MyMessage());
+        context.Extensions.Set("key", "value");
         await Verifier.Verify(context);
     }
 
@@ -156,6 +167,7 @@ public class Tests
     public Task MessageHandlerContext()
     {
         var context = new TestableMessageHandlerContext();
+        context.Extensions.Set("key", "value");
         return Verifier.Verify(context);
     }
 
@@ -168,6 +180,7 @@ public class Tests
         await context.Reply(new ReplyMessage {Property = "Value"});
         await context.Send(new SendMessage {Property = "Value"});
         await context.ForwardCurrentMessageTo("newDestination");
+        context.Extensions.Set("key", "value");
         await Verifier.Verify(context);
     }
 
@@ -181,6 +194,7 @@ public class Tests
         var unsubscribeOptions = new UnsubscribeOptions();
         unsubscribeOptions.RequireImmediateDispatch();
         await context.Unsubscribe(typeof(MyMessage), unsubscribeOptions);
+        context.Extensions.Set("key", "value");
         await Verifier.Verify(context);
     }
 
@@ -189,6 +203,7 @@ public class Tests
     {
         var context = new TestableOutgoingContext();
         context.Headers.Add("Key", "Value");
+        context.Extensions.Set("key", "value");
         return Verifier.Verify(context);
     }
 
@@ -259,6 +274,7 @@ public class Tests
         {
             Body = new byte[] {1}
         };
+        context.Extensions.Set("key", "value");
         return Verifier.Verify(context);
     }
 
@@ -269,6 +285,7 @@ public class Tests
         {
             Message = BuildOutgoingLogicalMessage()
         };
+        context.Extensions.Set("key", "value");
         return Verifier.Verify(context);
     }
 
@@ -279,6 +296,7 @@ public class Tests
         {
             Message = BuildOutgoingLogicalMessage()
         };
+        context.Extensions.Set("key", "value");
         return Verifier.Verify(context);
     }
 
@@ -289,6 +307,7 @@ public class Tests
         {
             Message = BuildOutgoingLogicalMessage()
         };
+        context.Extensions.Set("key", "value");
         return Verifier.Verify(context);
     }
 

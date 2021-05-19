@@ -1,9 +1,12 @@
-{
+﻿{
   SentMessages: [
     {
       SendMessage: {
         Property: Value
       }
     }
-  ]
+  ],
+  Extensions: {
+    key: value
+  }
 }

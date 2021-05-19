@@ -1,4 +1,4 @@
-{
+﻿{
   RepliedMessages: [
     {
       ReplyMessage: {
@@ -22,5 +22,8 @@
         Property: Value
       }
     }
-  ]
+  ],
+  Extensions: {
+    key: value
+  }
 }

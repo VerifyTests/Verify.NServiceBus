@@ -1,4 +1,4 @@
-{
+﻿{
   Message: {
     MessageType: MyMessage,
     Metadata: {
@@ -10,5 +10,8 @@
   },
   Headers: {
     Key: Value
+  },
+  Extensions: {
+    key: value
   }
 }

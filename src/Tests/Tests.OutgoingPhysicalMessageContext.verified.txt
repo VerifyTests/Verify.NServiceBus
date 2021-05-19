@@ -1,4 +1,7 @@
-{
+﻿{
   Body: AQ==,
-  MessageId: Guid_1
+  MessageId: Guid_1,
+  Extensions: {
+    key: value
+  }
 }

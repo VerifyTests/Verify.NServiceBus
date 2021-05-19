@@ -1,4 +1,4 @@
-{
+﻿{
   context: {
     AddedAuditData: {
       Key: Value
@@ -6,6 +6,9 @@
     AuditAddress: audit queue address,
     Message: {
       MessageId: Guid_1
+    },
+    Extensions: {
+      key: value
     }
   },
   state: {

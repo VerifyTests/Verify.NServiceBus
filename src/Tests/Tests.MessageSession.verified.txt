@@ -1,4 +1,4 @@
-{
+﻿{
   Subscriptions: [
     {
       MessageType: MyMessage,
@@ -22,5 +22,8 @@
         }
       }
     }
-  ]
+  ],
+  Extensions: {
+    key: value
+  }
 }

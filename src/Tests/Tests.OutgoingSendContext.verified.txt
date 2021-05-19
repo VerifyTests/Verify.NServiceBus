@@ -1,9 +1,12 @@
-{
+﻿{
   Message: {
     MessageType: MyMessage,
     Instance: {
       Property: Value
     }
   },
-  MessageId: Guid_1
+  MessageId: Guid_1,
+  Extensions: {
+    key: value
+  }
 }

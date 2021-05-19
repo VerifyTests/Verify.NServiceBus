@@ -1,4 +1,4 @@
-{
+﻿{
   Operations: [
     {
       Message: {
@@ -18,5 +18,8 @@
       ],
       RequiredDispatchConsistency: Isolated
     }
-  ]
+  ],
+  Extensions: {
+    key: value
+  }
 }

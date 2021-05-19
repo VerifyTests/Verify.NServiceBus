@@ -18,7 +18,6 @@ namespace VerifyTests
             {
                 settings.IgnoreMember<TestableInvokeHandlerContext>(x => x.MessageHeaders);
                 settings.IgnoreMember<TestableInvokeHandlerContext>(x => x.Headers);
-                settings.IgnoreMember<TestableInvokeHandlerContext>(x => x.Extensions);
                 settings.IgnoreMember<TestableInvokeHandlerContext>(x => x.MessageId);
                 settings.IgnoreMember<TestableInvokeHandlerContext>(x => x.MessageHandler);
                 settings.IgnoreMember<TestableInvokeHandlerContext>(x => x.MessageBeingHandled);

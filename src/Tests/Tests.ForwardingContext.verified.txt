@@ -1,4 +1,4 @@
-{
+﻿{
   Message: {
     Body: AQ==,
     MessageId: MessageId,
@@ -6,5 +6,8 @@
       key: value
     }
   },
-  Address: The address
+  Address: The address,
+  Extensions: {
+    key: value
+  }
 }
