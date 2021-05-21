@@ -31,21 +31,6 @@ Thanks to all the backing developers. Support this project by [becoming a patron
 <!--- EndOpenCollectiveBackers -->
 
 
-## Support via TideLift
-
-Support is available via a [Tidelift Subscription](https://tidelift.com/subscription/pkg/nuget-verify.nservicebus?utm_source=nuget-verify.nservicebus&utm_medium=referral&utm_campaign=enterprise).
-
-
-<!-- toc -->
-## Contents
-
-  * [Usage](#usage)
-    * [Verifying a context](#verifying-a-context)
-    * [Example behavior change](#example-behavior-change)
-    * [Message to Handler mapping](#message-to-handler-mapping)
-  * [Security contact information](#security-contact-information)<!-- endToc -->
-
-
 ## NuGet package
 
 https://nuget.org/packages/Verify.NServiceBus/
@@ -228,10 +213,6 @@ Would result in:
 <sup><a href='/src/Tests/MessageToHandlerMapTests.Integration.verified.txt#L1-L5' title='Snippet source file'>snippet source</a> | <a href='#snippet-MessageToHandlerMapTests.Integration.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
-
-## Security contact information
-
-To report a security vulnerability, use the [Tidelift security contact](https://tidelift.com/security). Tidelift will coordinate the fix and disclosure.
 
 
 ## Icon
