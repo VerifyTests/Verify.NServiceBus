@@ -1,4 +1,4 @@
-{
+﻿{
   context: {
     RepliedMessages: [
       {
@@ -12,8 +12,8 @@
         Options: {
           DeliveryDelay: 01:00:00,
           Headers: {
-            SagaId: Guid_1,
             IsSagaTimeoutMessage: True,
+            SagaId: Guid_1,
             SagaType: Tests+MySaga
           },
           Extensions: {
@@ -30,8 +30,8 @@
         Options: {
           DeliveryDelay: 01:00:00,
           Headers: {
-            SagaId: Guid_1,
             IsSagaTimeoutMessage: True,
+            SagaId: Guid_1,
             SagaType: Tests+MySaga
           },
           Extensions: {
