@@ -15,9 +15,23 @@ https://nuget.org/packages/Verify.NServiceBus/
 
 Before any test have run call:
 
+<!-- snippet: ModuleInitializer.cs -->
+<a id='snippet-ModuleInitializer.cs'></a>
+```cs
+using System.Runtime.CompilerServices;
+using VerifyTests;
+
+public static class ModuleInitializer
+{
+    [ModuleInitializer]
+    public static void Initialize()
+    {
+        VerifyNServiceBus.Enable();
+    }
+}
 ```
-VerifyNServiceBus.Enable();
-```
+<sup><a href='/src/Tests/ModuleInitializer.cs#L1-L11' title='Snippet source file'>snippet source</a> | <a href='#snippet-ModuleInitializer.cs' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
 
 
 ### Verifying a context
