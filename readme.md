@@ -5,31 +5,6 @@
 
 Adds [Verify](https://github.com/VerifyTests/Verify) support to verify [NServiceBus Test Contexts](https://docs.particular.net/nservicebus/samples/unit-testing/).
 
-<!--- StartOpenCollectiveBackers -->
-
-[Already a Patron? skip past this section](#endofbacking)
-
-
-## Community backed
-
-**It is expected that all developers either [become a Patron](https://opencollective.com/nservicebusextensions/contribute/patron-6976) or have a [Tidelift Subscription](#support-via-tidelift) to use NServiceBusExtensions. [Go to licensing FAQ](https://github.com/NServiceBusExtensions/Home/#licensingpatron-faq)**
-
-
-### Sponsors
-
-Support this project by [becoming a Sponsor](https://opencollective.com/nservicebusextensions/contribute/sponsor-6972). The company avatar will show up here with a website link. The avatar will also be added to all GitHub repositories under the [NServiceBusExtensions organization](https://github.com/NServiceBusExtensions).
-
-
-### Patrons
-
-Thanks to all the backing developers. Support this project by [becoming a patron](https://opencollective.com/nservicebusextensions/contribute/patron-6976).
-
-<img src="https://opencollective.com/nservicebusextensions/tiers/patron.svg?width=890&avatarHeight=60&button=false">
-
-<a href="#" id="endofbacking"></a>
-
-<!--- EndOpenCollectiveBackers -->
-
 
 ## NuGet package
 
