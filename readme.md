@@ -90,13 +90,13 @@ public async Task VerifyHandlerResult()
     await Verifier.Verify(context);
 }
 ```
-<sup><a href='/src/Tests/Snippets/MessageHandlerTests.cs#L9-L22' title='Snippet source file'>snippet source</a> | <a href='#snippet-handlertest' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/HandlerTests.cs#L9-L22' title='Snippet source file'>snippet source</a> | <a href='#snippet-handlertest' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The resulting context verification file is as follows:
 
-<!-- snippet: MessageHandlerTests.VerifyHandlerResult.verified.txt -->
-<a id='snippet-MessageHandlerTests.VerifyHandlerResult.verified.txt'></a>
+<!-- snippet: HandlerTests.VerifyHandlerResult.verified.txt -->
+<a id='snippet-HandlerTests.VerifyHandlerResult.verified.txt'></a>
 ```txt
 {
   RepliedMessages: [
@@ -128,7 +128,98 @@ The resulting context verification file is as follows:
   ]
 }
 ```
-<sup><a href='/src/Tests/Snippets/MessageHandlerTests.VerifyHandlerResult.verified.txt#L1-L29' title='Snippet source file'>snippet source</a> | <a href='#snippet-MessageHandlerTests.VerifyHandlerResult.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/HandlerTests.VerifyHandlerResult.verified.txt#L1-L29' title='Snippet source file'>snippet source</a> | <a href='#snippet-HandlerTests.VerifyHandlerResult.verified.txt' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+
+### Verifying a Saga
+
+Given the following handler:
+
+<!-- snippet: SimpleSaga -->
+<a id='snippet-simplesaga'></a>
+```cs
+public class MySaga :
+    Saga<MySaga.MySagaData>,
+    IHandleMessages<MyRequest>
+{
+    protected override void ConfigureHowToFindSaga(SagaPropertyMapper<MySagaData> mapper)
+    {
+        mapper.ConfigureMapping<MyRequest>(message => message.OrderId)
+            .ToSaga(sagaData => sagaData.OrderId);
+    }
+
+    public async Task Handle(MyRequest message, IMessageHandlerContext context)
+    {
+        await context.Publish(
+            new MyPublishMessage
+            {
+                Property = "Value"
+            });
+
+        Data.MessageCount++;
+    }
+
+    public class MySagaData :
+        ContainSagaData
+    {
+        public Guid OrderId { get; set; }
+        public int MessageCount { get; set; }
+    }
+
+}
+```
+<sup><a href='/src/Tests/Snippets/MySaga.cs#L5-L37' title='Snippet source file'>snippet source</a> | <a href='#snippet-simplesaga' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+The test that verifies the resulting context:
+
+<!-- snippet: SagaTest -->
+<a id='snippet-sagatest'></a>
+```cs
+[Fact]
+public async Task VerifySagaResult()
+{
+    var saga = new MySaga
+    {
+        Data = new MySaga.MySagaData()
+    };
+
+    var context = new TestableMessageHandlerContext();
+
+    await saga.Handle(new MyRequest(), context);
+
+    await Verifier.Verify(new
+    {
+        context,
+        saga.Data
+    });
+}
+```
+<sup><a href='/src/Tests/Snippets/SagaTests.cs#L9-L30' title='Snippet source file'>snippet source</a> | <a href='#snippet-sagatest' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+The resulting context verification file is as follows:
+
+<!-- snippet: SagaTests.VerifySagaResult.verified.txt -->
+<a id='snippet-SagaTests.VerifySagaResult.verified.txt'></a>
+```txt
+{
+  context: {
+    PublishedMessages: [
+      {
+        MyPublishMessage: {
+          Property: Value
+        }
+      }
+    ]
+  },
+  Data: {
+    MessageCount: 1
+  }
+}
+```
+<sup><a href='/src/Tests/Snippets/SagaTests.VerifySagaResult.verified.txt#L1-L14' title='Snippet source file'>snippet source</a> | <a href='#snippet-SagaTests.VerifySagaResult.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

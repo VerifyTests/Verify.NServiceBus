@@ -4,7 +4,7 @@ using VerifyXunit;
 using Xunit;
 
 [UsesVerify]
-public class MessageHandlerTests
+public class HandlerTests
 {
     #region HandlerTest
 

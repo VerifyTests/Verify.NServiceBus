@@ -1,0 +1,14 @@
+﻿{
+  context: {
+    PublishedMessages: [
+      {
+        MyPublishMessage: {
+          Property: Value
+        }
+      }
+    ]
+  },
+  Data: {
+    MessageCount: 1
+  }
+}
