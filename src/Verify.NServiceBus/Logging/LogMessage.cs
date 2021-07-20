@@ -9,7 +9,6 @@ namespace Verify.NServiceBus
     {
         public LogMessage(LogLevel level, string message, Exception? exception = null)
         {
-            Guard.AgainstNull(message, nameof(message));
             Level = level;
             Message = message;
             Exception = exception;
@@ -18,8 +17,6 @@ namespace Verify.NServiceBus
 
         public LogMessage(LogLevel level, string format, IReadOnlyList<object> args, Exception? exception = null)
         {
-            Guard.AgainstNull(format, nameof(format));
-            Guard.AgainstNull(args, nameof(args));
             Level = level;
             Format = format;
             Exception = exception;

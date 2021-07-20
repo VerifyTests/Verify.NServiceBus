@@ -13,7 +13,6 @@ namespace VerifyTests.NServiceBus
 
         public void AddMessagesFromAssembly(Assembly assembly)
         {
-            Guard.AgainstNull(assembly, nameof(assembly));
             foreach (var type in assembly.GetTypes().Where(x => x.IsMessage()))
             {
                 AddMessage(type);
@@ -27,7 +26,6 @@ namespace VerifyTests.NServiceBus
 
         public void AddMessage(Type type)
         {
-            Guard.AgainstNull(type, nameof(type));
             Messages.Add(type);
         }
 
@@ -38,8 +36,6 @@ namespace VerifyTests.NServiceBus
 
         public void AddHandler(Type handlerType)
         {
-            Guard.AgainstNull(handlerType, nameof(handlerType));
-
             foreach (var interfaceType in handlerType
                 .GetInterfaces()
                 .Where(x =>
@@ -64,7 +60,6 @@ namespace VerifyTests.NServiceBus
 
         public void AddHandlersFromAssembly(Assembly assembly)
         {
-            Guard.AgainstNull(assembly, nameof(assembly));
             foreach (var type in assembly.GetTypes().Where(x=>x.IsHandler()))
             {
                 AddHandler(type);
