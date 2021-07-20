@@ -60,7 +60,7 @@ namespace VerifyTests.NServiceBus
 
         public void AddHandlersFromAssembly(Assembly assembly)
         {
-            foreach (var type in assembly.GetTypes().Where(x=>x.IsHandler()))
+            foreach (var type in assembly.GetTypes().Where(x => x.IsHandler()))
             {
                 AddHandler(type);
             }

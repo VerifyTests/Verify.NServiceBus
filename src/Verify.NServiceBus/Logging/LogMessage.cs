@@ -26,7 +26,7 @@ namespace Verify.NServiceBus
             }
             catch (Exception formatException)
             {
-                throw new Exception($"Could not format message. Format: {format}.", formatException);
+                throw new($"Could not format message. Format: {format}.", formatException);
             }
 
             Args = args;

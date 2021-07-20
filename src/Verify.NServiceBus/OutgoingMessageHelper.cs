@@ -32,7 +32,7 @@ static class OutgoingMessageHelper
         var propertyInfo = type.GetProperty(name, bindingFlags);
         if (propertyInfo == null)
         {
-            throw new Exception($"Could not read {name} from {type.FullName}");
+            throw new($"Could not read {name} from {type.FullName}");
         }
 
         var method = propertyInfo.GetMethod;
