@@ -13,12 +13,12 @@ public class SagaTests
     {
         var saga = new MySaga
         {
-            Data = new MySaga.MySagaData()
+            Data = new()
         };
 
         var context = new TestableMessageHandlerContext();
 
-        await saga.Handle(new MyRequest(), context);
+        await saga.Handle(new(), context);
 
         await Verifier.Verify(new
         {

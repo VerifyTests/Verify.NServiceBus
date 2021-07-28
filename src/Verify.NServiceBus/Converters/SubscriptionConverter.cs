@@ -7,12 +7,8 @@ using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 class SubscriptionConverter :
     WriteOnlyJsonConverter<Subscription>
 {
-    public override void WriteJson(JsonWriter writer, Subscription? subscription, JsonSerializer serializer, IReadOnlyDictionary<string, object> context)
+    public override void WriteJson(JsonWriter writer, Subscription subscription, JsonSerializer serializer, IReadOnlyDictionary<string, object> context)
     {
-        if (subscription == null)
-        {
-            return;
-        }
         writer.WriteStartObject();
 
         writer.WritePropertyName("MessageType");

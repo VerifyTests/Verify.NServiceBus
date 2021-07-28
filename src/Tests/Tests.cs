@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using NServiceBus;
 using NServiceBus.DelayedDelivery;
@@ -9,7 +8,6 @@ using NServiceBus.Pipeline;
 using NServiceBus.Routing;
 using NServiceBus.Testing;
 using NServiceBus.Transport;
-using NServiceBus.Unicast.Messages;
 using Verify.NServiceBus;
 using VerifyXunit;
 using Xunit;
@@ -24,7 +22,7 @@ public class Tests
         var context = new TestableMessageHandlerContext();
         context.Extensions.Set("key", "value");
 
-        await handler.Handle(new MyMessage(), context);
+        await handler.Handle(new(), context);
         await Verifier.Verify(
             new
         {
@@ -134,7 +132,7 @@ public class Tests
         var context = new TestableIncomingLogicalMessageContext
         {
             Message = BuildLogicalMessage(),
-            Headers = new Dictionary<string, string> {{"Key", "Value"}}
+            Headers = new() {{"Key", "Value"}}
         };
         context.Extensions.Set("key", "value");
         return Verifier.Verify(context);
@@ -156,7 +154,7 @@ public class Tests
     {
         var context = new TestableInvokeHandlerContext
         {
-            Headers = new Dictionary<string, string> {{"Key", "Value"}},
+            Headers = new() {{"Key", "Value"}},
         };
         await context.Send(new MyMessage());
         context.Extensions.Set("key", "value");
@@ -212,11 +210,11 @@ public class Tests
     {
         var saga = new MySaga
         {
-            Data = new MySagaData()
+            Data = new()
         };
         var context = new TestableMessageHandlerContext();
 
-        await saga.Handle(new MySagaMessage(), context);
+        await saga.Handle(new(), context);
 
         await Verifier.Verify(new
         {
@@ -367,15 +365,15 @@ public class Tests
     static TransportOperation BuildTransportOperation()
     {
         var outgoingMessage = BuildOutgoingMessage();
-        return new TransportOperation(outgoingMessage,
+        return new(outgoingMessage,
             new UnicastAddressTag("destination"),
             DispatchConsistency.Isolated,
-            new List<DeliveryConstraint> {new DelayDeliveryWith(TimeSpan.FromDays(1))});
+            new() {new DelayDeliveryWith(TimeSpan.FromDays(1))});
     }
 
     static OutgoingMessage BuildOutgoingMessage()
     {
-        return new("MessageId", new Dictionary<string, string> {{"key", "value"}}, new byte[] {1});
+        return new("MessageId", new() {{"key", "value"}}, new byte[] {1});
     }
 
     static OutgoingLogicalMessage BuildOutgoingLogicalMessage()
@@ -385,12 +383,12 @@ public class Tests
 
     static IncomingMessage BuildIncomingMessage()
     {
-        return new("MessageId", new Dictionary<string, string> {{"key", "value"}}, new byte[] {1});
+        return new("MessageId", new() {{"key", "value"}}, new byte[] {1});
     }
 
     static LogicalMessage BuildLogicalMessage()
     {
-        return new(new MessageMetadata(typeof(MyMessage)), new MyMessage {Property = "Value"});
+        return new(new(typeof(MyMessage)), new MyMessage {Property = "Value"});
     }
 }
 

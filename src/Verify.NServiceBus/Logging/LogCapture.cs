@@ -21,7 +21,7 @@ namespace Verify.NServiceBus
                     return context;
                 }
 
-                context = new ConcurrentBag<LogMessage>();
+                context = new();
                 loggingContext.Value = context;
                 return context;
             }

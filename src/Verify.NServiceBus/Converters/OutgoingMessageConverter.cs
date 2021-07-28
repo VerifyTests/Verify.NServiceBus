@@ -8,12 +8,8 @@ using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 class OutgoingMessageConverter :
     WriteOnlyJsonConverter
 {
-    public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer, IReadOnlyDictionary<string, object> context)
+    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer, IReadOnlyDictionary<string, object> context)
     {
-        if (value == null)
-        {
-            return;
-        }
         writer.WriteStartObject();
         WriteBaseMembers(writer, value, serializer);
         writer.WriteEndObject();

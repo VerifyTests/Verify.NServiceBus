@@ -50,7 +50,7 @@ static class ContextBagHelper
             var stash = (Dictionary<string, object>) stashField.GetValue(current);
             foreach (var item in stash)
             {
-                 yield return new KeyValuePair<string, object>(item.Key, item.Value);
+                 yield return new(item.Key, item.Value);
             }
             current = (ContextBag?) parentBagField.GetValue(current);
         } while (current != null);

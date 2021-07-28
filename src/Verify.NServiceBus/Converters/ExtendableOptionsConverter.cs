@@ -9,14 +9,9 @@ using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 class ExtendableOptionsConverter :
     WriteOnlyJsonConverter<ExtendableOptions>
 {
-    public override void WriteJson(JsonWriter writer, ExtendableOptions? options, JsonSerializer serializer, IReadOnlyDictionary<string, object> context)
+    public override void WriteJson(JsonWriter writer, ExtendableOptions options, JsonSerializer serializer, IReadOnlyDictionary<string, object> context)
     {
-        if (options == null)
-        {
-            return;
-        }
         writer.WriteStartObject();
-
         WriteBaseMembers(writer, serializer, options);
         writer.WriteEndObject();
     }

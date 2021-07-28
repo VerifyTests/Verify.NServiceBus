@@ -85,7 +85,7 @@ public async Task VerifyHandlerResult()
     var handler = new MyHandler();
     var context = new TestableMessageHandlerContext();
 
-    await handler.Handle(new MyRequest(), context);
+    await handler.Handle(new(), context);
 
     await Verifier.Verify(context);
 }
@@ -182,12 +182,12 @@ public async Task VerifySagaResult()
 {
     var saga = new MySaga
     {
-        Data = new MySaga.MySagaData()
+        Data = new()
     };
 
     var context = new TestableMessageHandlerContext();
 
-    await saga.Handle(new MyRequest(), context);
+    await saga.Handle(new(), context);
 
     await Verifier.Verify(new
     {

@@ -7,12 +7,8 @@ using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 class SendOptionsConverter :
     WriteOnlyJsonConverter<SendOptions>
 {
-    public override void WriteJson(JsonWriter writer, SendOptions? options, JsonSerializer serializer, IReadOnlyDictionary<string, object> context)
+    public override void WriteJson(JsonWriter writer, SendOptions options, JsonSerializer serializer, IReadOnlyDictionary<string, object> context)
     {
-        if (options == null)
-        {
-            return;
-        }
         writer.WriteStartObject();
 
         var deliveryDate = options.GetDeliveryDate();

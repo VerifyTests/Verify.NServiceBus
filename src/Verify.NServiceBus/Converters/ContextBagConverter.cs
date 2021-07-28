@@ -8,13 +8,8 @@ using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 class ContextBagConverter :
     WriteOnlyJsonConverter<ContextBag>
 {
-    public override void WriteJson(JsonWriter writer, ContextBag? bag, JsonSerializer serializer, IReadOnlyDictionary<string, object> context)
+    public override void WriteJson(JsonWriter writer, ContextBag bag, JsonSerializer serializer, IReadOnlyDictionary<string, object> context)
     {
-        if (bag == null)
-        {
-            return;
-        }
-
         writer.WriteStartObject();
         foreach (var pair in bag.GetValues())
         {
