@@ -19,7 +19,7 @@ class ExtendableOptionsConverter :
     public static void WriteBaseMembers(JsonWriter writer, JsonSerializer serializer, ExtendableOptions options)
     {
         var messageId = options.GetMessageId();
-        if (messageId != null)
+        if (messageId is not null)
         {
             writer.WritePropertyName("MessageId");
             serializer.Serialize(writer, messageId);
@@ -33,7 +33,7 @@ class ExtendableOptionsConverter :
         }
 
         var extensions = options.GetExtensions();
-        if (extensions != null)
+        if (extensions is not null)
         {
             if (ContextBagHelper.HasContent(extensions))
             {

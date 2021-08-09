@@ -12,13 +12,13 @@ class SendOptionsConverter :
         writer.WriteStartObject();
 
         var deliveryDate = options.GetDeliveryDate();
-        if (deliveryDate != null)
+        if (deliveryDate is not null)
         {
             writer.WritePropertyName("DeliveryDate");
             serializer.Serialize(writer, deliveryDate);
         }
         var deliveryDelay = options.GetDeliveryDelay();
-        if (deliveryDelay != null)
+        if (deliveryDelay is not null)
         {
             writer.WritePropertyName("DeliveryDelay");
             serializer.Serialize(writer, deliveryDelay);

@@ -31,7 +31,7 @@ static class ExtendableOptionsHelper
     public static bool HasValue(this ExtendableOptions options)
     {
         var messageId = options.GetMessageId();
-        if (messageId != null)
+        if (messageId is not null)
         {
             return true;
         }
@@ -51,7 +51,7 @@ static class ExtendableOptionsHelper
         }
 
         var extensions = options.GetExtensions();
-        if (extensions != null)
+        if (extensions is not null)
         {
             return ContextBagHelper.HasContent(extensions);
         }

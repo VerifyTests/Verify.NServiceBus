@@ -53,7 +53,7 @@ static class ContextBagHelper
                  yield return new(item.Key, item.Value);
             }
             current = (ContextBag?) parentBagField.GetValue(current);
-        } while (current != null);
+        } while (current is not null);
     }
 
     static bool TryGetParentBag(object value, [NotNullWhen(true)] out ContextBag? parentBag)

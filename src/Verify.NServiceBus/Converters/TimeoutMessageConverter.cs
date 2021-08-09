@@ -13,14 +13,14 @@ class TimeoutMessageConverter :
         writer.WriteStartObject();
 
         var at = OutgoingMessageHelper.GetAt(value);
-        if (at != null)
+        if (at is not null)
         {
             writer.WritePropertyName("At");
             serializer.Serialize(writer, at);
         }
 
         var within = OutgoingMessageHelper.GetWithin(value);
-        if (within != null)
+        if (within is not null)
         {
             writer.WritePropertyName("Within");
             serializer.Serialize(writer, within);

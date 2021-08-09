@@ -16,7 +16,7 @@ namespace Verify.NServiceBus
             get
             {
                 var context = loggingContext.Value;
-                if (context != null)
+                if (context is not null)
                 {
                     return context;
                 }
@@ -29,7 +29,7 @@ namespace Verify.NServiceBus
 
         public static IEnumerable<LogMessage> MessagesForLevel(LogLevel? includeLogMessages)
         {
-            if (includeLogMessages == null)
+            if (includeLogMessages is null)
             {
                 return Array.Empty<LogMessage>();
             }
