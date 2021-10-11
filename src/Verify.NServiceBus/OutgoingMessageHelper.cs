@@ -1,6 +1,4 @@
-﻿using System;
-using System.Reflection;
-using NServiceBus.Extensibility;
+﻿using NServiceBus.Extensibility;
 
 static class OutgoingMessageHelper
 {

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using NServiceBus.Extensibility;
 using NServiceBus.Transport;
 using VerifyTests;

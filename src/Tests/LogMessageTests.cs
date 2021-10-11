@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using NServiceBus.Logging;
+﻿using NServiceBus.Logging;
 using Verify.NServiceBus;
 using VerifyXunit;
 using Xunit;
