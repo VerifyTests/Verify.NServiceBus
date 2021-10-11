@@ -18,7 +18,6 @@ Before any test have run call:
 <!-- snippet: ModuleInitializer.cs -->
 <a id='snippet-ModuleInitializer.cs'></a>
 ```cs
-using System.Runtime.CompilerServices;
 using VerifyTests;
 
 public static class ModuleInitializer
@@ -30,7 +29,7 @@ public static class ModuleInitializer
     }
 }
 ```
-<sup><a href='/src/Tests/ModuleInitializer.cs#L1-L11' title='Snippet source file'>snippet source</a> | <a href='#snippet-ModuleInitializer.cs' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/ModuleInitializer.cs#L1-L10' title='Snippet source file'>snippet source</a> | <a href='#snippet-ModuleInitializer.cs' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -71,7 +70,7 @@ public class MyHandler :
     }
 }
 ```
-<sup><a href='/src/Tests/Snippets/MyHandler.cs#L5-L37' title='Snippet source file'>snippet source</a> | <a href='#snippet-simplehandler' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/MyHandler.cs#L3-L35' title='Snippet source file'>snippet source</a> | <a href='#snippet-simplehandler' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The test that verifies the resulting context:
@@ -90,7 +89,7 @@ public async Task VerifyHandlerResult()
     await Verifier.Verify(context);
 }
 ```
-<sup><a href='/src/Tests/Snippets/HandlerTests.cs#L9-L22' title='Snippet source file'>snippet source</a> | <a href='#snippet-handlertest' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/HandlerTests.cs#L8-L21' title='Snippet source file'>snippet source</a> | <a href='#snippet-handlertest' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The resulting context verification file is as follows:
@@ -169,7 +168,7 @@ public class MySaga :
 
 }
 ```
-<sup><a href='/src/Tests/Snippets/MySaga.cs#L5-L37' title='Snippet source file'>snippet source</a> | <a href='#snippet-simplesaga' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/MySaga.cs#L3-L35' title='Snippet source file'>snippet source</a> | <a href='#snippet-simplesaga' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The test that verifies the resulting context:
@@ -196,7 +195,7 @@ public async Task VerifySagaResult()
     });
 }
 ```
-<sup><a href='/src/Tests/Snippets/SagaTests.cs#L9-L30' title='Snippet source file'>snippet source</a> | <a href='#snippet-sagatest' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/SagaTests.cs#L8-L29' title='Snippet source file'>snippet source</a> | <a href='#snippet-sagatest' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The resulting context verification file is as follows:
@@ -253,7 +252,7 @@ await context.Send(
 
 await context.ForwardCurrentMessageTo("newDestination");
 ```
-<sup><a href='/src/Tests/Snippets/MyHandlerV2.cs#L10-L35' title='Snippet source file'>snippet source</a> | <a href='#snippet-simplehandlerv2' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/MyHandlerV2.cs#L8-L33' title='Snippet source file'>snippet source</a> | <a href='#snippet-simplehandlerv2' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Then the resulting visualization diff would look as follows:
@@ -276,7 +275,7 @@ map.AddMessagesFromAssembly<MyMessage>();
 map.AddHandlersFromAssembly<MyHandler>();
 await Verifier.Verify(map);
 ```
-<sup><a href='/src/Tests/MessageToHandlerMapTests.cs#L13-L18' title='Snippet source file'>snippet source</a> | <a href='#snippet-messagetohandlermap' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/MessageToHandlerMapTests.cs#L12-L17' title='Snippet source file'>snippet source</a> | <a href='#snippet-messagetohandlermap' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Would result in: 
