@@ -13,7 +13,7 @@
           DeliveryDelay: 01:00:00,
           Headers: {
             IsSagaTimeoutMessage: True,
-            SagaId: Guid_1,
+            SagaId: Guid_Empty,
             SagaType: Tests+MySaga
           },
           Extensions: {
@@ -31,7 +31,7 @@
           DeliveryDelay: 01:00:00,
           Headers: {
             IsSagaTimeoutMessage: True,
-            SagaId: Guid_1,
+            SagaId: Guid_Empty,
             SagaType: Tests+MySaga
           },
           Extensions: {
