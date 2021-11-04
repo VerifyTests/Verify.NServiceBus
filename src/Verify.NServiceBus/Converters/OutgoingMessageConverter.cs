@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using NServiceBus.Testing;
+using SimpleInfoName;
 using VerifyTests;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
@@ -19,7 +20,7 @@ class OutgoingMessageConverter :
 
         var type = message.GetType();
 
-        var name = TypeNameConverter.GetName(type);
+        var name = type.SimpleName();
         writer.WritePropertyName(name);
         serializer.Serialize(writer, message);
 
