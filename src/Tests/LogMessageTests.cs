@@ -10,6 +10,6 @@ public class LogMessageTests
     public Task Logging()
     {
         var message = new LogMessage(LogLevel.Error,"{0} {1}", new List<string>{"foo", "bar"});
-        return Verifier.Verify(message.Message);
+        return Verify(message.Message);
     }
 }

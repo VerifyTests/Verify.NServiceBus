@@ -15,7 +15,7 @@ public class HandlerTests
 
         await handler.Handle(new(), context);
 
-        await Verifier.Verify(context);
+        await Verify(context);
     }
 
     #endregion

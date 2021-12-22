@@ -13,7 +13,7 @@ public class MessageToHandlerMapTests
         var map = new MessageToHandlerMap();
         map.AddMessagesFromAssembly<MyMessage>();
         map.AddHandlersFromAssembly<MyHandler>();
-        await Verifier.Verify(map);
+        await Verify(map);
         #endregion
     }
 
@@ -51,7 +51,7 @@ public class MessageToHandlerMapTests
 
     static Task VerifyMap(MessageToHandlerMap map)
     {
-        return Verifier.Verify(new {map.HandledMessages, map.Messages});
+        return Verify(new {map.HandledMessages, map.Messages});
     }
 
     class MyMessage : IMessage

@@ -19,7 +19,7 @@ public class SagaTests
 
         await saga.Handle(new(), context);
 
-        await Verifier.Verify(new
+        await Verify(new
         {
             context,
             saga.Data
