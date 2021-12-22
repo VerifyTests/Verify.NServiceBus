@@ -86,7 +86,7 @@ public async Task VerifyHandlerResult()
 
     await handler.Handle(new(), context);
 
-    await Verifier.Verify(context);
+    await Verify(context);
 }
 ```
 <sup><a href='/src/Tests/Snippets/HandlerTests.cs#L8-L21' title='Snippet source file'>snippet source</a> | <a href='#snippet-handlertest' title='Start of snippet'>anchor</a></sup>
@@ -188,7 +188,7 @@ public async Task VerifySagaResult()
 
     await saga.Handle(new(), context);
 
-    await Verifier.Verify(new
+    await Verify(new
     {
         context,
         saga.Data
@@ -273,7 +273,7 @@ For example:
 var map = new MessageToHandlerMap();
 map.AddMessagesFromAssembly<MyMessage>();
 map.AddHandlersFromAssembly<MyHandler>();
-await Verifier.Verify(map);
+await Verify(map);
 ```
 <sup><a href='/src/Tests/MessageToHandlerMapTests.cs#L12-L17' title='Snippet source file'>snippet source</a> | <a href='#snippet-messagetohandlermap' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
