@@ -6,9 +6,7 @@ using NServiceBus.Pipeline;
 using NServiceBus.Routing;
 using NServiceBus.Testing;
 using NServiceBus.Transport;
-using Verify.NServiceBus;
-using VerifyXunit;
-using Xunit;
+using VerifyTests.NServiceBus;
 
 [UsesVerify]
 public class Tests

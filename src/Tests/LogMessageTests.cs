@@ -1,7 +1,5 @@
 ﻿using NServiceBus.Logging;
-using Verify.NServiceBus;
-using VerifyXunit;
-using Xunit;
+using VerifyTests.NServiceBus;
 
 [UsesVerify]
 public class LogMessageTests

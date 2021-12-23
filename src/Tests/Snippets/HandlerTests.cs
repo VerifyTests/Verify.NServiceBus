@@ -1,6 +1,4 @@
 ﻿using NServiceBus.Testing;
-using VerifyXunit;
-using Xunit;
 
 [UsesVerify]
 public class HandlerTests

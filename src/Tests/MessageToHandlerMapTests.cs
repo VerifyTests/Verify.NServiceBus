@@ -1,7 +1,5 @@
 ﻿using NServiceBus;
 using VerifyTests.NServiceBus;
-using VerifyXunit;
-using Xunit;
 
 [UsesVerify]
 public class MessageToHandlerMapTests

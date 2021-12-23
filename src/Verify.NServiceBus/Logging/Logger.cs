@@ -1,5 +1,5 @@
 ﻿using NServiceBus.Logging;
-using Verify.NServiceBus;
+using VerifyTests.NServiceBus;
 
 class Logger :
     LoggingFactoryDefinition,
