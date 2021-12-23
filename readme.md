@@ -18,8 +18,6 @@ Before any test have run call:
 <!-- snippet: ModuleInitializer.cs -->
 <a id='snippet-ModuleInitializer.cs'></a>
 ```cs
-using VerifyTests;
-
 public static class ModuleInitializer
 {
     [ModuleInitializer]
@@ -29,7 +27,7 @@ public static class ModuleInitializer
     }
 }
 ```
-<sup><a href='/src/Tests/ModuleInitializer.cs#L1-L10' title='Snippet source file'>snippet source</a> | <a href='#snippet-ModuleInitializer.cs' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/ModuleInitializer.cs#L1-L8' title='Snippet source file'>snippet source</a> | <a href='#snippet-ModuleInitializer.cs' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -89,7 +87,7 @@ public async Task VerifyHandlerResult()
     await Verify(context);
 }
 ```
-<sup><a href='/src/Tests/Snippets/HandlerTests.cs#L8-L21' title='Snippet source file'>snippet source</a> | <a href='#snippet-handlertest' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/HandlerTests.cs#L6-L19' title='Snippet source file'>snippet source</a> | <a href='#snippet-handlertest' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The resulting context verification file is as follows:
@@ -195,7 +193,7 @@ public async Task VerifySagaResult()
     });
 }
 ```
-<sup><a href='/src/Tests/Snippets/SagaTests.cs#L8-L29' title='Snippet source file'>snippet source</a> | <a href='#snippet-sagatest' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/SagaTests.cs#L6-L27' title='Snippet source file'>snippet source</a> | <a href='#snippet-sagatest' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The resulting context verification file is as follows:
@@ -275,7 +273,7 @@ map.AddMessagesFromAssembly<MyMessage>();
 map.AddHandlersFromAssembly<MyHandler>();
 await Verify(map);
 ```
-<sup><a href='/src/Tests/MessageToHandlerMapTests.cs#L12-L17' title='Snippet source file'>snippet source</a> | <a href='#snippet-messagetohandlermap' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/MessageToHandlerMapTests.cs#L10-L15' title='Snippet source file'>snippet source</a> | <a href='#snippet-messagetohandlermap' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Would result in: 
