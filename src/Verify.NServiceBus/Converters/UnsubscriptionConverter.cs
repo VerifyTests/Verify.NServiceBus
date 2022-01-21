@@ -1,10 +1,9 @@
 ﻿using NServiceBus.Testing;
-using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class UnsubscriptionConverter :
     WriteOnlyJsonConverter<Unsubscription>
 {
-    public override void Write(VerifyJsonWriter writer, Unsubscription unsubscription, JsonSerializer serializer)
+    public override void Write(VerifyJsonWriter writer, Unsubscription unsubscription)
     {
         writer.WriteStartObject();
 

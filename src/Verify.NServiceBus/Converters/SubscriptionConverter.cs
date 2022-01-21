@@ -1,10 +1,9 @@
 ﻿using NServiceBus.Testing;
-using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class SubscriptionConverter :
     WriteOnlyJsonConverter<Subscription>
 {
-    public override void Write(VerifyJsonWriter writer, Subscription subscription, JsonSerializer serializer)
+    public override void Write(VerifyJsonWriter writer, Subscription subscription)
     {
         writer.WriteStartObject();
 

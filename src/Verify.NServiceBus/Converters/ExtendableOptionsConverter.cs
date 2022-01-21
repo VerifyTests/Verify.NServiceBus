@@ -1,18 +1,17 @@
 ﻿using NServiceBus;
 using NServiceBus.Extensibility;
-using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class ExtendableOptionsConverter :
     WriteOnlyJsonConverter<ExtendableOptions>
 {
-    public override void Write(VerifyJsonWriter writer, ExtendableOptions options, JsonSerializer serializer)
+    public override void Write(VerifyJsonWriter writer, ExtendableOptions options)
     {
         writer.WriteStartObject();
-        WriteBaseMembers(writer, serializer, options);
+        WriteBaseMembers(writer, options);
         writer.WriteEndObject();
     }
 
-    public static void WriteBaseMembers(VerifyJsonWriter writer, JsonSerializer serializer, ExtendableOptions options)
+    public static void WriteBaseMembers(VerifyJsonWriter writer, ExtendableOptions options)
     {
         var messageId = options.GetMessageId();
         writer.WriteProperty(options, messageId, "MessageId");

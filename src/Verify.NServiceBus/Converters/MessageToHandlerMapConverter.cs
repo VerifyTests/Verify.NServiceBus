@@ -1,10 +1,9 @@
 ﻿using VerifyTests.NServiceBus;
-using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class MessageToHandlerMapConverter :
     WriteOnlyJsonConverter<MessageToHandlerMap>
 {
-    public override void Write(VerifyJsonWriter writer, MessageToHandlerMap map, JsonSerializer serializer)
+    public override void Write(VerifyJsonWriter writer, MessageToHandlerMap map)
     {
         var withNoHandler = map.Messages
             .Except(map.HandledMessages)

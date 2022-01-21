@@ -1,10 +1,9 @@
 ﻿using NServiceBus.Testing;
-using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class TimeoutMessageConverter :
     WriteOnlyJsonConverter
 {
-    public override void Write(VerifyJsonWriter writer, object value, JsonSerializer serializer)
+    public override void Write(VerifyJsonWriter writer, object value)
     {
         writer.WriteStartObject();
 
@@ -14,7 +13,7 @@ class TimeoutMessageConverter :
         var within = OutgoingMessageHelper.GetWithin(value);
         writer.WriteProperty(value, within, "Within");
 
-        OutgoingMessageConverter.WriteBaseMembers(writer, value, serializer);
+        OutgoingMessageConverter.WriteBaseMembers(writer, value);
 
         writer.WriteEndObject();
     }

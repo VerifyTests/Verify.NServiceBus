@@ -1,10 +1,9 @@
 ﻿using NServiceBus;
-using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class SendOptionsConverter :
     WriteOnlyJsonConverter<SendOptions>
 {
-    public override void Write(VerifyJsonWriter writer, SendOptions options, JsonSerializer serializer)
+    public override void Write(VerifyJsonWriter writer, SendOptions options)
     {
         writer.WriteStartObject();
 
@@ -13,7 +12,7 @@ class SendOptionsConverter :
         var deliveryDelay = options.GetDeliveryDelay();
         writer.WriteProperty(options, deliveryDelay, "DeliveryDelay");
 
-        ExtendableOptionsConverter.WriteBaseMembers(writer, serializer, options);
+        ExtendableOptionsConverter.WriteBaseMembers(writer, options);
 
         writer.WriteEndObject();
     }

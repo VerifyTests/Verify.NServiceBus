@@ -1,11 +1,10 @@
 ﻿using NServiceBus.Extensibility;
 using NServiceBus.Transport;
-using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class ContextBagConverter :
     WriteOnlyJsonConverter<ContextBag>
 {
-    public override void Write(VerifyJsonWriter writer, ContextBag bag, JsonSerializer serializer)
+    public override void Write(VerifyJsonWriter writer, ContextBag bag)
     {
         writer.WriteStartObject();
         foreach (var pair in bag.GetValues())

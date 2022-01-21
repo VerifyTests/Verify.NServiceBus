@@ -1,18 +1,17 @@
 ﻿using NServiceBus.Testing;
 using SimpleInfoName;
-using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class OutgoingMessageConverter :
     WriteOnlyJsonConverter
 {
-    public override void Write(VerifyJsonWriter writer, object value, JsonSerializer serializer)
+    public override void Write(VerifyJsonWriter writer, object value)
     {
         writer.WriteStartObject();
-        WriteBaseMembers(writer, value, serializer);
+        WriteBaseMembers(writer, value);
         writer.WriteEndObject();
     }
 
-    public static void WriteBaseMembers(VerifyJsonWriter writer, object value, JsonSerializer serializer)
+    public static void WriteBaseMembers(VerifyJsonWriter writer, object value)
     {
         var message = OutgoingMessageHelper.GetMessage(value);
 
