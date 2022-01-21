@@ -1,45 +1,42 @@
-﻿using Newtonsoft.Json;
-using NServiceBus.Testing;
+﻿using NServiceBus.Testing;
 using SimpleInfoName;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class OutgoingMessageConverter :
     WriteOnlyJsonConverter
 {
-    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer, IReadOnlyDictionary<string, object> context)
+    public override void Write(VerifyJsonWriter writer, object value, JsonSerializer serializer)
     {
         writer.WriteStartObject();
         WriteBaseMembers(writer, value, serializer);
         writer.WriteEndObject();
     }
 
-    public static void WriteBaseMembers(JsonWriter writer, object value, JsonSerializer serializer)
+    public static void WriteBaseMembers(VerifyJsonWriter writer, object value, JsonSerializer serializer)
     {
         var message = OutgoingMessageHelper.GetMessage(value);
 
         var type = message.GetType();
 
         var name = type.SimpleName();
-        writer.WritePropertyName(name);
-        serializer.Serialize(writer, message);
+        writer.WriteProperty(value, message, name);
 
         var options = OutgoingMessageHelper.GetOptions(value);
         if (options.HasValue())
         {
-            writer.WritePropertyName("Options");
-            serializer.Serialize(writer, options);
+            writer.WriteProperty(value, options, "Options");
         }
     }
 
     public override bool CanConvert(Type type)
     {
         var baseType = type.BaseType;
-        if (baseType != null && baseType.IsGenericType)
+        if (baseType is not {IsGenericType: true})
         {
-            var typeDefinition = baseType.GetGenericTypeDefinition();
-            return typeDefinition == typeof(OutgoingMessage<,>);
+            return false;
         }
 
-        return false;
+        var typeDefinition = baseType.GetGenericTypeDefinition();
+        return typeDefinition == typeof(OutgoingMessage<,>);
     }
 }

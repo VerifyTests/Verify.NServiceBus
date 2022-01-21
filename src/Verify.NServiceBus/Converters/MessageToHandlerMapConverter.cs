@@ -1,18 +1,16 @@
-﻿using Newtonsoft.Json;
-using VerifyTests.NServiceBus;
+﻿using VerifyTests.NServiceBus;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class MessageToHandlerMapConverter :
     WriteOnlyJsonConverter<MessageToHandlerMap>
 {
-    public override void WriteJson(JsonWriter writer, MessageToHandlerMap map, JsonSerializer serializer, IReadOnlyDictionary<string, object> context)
+    public override void Write(VerifyJsonWriter writer, MessageToHandlerMap map, JsonSerializer serializer)
     {
-        var messagesWithNoHandler = map.Messages
+        var withNoHandler = map.Messages
             .Except(map.HandledMessages)
             .ToList();
         writer.WriteStartObject();
-        writer.WritePropertyName("MessagesWithNoHandler");
-        serializer.Serialize(writer, messagesWithNoHandler);
+        writer.WriteProperty(map, withNoHandler, "MessagesWithNoHandler");
         writer.WriteEndObject();
     }
 }

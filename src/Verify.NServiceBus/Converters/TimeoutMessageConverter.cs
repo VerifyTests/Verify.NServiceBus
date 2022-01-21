@@ -1,27 +1,18 @@
-﻿using Newtonsoft.Json;
-using NServiceBus.Testing;
+﻿using NServiceBus.Testing;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class TimeoutMessageConverter :
     WriteOnlyJsonConverter
 {
-    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer, IReadOnlyDictionary<string, object> context)
+    public override void Write(VerifyJsonWriter writer, object value, JsonSerializer serializer)
     {
         writer.WriteStartObject();
 
         var at = OutgoingMessageHelper.GetAt(value);
-        if (at is not null)
-        {
-            writer.WritePropertyName("At");
-            serializer.Serialize(writer, at);
-        }
+        writer.WriteProperty(value, at, "At");
 
         var within = OutgoingMessageHelper.GetWithin(value);
-        if (within is not null)
-        {
-            writer.WritePropertyName("Within");
-            serializer.Serialize(writer, within);
-        }
+        writer.WriteProperty(value, within, "Within");
 
         OutgoingMessageConverter.WriteBaseMembers(writer, value, serializer);
 
@@ -30,11 +21,12 @@ class TimeoutMessageConverter :
 
     public override bool CanConvert(Type type)
     {
-        if (type.IsGenericType)
+        if (!type.IsGenericType)
         {
-            var typeDefinition = type.GetGenericTypeDefinition();
-            return typeDefinition == typeof(TimeoutMessage<>);
+            return false;
         }
-        return false;
+
+        var typeDefinition = type.GetGenericTypeDefinition();
+        return typeDefinition == typeof(TimeoutMessage<>);
     }
 }

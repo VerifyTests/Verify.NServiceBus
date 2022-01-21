@@ -1,21 +1,19 @@
-﻿using Newtonsoft.Json;
-using NServiceBus.Testing;
+﻿using NServiceBus.Testing;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class SubscriptionConverter :
     WriteOnlyJsonConverter<Subscription>
 {
-    public override void WriteJson(JsonWriter writer, Subscription subscription, JsonSerializer serializer, IReadOnlyDictionary<string, object> context)
+    public override void Write(VerifyJsonWriter writer, Subscription subscription, JsonSerializer serializer)
     {
         writer.WriteStartObject();
 
-        writer.WritePropertyName("MessageType");
-        serializer.Serialize(writer, subscription.Message);
+        writer.WriteProperty(subscription, subscription.Message, "MessageType");
+
         var options = subscription.Options;
         if (options.HasValue())
         {
-            writer.WritePropertyName("Options");
-            serializer.Serialize(writer, options);
+            writer.WriteProperty(subscription, options, "Options");
         }
 
         writer.WriteEndObject();

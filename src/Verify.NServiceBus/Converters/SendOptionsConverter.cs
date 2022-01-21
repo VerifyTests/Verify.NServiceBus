@@ -1,26 +1,18 @@
-﻿using Newtonsoft.Json;
-using NServiceBus;
+﻿using NServiceBus;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 class SendOptionsConverter :
     WriteOnlyJsonConverter<SendOptions>
 {
-    public override void WriteJson(JsonWriter writer, SendOptions options, JsonSerializer serializer, IReadOnlyDictionary<string, object> context)
+    public override void Write(VerifyJsonWriter writer, SendOptions options, JsonSerializer serializer)
     {
         writer.WriteStartObject();
 
         var deliveryDate = options.GetDeliveryDate();
-        if (deliveryDate is not null)
-        {
-            writer.WritePropertyName("DeliveryDate");
-            serializer.Serialize(writer, deliveryDate);
-        }
+        writer.WriteProperty(options, deliveryDate, "DeliveryDate");
         var deliveryDelay = options.GetDeliveryDelay();
-        if (deliveryDelay is not null)
-        {
-            writer.WritePropertyName("DeliveryDelay");
-            serializer.Serialize(writer, deliveryDelay);
-        }
+        writer.WriteProperty(options, deliveryDelay, "DeliveryDelay");
+
         ExtendableOptionsConverter.WriteBaseMembers(writer, serializer, options);
 
         writer.WriteEndObject();
