@@ -26,7 +26,7 @@ public static class LogCapture
     {
         if (includeLogMessages is null)
         {
-            return Array.Empty<LogMessage>();
+            return Enumerable.Empty<LogMessage>();
         }
         return LogMessages
             .Where(x => x.Level > includeLogMessages);
