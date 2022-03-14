@@ -21,13 +21,11 @@ Before any test have run call:
 public static class ModuleInitializer
 {
     [ModuleInitializer]
-    public static void Initialize()
-    {
+    public static void Initialize() =>
         VerifyNServiceBus.Enable();
-    }
 }
 ```
-<sup><a href='/src/Tests/ModuleInitializer.cs#L1-L8' title='Snippet source file'>snippet source</a> | <a href='#snippet-ModuleInitializer.cs' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/ModuleInitializer.cs#L1-L6' title='Snippet source file'>snippet source</a> | <a href='#snippet-ModuleInitializer.cs' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -140,11 +138,9 @@ public class MySaga :
     Saga<MySaga.MySagaData>,
     IHandleMessages<MyRequest>
 {
-    protected override void ConfigureHowToFindSaga(SagaPropertyMapper<MySagaData> mapper)
-    {
+    protected override void ConfigureHowToFindSaga(SagaPropertyMapper<MySagaData> mapper) =>
         mapper.ConfigureMapping<MyRequest>(message => message.OrderId)
             .ToSaga(sagaData => sagaData.OrderId);
-    }
 
     public async Task Handle(MyRequest message, IMessageHandlerContext context)
     {
@@ -166,7 +162,7 @@ public class MySaga :
 
 }
 ```
-<sup><a href='/src/Tests/Snippets/MySaga.cs#L3-L35' title='Snippet source file'>snippet source</a> | <a href='#snippet-simplesaga' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/MySaga.cs#L3-L33' title='Snippet source file'>snippet source</a> | <a href='#snippet-simplesaga' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The test that verifies the resulting context:
