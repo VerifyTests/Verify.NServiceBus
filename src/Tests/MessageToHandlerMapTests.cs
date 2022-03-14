@@ -47,10 +47,8 @@ public class MessageToHandlerMapTests
         return VerifyMap(map);
     }
 
-    static Task VerifyMap(MessageToHandlerMap map)
-    {
-        return Verify(new {map.HandledMessages, map.Messages});
-    }
+    static Task VerifyMap(MessageToHandlerMap map) =>
+        Verify(new {map.HandledMessages, map.Messages});
 
     class MyMessage : IMessage
     {
@@ -64,9 +62,7 @@ public class MessageToHandlerMapTests
 
     class MyHandler : IHandleMessages<MyMessage>
     {
-        public Task Handle(MyMessage message, IMessageHandlerContext context)
-        {
-            return null!;
-        }
+        public Task Handle(MyMessage message, IMessageHandlerContext context) =>
+            null!;
     }
 }

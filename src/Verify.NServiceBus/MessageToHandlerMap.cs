@@ -15,20 +15,14 @@ public class MessageToHandlerMap
         }
     }
 
-    public void AddMessagesFromAssembly<T>()
-    {
+    public void AddMessagesFromAssembly<T>() =>
         AddMessagesFromAssembly(typeof(T).Assembly);
-    }
 
-    public void AddMessage(Type type)
-    {
+    public void AddMessage(Type type) =>
         Messages.Add(type);
-    }
 
-    public void AddMessage<T>()
-    {
+    public void AddMessage<T>() =>
         Messages.Add(typeof(T));
-    }
 
     public void AddHandler(Type handlerType)
     {
@@ -49,10 +43,8 @@ public class MessageToHandlerMap
         }
     }
 
-    public void AddHandler<T>()
-    {
+    public void AddHandler<T>() =>
         AddHandler(typeof(T));
-    }
 
     public void AddHandlersFromAssembly(Assembly assembly)
     {
@@ -62,8 +54,6 @@ public class MessageToHandlerMap
         }
     }
 
-    public void AddHandlersFromAssembly<T>()
-    {
+    public void AddHandlersFromAssembly<T>() =>
         AddHandlersFromAssembly(typeof(T).Assembly);
-    }
 }

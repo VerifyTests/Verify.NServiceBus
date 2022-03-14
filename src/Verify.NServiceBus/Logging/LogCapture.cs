@@ -32,18 +32,11 @@ public static class LogCapture
             .Where(x => x.Level > includeLogMessages);
     }
 
-    public static IReadOnlyList<LogMessage> LogMessages
-    {
-        get => Context.ToList();
-    }
+    public static IReadOnlyList<LogMessage> LogMessages => Context.ToList();
 
-    internal static void Add(LogMessage logMessage)
-    {
+    internal static void Add(LogMessage logMessage) =>
         Context.Add(logMessage);
-    }
 
-    public static void Initialize()
-    {
+    public static void Initialize() =>
         LogManager.Use<Logger>();
-    }
 }

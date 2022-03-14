@@ -32,8 +32,6 @@ static class Extensions
             });
     }
 
-    public static bool IsMessage(this Type x)
-    {
-        return typeof(IMessage).IsAssignableFrom(x);
-    }
+    public static bool IsMessage(this Type x) =>
+        typeof(IMessage).IsAssignableFrom(x);
 }

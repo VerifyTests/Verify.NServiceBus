@@ -15,7 +15,7 @@ static class ExtendableOptionsHelper
             }
             if (header.Key == Headers.SagaType)
             {
-                dictionary.Add(key, Type.GetType(header.Value, throwOnError: true).FullName);
+                dictionary.Add(key, Type.GetType(header.Value, throwOnError: true)!.FullName!);
                 continue;
             }
 

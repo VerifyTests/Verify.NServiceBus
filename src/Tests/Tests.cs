@@ -113,7 +113,9 @@ public class Tests
     [Fact]
     public Task ForwardingContext()
     {
+#pragma warning disable CS0618
         var context = new TestableForwardingContext
+#pragma warning restore CS0618
         {
             Address = "The address",
             Message = BuildOutgoingMessage()
@@ -235,10 +237,8 @@ public class Tests
             await RequestTimeout<MySagaMessage>(context, TimeSpan.FromHours(1));
         }
 
-        public Task Timeout(MySagaMessage state, IMessageHandlerContext context)
-        {
-            return Task.CompletedTask;
-        }
+        public Task Timeout(MySagaMessage state, IMessageHandlerContext context) =>
+            Task.CompletedTask;
     }
 
     public class MySagaMessage
@@ -367,25 +367,17 @@ public class Tests
             new() {new DelayDeliveryWith(TimeSpan.FromDays(1))});
     }
 
-    static OutgoingMessage BuildOutgoingMessage()
-    {
-        return new("MessageId", new() {{"key", "value"}}, new byte[] {1});
-    }
+    static OutgoingMessage BuildOutgoingMessage() =>
+        new("MessageId", new() {{"key", "value"}}, new byte[] {1});
 
-    static OutgoingLogicalMessage BuildOutgoingLogicalMessage()
-    {
-        return new(typeof(MyMessage), new MyMessage {Property = "Value"});
-    }
+    static OutgoingLogicalMessage BuildOutgoingLogicalMessage() =>
+        new(typeof(MyMessage), new MyMessage {Property = "Value"});
 
-    static IncomingMessage BuildIncomingMessage()
-    {
-        return new("MessageId", new() {{"key", "value"}}, new byte[] {1});
-    }
+    static IncomingMessage BuildIncomingMessage() =>
+        new("MessageId", new() {{"key", "value"}}, new byte[] {1});
 
-    static LogicalMessage BuildLogicalMessage()
-    {
-        return new(new(typeof(MyMessage)), new MyMessage {Property = "Value"});
-    }
+    static LogicalMessage BuildLogicalMessage() =>
+        new(new(typeof(MyMessage)), new MyMessage {Property = "Value"});
 }
 
 public class MyMessage

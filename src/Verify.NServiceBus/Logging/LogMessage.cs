@@ -9,7 +9,7 @@ public class LogMessage
         Level = level;
         Message = message;
         Exception = exception;
-        Args = Enumerable.Empty<object>();
+        Args = Array.Empty<object>();
     }
 
     public LogMessage(LogLevel level, string format, IReadOnlyList<object> args, Exception? exception = null)

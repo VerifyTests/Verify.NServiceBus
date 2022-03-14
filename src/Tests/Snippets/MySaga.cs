@@ -6,11 +6,9 @@ public class MySaga :
     Saga<MySaga.MySagaData>,
     IHandleMessages<MyRequest>
 {
-    protected override void ConfigureHowToFindSaga(SagaPropertyMapper<MySagaData> mapper)
-    {
+    protected override void ConfigureHowToFindSaga(SagaPropertyMapper<MySagaData> mapper) =>
         mapper.ConfigureMapping<MyRequest>(message => message.OrderId)
             .ToSaga(sagaData => sagaData.OrderId);
-    }
 
     public async Task Handle(MyRequest message, IMessageHandlerContext context)
     {

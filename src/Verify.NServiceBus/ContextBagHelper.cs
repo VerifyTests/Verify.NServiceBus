@@ -15,22 +15,26 @@ static class ContextBagHelper
 
     public static bool HasContent(ContextBag contextBag)
     {
-        if (TryGetStash(contextBag, out _))
+        while (true)
         {
-            return true;
-        }
+            if (TryGetStash(contextBag))
+            {
+                return true;
+            }
 
-        if (TryGetParentBag(contextBag, out var parent))
-        {
-            return HasContent(parent);
-        }
+            if (TryGetParentBag(contextBag, out var parent))
+            {
+                contextBag = parent;
+                continue;
+            }
 
-        return false;
+            return false;
+        }
     }
 
-    static bool TryGetStash(object value, out Dictionary<string, object> stash)
+    static bool TryGetStash(object value)
     {
-        stash = (Dictionary<string, object>) stashField.GetValue(value);
+        var stash = (Dictionary<string, object>) stashField.GetValue(value)!;
         if (stash.Any())
         {
             return true;
@@ -44,7 +48,7 @@ static class ContextBagHelper
          var current = (ContextBag?)value;
         do
         {
-            var stash = (Dictionary<string, object>) stashField.GetValue(current);
+            var stash = (Dictionary<string, object>) stashField.GetValue(current)!;
             foreach (var item in stash)
             {
                  yield return new(item.Key, item.Value);
