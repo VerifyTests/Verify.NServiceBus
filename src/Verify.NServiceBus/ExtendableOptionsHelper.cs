@@ -1,5 +1,4 @@
-﻿using NServiceBus;
-using NServiceBus.Extensibility;
+﻿using NServiceBus.Extensibility;
 
 static class ExtendableOptionsHelper
 {

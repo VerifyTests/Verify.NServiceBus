@@ -1,5 +1,4 @@
-﻿using NServiceBus;
-using NServiceBus.Extensibility;
+﻿using NServiceBus.Extensibility;
 
 class ExtendableOptionsConverter :
     WriteOnlyJsonConverter<ExtendableOptions>

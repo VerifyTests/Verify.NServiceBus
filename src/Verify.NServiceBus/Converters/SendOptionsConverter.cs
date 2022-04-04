@@ -1,6 +1,4 @@
-﻿using NServiceBus;
-
-class SendOptionsConverter :
+﻿class SendOptionsConverter :
     WriteOnlyJsonConverter<SendOptions>
 {
     public override void Write(VerifyJsonWriter writer, SendOptions options)

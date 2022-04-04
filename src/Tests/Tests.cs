@@ -42,7 +42,7 @@ public class Tests
     public Task ExtraState()
     {
         var context = new TestableAuditContext();
-        context.AddedAuditData.Add("Key", "Value");
+        context.AuditMetadata.Add("Key", "Value");
         context.Extensions.Set("key", "value");
         return Verify(
             new
@@ -59,7 +59,7 @@ public class Tests
     public Task AuditContext()
     {
         var context = new TestableAuditContext();
-        context.AddedAuditData.Add("Key", "Value");
+        context.AuditMetadata.Add("Key", "Value");
         context.Extensions.Set("key", "value");
         return Verify(context);
     }
@@ -108,20 +108,6 @@ public class Tests
             });
         context.Extensions.Set("key", "value");
         await Verify(context);
-    }
-
-    [Fact]
-    public Task ForwardingContext()
-    {
-#pragma warning disable CS0618
-        var context = new TestableForwardingContext
-#pragma warning restore CS0618
-        {
-            Address = "The address",
-            Message = BuildOutgoingMessage()
-        };
-        context.Extensions.Set("key", "value");
-        return Verify(context);
     }
 
     [Fact]
@@ -361,7 +347,7 @@ public class Tests
     static TransportOperation BuildTransportOperation()
     {
         var outgoingMessage = BuildOutgoingMessage();
-        return new(outgoingMessage,
+        return new TransportOperation(outgoingMessage,
             new UnicastAddressTag("destination"),
             DispatchConsistency.Isolated,
             new() {new DelayDeliveryWith(TimeSpan.FromDays(1))});
