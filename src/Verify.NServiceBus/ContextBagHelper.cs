@@ -35,17 +35,12 @@ static class ContextBagHelper
     static bool TryGetStash(object value)
     {
         var stash = (Dictionary<string, object>) stashField.GetValue(value)!;
-        if (stash.Any())
-        {
-            return true;
-        }
-
-        return false;
+        return stash.Any();
     }
 
     public static IEnumerable<KeyValuePair<string, object>> GetValues(this ContextBag value)
     {
-         var current = (ContextBag?)value;
+        var current = (ContextBag?)value;
         do
         {
             var stash = (Dictionary<string, object>) stashField.GetValue(current)!;
