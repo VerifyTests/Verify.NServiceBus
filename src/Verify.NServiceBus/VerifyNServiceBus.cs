@@ -16,9 +16,9 @@ public static class VerifyNServiceBus
         }
         VerifierSettings.ModifySerialization(settings =>
         {
-            settings.IgnoreMember<TestableInvokeHandlerContext>(x => x.MessageHeaders);
+            settings.IgnoreMember<TestableMessageProcessingContext>(x => x.MessageHeaders);
             settings.IgnoreMember<TestableInvokeHandlerContext>(x => x.Headers);
-            settings.IgnoreMember<TestableInvokeHandlerContext>(x => x.MessageId);
+            settings.IgnoreMember<TestableMessageProcessingContext>(x => x.MessageId);
             settings.IgnoreMember<TestableInvokeHandlerContext>(x => x.MessageHandler);
             settings.IgnoreMember<TestableInvokeHandlerContext>(x => x.MessageBeingHandled);
             settings.IgnoreMember<TestableInvokeHandlerContext>(x => x.MessageMetadata);
