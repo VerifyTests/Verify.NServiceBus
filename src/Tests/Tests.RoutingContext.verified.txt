@@ -1,6 +1,9 @@
-{
+﻿{
   Message: {
-    Body: AQ==,
+    Body: {
+      Length: 1,
+      IsEmpty: false
+    },
     MessageId: MessageId,
     Headers: {
       key: value

@@ -1,6 +1,4 @@
-﻿using NServiceBus;
-using NServiceBus.Extensibility;
-using NServiceBus.ObjectBuilder;
+﻿using NServiceBus.Extensibility;
 using NServiceBus.Testing;
 using VerifyTests.NServiceBus;
 
@@ -27,7 +25,6 @@ public static class VerifyNServiceBus
         VerifierSettings.IgnoreMember<TestableOutgoingPhysicalMessageContext>(x => x.RoutingStrategies);
         VerifierSettings.IgnoreMember<TestableRoutingContext>(x => x.RoutingStrategies);
         VerifierSettings.IgnoreInstance<ContextBag>(x => !ContextBagHelper.HasContent(x));
-        VerifierSettings.IgnoreMembersWithType<IBuilder>();
         VerifierSettings.AddExtraSettings(serializerSettings =>
         {
             var converters = serializerSettings.Converters;

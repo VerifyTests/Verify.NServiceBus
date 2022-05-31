@@ -1,12 +1,16 @@
 ﻿{
   context: {
-    AddedAuditData: {
-      Key: Value
-    },
-    AuditAddress: audit queue address,
+    AuditAddress: audit-queue-address,
     Message: {
+      Body: {
+        IsEmpty: true
+      },
       MessageId: Guid_1
     },
+    AuditMetadata: {
+      Key: Value
+    },
+    IsLocked: false,
     Extensions: {
       key: value
     }
