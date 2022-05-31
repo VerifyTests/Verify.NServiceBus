@@ -1,5 +1,7 @@
 ﻿{
   context: {
+    DoNotContinueDispatchingCurrentMessageToHandlersWasCalled: false,
+    HandlerInvocationAborted: false,
     Extensions: {
       key: value
     }
