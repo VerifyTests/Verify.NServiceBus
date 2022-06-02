@@ -1,6 +1,4 @@
 ﻿{
-  DoNotContinueDispatchingCurrentMessageToHandlersWasCalled: false,
-  HandlerInvocationAborted: false,
   RepliedMessages: [
     {
       MyReplyMessage: {

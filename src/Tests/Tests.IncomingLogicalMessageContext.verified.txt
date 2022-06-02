@@ -11,7 +11,6 @@
   Headers: {
     Key: Value
   },
-  MessageHandled: false,
   Extensions: {
     key: value
   }
