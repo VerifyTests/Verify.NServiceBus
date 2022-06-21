@@ -94,8 +94,6 @@ The resulting context verification file is as follows:
 <a id='snippet-HandlerTests.VerifyHandlerResult.verified.txt'></a>
 ```txt
 {
-  DoNotContinueDispatchingCurrentMessageToHandlersWasCalled: false,
-  HandlerInvocationAborted: false,
   RepliedMessages: [
     {
       MyReplyMessage: {
@@ -125,7 +123,7 @@ The resulting context verification file is as follows:
   ]
 }
 ```
-<sup><a href='/src/Tests/Snippets/HandlerTests.VerifyHandlerResult.verified.txt#L1-L31' title='Snippet source file'>snippet source</a> | <a href='#snippet-HandlerTests.VerifyHandlerResult.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/HandlerTests.VerifyHandlerResult.verified.txt#L1-L29' title='Snippet source file'>snippet source</a> | <a href='#snippet-HandlerTests.VerifyHandlerResult.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -201,8 +199,6 @@ The resulting context verification file is as follows:
 ```txt
 {
   context: {
-    DoNotContinueDispatchingCurrentMessageToHandlersWasCalled: false,
-    HandlerInvocationAborted: false,
     PublishedMessages: [
       {
         MyPublishMessage: {
@@ -216,7 +212,7 @@ The resulting context verification file is as follows:
   }
 }
 ```
-<sup><a href='/src/Tests/Snippets/SagaTests.VerifySagaResult.verified.txt#L1-L16' title='Snippet source file'>snippet source</a> | <a href='#snippet-SagaTests.VerifySagaResult.verified.txt' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/SagaTests.VerifySagaResult.verified.txt#L1-L14' title='Snippet source file'>snippet source</a> | <a href='#snippet-SagaTests.VerifySagaResult.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
