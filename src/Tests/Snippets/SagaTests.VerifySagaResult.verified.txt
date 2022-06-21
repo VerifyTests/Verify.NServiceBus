@@ -1,5 +1,7 @@
 ﻿{
   context: {
+    DoNotContinueDispatchingCurrentMessageToHandlersWasCalled: false,
+    HandlerInvocationAborted: false,
     PublishedMessages: [
       {
         MyPublishMessage: {
