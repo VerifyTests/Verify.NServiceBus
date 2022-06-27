@@ -2,7 +2,10 @@
   Operations: [
     {
       Message: {
-        Body: AQ==,
+        Body: {
+          Length: 1,
+          IsEmpty: false
+        },
         MessageId: MessageId,
         Headers: {
           key: value
@@ -11,11 +14,9 @@
       AddressTag: {
         Destination: destination
       },
-      DeliveryConstraints: [
-        {
-          Delay: 1.00:00:00
-        }
-      ],
+      Properties: {
+        DelayDeliveryFor: 1.00:00:00
+      },
       RequiredDispatchConsistency: Isolated
     }
   ],

@@ -1,5 +1,8 @@
 ﻿{
-  Body: AQ==,
+  Body: {
+    Length: 1,
+    IsEmpty: false
+  },
   MessageId: Guid_1,
   Extensions: {
     key: value

@@ -6,7 +6,10 @@
       key: value,
       NServiceBus.MessageId: MessageId
     },
-    Body: AQ==
+    Body: {
+      Length: 1,
+      IsEmpty: false
+    }
   },
   Extensions: {
     key: value

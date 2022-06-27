@@ -1,6 +1,4 @@
-﻿using NServiceBus;
-
-namespace VerifyTests.NServiceBus;
+﻿namespace VerifyTests.NServiceBus;
 
 public class MessageToHandlerMap
 {

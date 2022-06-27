@@ -1,6 +1,4 @@
 ﻿using NServiceBus;
-using NServiceBus.DelayedDelivery;
-using NServiceBus.DeliveryConstraints;
 using NServiceBus.Logging;
 using NServiceBus.Pipeline;
 using NServiceBus.Routing;
@@ -42,7 +40,7 @@ public class Tests
     public Task ExtraState()
     {
         var context = new TestableAuditContext();
-        context.AddedAuditData.Add("Key", "Value");
+        context.AuditMetadata.Add("Key", "Value");
         context.Extensions.Set("key", "value");
         return Verify(
             new
@@ -59,7 +57,7 @@ public class Tests
     public Task AuditContext()
     {
         var context = new TestableAuditContext();
-        context.AddedAuditData.Add("Key", "Value");
+        context.AuditMetadata.Add("Key", "Value");
         context.Extensions.Set("key", "value");
         return Verify(context);
     }
@@ -77,7 +75,6 @@ public class Tests
     public Task BehaviorContext()
     {
         var context = new TestableBehaviorContextImp();
-        context.Extensions.AddDeliveryConstraint(new DelayDeliveryWith(TimeSpan.FromDays(1)));
         context.Extensions.Set("key", "value");
         return Verify(context);
     }
@@ -106,22 +103,7 @@ public class Tests
             {
                 Property = "Value"
             });
-        context.Extensions.Set("key", "value");
         await Verify(context);
-    }
-
-    [Fact]
-    public Task ForwardingContext()
-    {
-#pragma warning disable CS0618
-        var context = new TestableForwardingContext
-#pragma warning restore CS0618
-        {
-            Address = "The address",
-            Message = BuildOutgoingMessage()
-        };
-        context.Extensions.Set("key", "value");
-        return Verify(context);
     }
 
     [Fact]
@@ -190,7 +172,6 @@ public class Tests
         var unsubscribeOptions = new UnsubscribeOptions();
         unsubscribeOptions.RequireImmediateDispatch();
         await context.Unsubscribe(typeof(MyMessage), unsubscribeOptions);
-        context.Extensions.Set("key", "value");
         await Verify(context);
     }
 
@@ -358,14 +339,14 @@ public class Tests
         return Verify(context);
     }
 
-    static TransportOperation BuildTransportOperation()
-    {
-        var outgoingMessage = BuildOutgoingMessage();
-        return new(outgoingMessage,
+    static TransportOperation BuildTransportOperation() =>
+        new(BuildOutgoingMessage(),
             new UnicastAddressTag("destination"),
-            DispatchConsistency.Isolated,
-            new() {new DelayDeliveryWith(TimeSpan.FromDays(1))});
-    }
+            new()
+            {
+                DelayDeliveryWith = new(TimeSpan.FromDays(1))
+            },
+            DispatchConsistency.Isolated);
 
     static OutgoingMessage BuildOutgoingMessage() =>
         new("MessageId", new() {{"key", "value"}}, new byte[] {1});
