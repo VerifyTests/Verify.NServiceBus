@@ -7,11 +7,11 @@ class UnsubscriptionConverter :
     {
         writer.WriteStartObject();
 
-        writer.WriteProperty(unsubscription, unsubscription.Message, "MessageType");
+        writer.WriteMember(unsubscription, unsubscription.Message, "MessageType");
         var options = unsubscription.Options;
         if (options.HasValue())
         {
-            writer.WriteProperty(unsubscription, options, "Options");
+            writer.WriteMember(unsubscription, options, "Options");
         }
 
         writer.WriteEndObject();

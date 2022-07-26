@@ -13,7 +13,7 @@ class ContextBagConverter :
             {
                 continue;
             }
-            writer.WriteProperty(bag, pair.Value, pair.Key);
+            writer.WriteMember(bag, pair.Value, pair.Key);
         }
         writer.WriteEndObject();
     }

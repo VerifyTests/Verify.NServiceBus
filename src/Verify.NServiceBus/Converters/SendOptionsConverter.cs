@@ -6,9 +6,9 @@
         writer.WriteStartObject();
 
         var deliveryDate = options.GetDeliveryDate();
-        writer.WriteProperty(options, deliveryDate, "DeliveryDate");
+        writer.WriteMember(options, deliveryDate, "DeliveryDate");
         var deliveryDelay = options.GetDeliveryDelay();
-        writer.WriteProperty(options, deliveryDelay, "DeliveryDelay");
+        writer.WriteMember(options, deliveryDelay, "DeliveryDelay");
 
         ExtendableOptionsConverter.WriteBaseMembers(writer, options);
 

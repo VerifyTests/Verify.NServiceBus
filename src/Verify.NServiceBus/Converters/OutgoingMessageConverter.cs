@@ -18,12 +18,12 @@ class OutgoingMessageConverter :
         var type = message.GetType();
 
         var name = type.SimpleName();
-        writer.WriteProperty(value, message, name);
+        writer.WriteMember(value, message, name);
 
         var options = OutgoingMessageHelper.GetOptions(value);
         if (options.HasValue())
         {
-            writer.WriteProperty(value, options, "Options");
+            writer.WriteMember(value, options, "Options");
         }
     }
 
