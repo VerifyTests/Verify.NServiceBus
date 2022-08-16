@@ -1,7 +1,4 @@
-﻿using NServiceBus.Extensibility;
-using NServiceBus.Transport;
-
-class ContextBagConverter :
+﻿class ContextBagConverter :
     WriteOnlyJsonConverter<ContextBag>
 {
     public override void Write(VerifyJsonWriter writer, ContextBag bag)

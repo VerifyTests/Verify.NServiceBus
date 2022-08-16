@@ -1,6 +1,4 @@
-﻿using NServiceBus.Testing;
-
-[UsesVerify]
+﻿[UsesVerify]
 public class HandlerTests
 {
     #region HandlerTest

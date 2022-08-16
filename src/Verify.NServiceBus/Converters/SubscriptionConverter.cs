@@ -1,6 +1,4 @@
-﻿using NServiceBus.Testing;
-
-class SubscriptionConverter :
+﻿class SubscriptionConverter :
     WriteOnlyJsonConverter<Subscription>
 {
     public override void Write(VerifyJsonWriter writer, Subscription subscription)

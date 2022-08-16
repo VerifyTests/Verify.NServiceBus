@@ -1,6 +1,4 @@
-﻿using NServiceBus;
-
-public class MyHandlerV2 :
+﻿public class MyHandlerV2 :
     IHandleMessages<MyRequest>
 {
     public async Task Handle(MyRequest message, IMessageHandlerContext context)

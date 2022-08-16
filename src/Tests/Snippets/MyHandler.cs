@@ -1,6 +1,4 @@
-﻿using NServiceBus;
-
-#region SimpleHandler
+﻿#region SimpleHandler
 
 public class MyHandler :
     IHandleMessages<MyRequest>

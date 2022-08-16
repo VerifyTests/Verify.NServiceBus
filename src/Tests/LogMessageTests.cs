@@ -1,7 +1,4 @@
-﻿using NServiceBus.Logging;
-using VerifyTests.NServiceBus;
-
-[UsesVerify]
+﻿[UsesVerify]
 public class LogMessageTests
 {
     [Fact]

@@ -1,8 +1,4 @@
-﻿using NServiceBus.Extensibility;
-using NServiceBus.Testing;
-using VerifyTests.NServiceBus;
-
-namespace VerifyTests;
+﻿namespace VerifyTests;
 
 public static class VerifyNServiceBus
 {

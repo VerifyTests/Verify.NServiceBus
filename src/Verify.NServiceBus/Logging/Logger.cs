@@ -1,7 +1,4 @@
-﻿using NServiceBus.Logging;
-using VerifyTests.NServiceBus;
-
-class Logger :
+﻿class Logger :
     LoggingFactoryDefinition,
     ILoggerFactory,
     ILog

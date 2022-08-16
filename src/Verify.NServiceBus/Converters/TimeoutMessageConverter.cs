@@ -1,6 +1,4 @@
-﻿using NServiceBus.Testing;
-
-class TimeoutMessageConverter :
+﻿class TimeoutMessageConverter :
     WriteOnlyJsonConverter
 {
     public override void Write(VerifyJsonWriter writer, object value)

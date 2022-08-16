@@ -1,6 +1,4 @@
-﻿using NServiceBus.Testing;
-
-class UnsubscriptionConverter :
+﻿class UnsubscriptionConverter :
     WriteOnlyJsonConverter<Unsubscription>
 {
     public override void Write(VerifyJsonWriter writer, Unsubscription unsubscription)

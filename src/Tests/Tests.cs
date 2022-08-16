@@ -1,12 +1,4 @@
-﻿using NServiceBus;
-using NServiceBus.Logging;
-using NServiceBus.Pipeline;
-using NServiceBus.Routing;
-using NServiceBus.Testing;
-using NServiceBus.Transport;
-using VerifyTests.NServiceBus;
-
-[UsesVerify]
+﻿[UsesVerify]
 public class Tests
 {
     [Fact]

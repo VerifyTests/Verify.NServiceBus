@@ -1,7 +1,4 @@
-﻿using NServiceBus;
-using VerifyTests.NServiceBus;
-
-[UsesVerify]
+﻿[UsesVerify]
 public class MessageToHandlerMapTests
 {
     [Fact]

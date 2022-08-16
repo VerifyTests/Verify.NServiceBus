@@ -1,7 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using NServiceBus.Extensibility;
-
-static class ContextBagHelper
+﻿static class ContextBagHelper
 {
     static FieldInfo stashField;
     static FieldInfo parentBagField;

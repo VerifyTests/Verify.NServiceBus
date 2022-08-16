@@ -1,6 +1,4 @@
-﻿using VerifyTests.NServiceBus;
-
-class MessageToHandlerMapConverter :
+﻿class MessageToHandlerMapConverter :
     WriteOnlyJsonConverter<MessageToHandlerMap>
 {
     public override void Write(VerifyJsonWriter writer, MessageToHandlerMap map)

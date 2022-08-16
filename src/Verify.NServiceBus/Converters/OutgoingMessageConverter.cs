@@ -1,5 +1,4 @@
-﻿using NServiceBus.Testing;
-using SimpleInfoName;
+﻿using SimpleInfoName;
 
 class OutgoingMessageConverter :
     WriteOnlyJsonConverter

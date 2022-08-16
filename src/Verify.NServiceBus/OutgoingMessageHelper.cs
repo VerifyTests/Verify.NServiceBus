@@ -1,6 +1,4 @@
-﻿using NServiceBus.Extensibility;
-
-static class OutgoingMessageHelper
+﻿static class OutgoingMessageHelper
 {
     static BindingFlags bindingFlags = BindingFlags.Instance | BindingFlags.Public;
 

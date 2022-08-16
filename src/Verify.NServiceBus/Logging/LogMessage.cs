@@ -1,6 +1,4 @@
-﻿using NServiceBus.Logging;
-
-namespace VerifyTests.NServiceBus;
+﻿namespace VerifyTests.NServiceBus;
 
 public class LogMessage
 {

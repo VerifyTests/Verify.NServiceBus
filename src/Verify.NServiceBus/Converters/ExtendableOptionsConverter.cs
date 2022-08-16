@@ -1,6 +1,4 @@
-﻿using NServiceBus.Extensibility;
-
-class ExtendableOptionsConverter :
+﻿class ExtendableOptionsConverter :
     WriteOnlyJsonConverter<ExtendableOptions>
 {
     public override void Write(VerifyJsonWriter writer, ExtendableOptions options)

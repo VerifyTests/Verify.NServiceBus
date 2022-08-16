@@ -1,6 +1,4 @@
-﻿using NServiceBus.Extensibility;
-
-static class ExtendableOptionsHelper
+﻿static class ExtendableOptionsHelper
 {
     public static Dictionary<string, string> GetCleanedHeaders(this ExtendableOptions options)
     {
@@ -8,10 +6,12 @@ static class ExtendableOptionsHelper
         foreach (var header in options.GetHeaders())
         {
             var key = header.Key;
+
             if (key.StartsWith("NServiceBus."))
             {
-                key = key.Substring(12);
+                key = key[12..];
             }
+
             if (header.Key == Headers.SagaType)
             {
                 dictionary.Add(key, Type.GetType(header.Value, throwOnError: true)!.FullName!);
