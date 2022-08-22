@@ -9,7 +9,7 @@ class MessageToHandlerMapConverter :
             .Except(map.HandledMessages)
             .ToList();
         writer.WriteStartObject();
-        writer.WriteProperty(map, withNoHandler, "MessagesWithNoHandler");
+        writer.WriteMember(map, withNoHandler, "MessagesWithNoHandler");
         writer.WriteEndObject();
     }
 }

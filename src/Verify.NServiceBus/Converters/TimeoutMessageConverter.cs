@@ -8,10 +8,10 @@ class TimeoutMessageConverter :
         writer.WriteStartObject();
 
         var at = OutgoingMessageHelper.GetAt(value);
-        writer.WriteProperty(value, at, "At");
+        writer.WriteMember(value, at, "At");
 
         var within = OutgoingMessageHelper.GetWithin(value);
-        writer.WriteProperty(value, within, "Within");
+        writer.WriteMember(value, within, "Within");
 
         OutgoingMessageConverter.WriteBaseMembers(writer, value);
 

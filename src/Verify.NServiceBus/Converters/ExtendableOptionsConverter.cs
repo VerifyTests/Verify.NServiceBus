@@ -14,17 +14,17 @@ class ExtendableOptionsConverter :
     public static void WriteBaseMembers(VerifyJsonWriter writer, ExtendableOptions options)
     {
         var messageId = options.GetMessageId();
-        writer.WriteProperty(options, messageId, "MessageId");
+        writer.WriteMember(options, messageId, "MessageId");
 
         var headers = options.GetCleanedHeaders();
-        writer.WriteProperty(options, headers, "Headers");
+        writer.WriteMember(options, headers, "Headers");
 
         var extensions = options.GetExtensions();
         if (extensions is not null)
         {
             if (ContextBagHelper.HasContent(extensions))
             {
-                writer.WriteProperty(options, extensions, "Extensions");
+                writer.WriteMember(options, extensions, "Extensions");
             }
         }
     }

@@ -18,14 +18,21 @@ Before any test have run call:
 <!-- snippet: ModuleInitializer.cs -->
 <a id='snippet-ModuleInitializer.cs'></a>
 ```cs
+using NServiceBus.Testing;
+
 public static class ModuleInitializer
 {
     [ModuleInitializer]
-    public static void Initialize() =>
+    public static void Initialize()
+    {
         VerifyNServiceBus.Enable();
+        VerifierSettings.IgnoreMembers<TestableInvokeHandlerContext>(
+            _ => _.DoNotContinueDispatchingCurrentMessageToHandlersWasCalled,
+            _ => _.HandlerInvocationAborted);
+    }
 }
 ```
-<sup><a href='/src/Tests/ModuleInitializer.cs#L1-L6' title='Snippet source file'>snippet source</a> | <a href='#snippet-ModuleInitializer.cs' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/ModuleInitializer.cs#L1-L13' title='Snippet source file'>snippet source</a> | <a href='#snippet-ModuleInitializer.cs' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
