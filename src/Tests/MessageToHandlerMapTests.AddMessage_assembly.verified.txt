@@ -1,4 +1,4 @@
-{
+﻿{
   Messages: [
     MessageToHandlerMapTests.MyMessage,
     MessageToHandlerMapTests.MessageWithNoHandler

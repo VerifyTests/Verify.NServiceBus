@@ -1,1 +1,1 @@
-foo bar
+﻿foo bar
