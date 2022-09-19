@@ -1,4 +1,6 @@
-﻿public static class ModuleInitializer
+﻿using NServiceBus.Testing;
+
+public static class ModuleInitializer
 {
     #region enable
 
@@ -10,5 +12,8 @@
         #endregion
 
         VerifyDiffPlex.Initialize();
+        VerifierSettings.IgnoreMembers<TestableInvokeHandlerContext>(
+            _ => _.DoNotContinueDispatchingCurrentMessageToHandlersWasCalled,
+            _ => _.HandlerInvocationAborted);
     }
 }
