@@ -1,6 +1,4 @@
-﻿using NServiceBus.Testing;
-
-public static class ModuleInitializer
+﻿public static class ModuleInitializer
 {
     #region enable
 
