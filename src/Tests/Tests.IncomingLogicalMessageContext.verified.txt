@@ -1,10 +1,6 @@
 ﻿{
   Message: {
     MessageType: MyMessage,
-    Metadata: {
-      MessageType: MyMessage,
-      MessageHierarchySerialized: 
-    },
     Instance: {
       Property: Value
     }
