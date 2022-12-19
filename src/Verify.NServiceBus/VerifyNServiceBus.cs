@@ -6,6 +6,7 @@ public static class VerifyNServiceBus
 {
     public static void Enable(bool captureLogs = true)
     {
+        InnerVerifier.ThrowIfVerifyHasBeenRun();
         if (captureLogs)
         {
             LogCapture.Initialize();
