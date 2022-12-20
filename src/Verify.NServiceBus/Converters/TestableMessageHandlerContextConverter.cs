@@ -6,74 +6,14 @@ class TestableMessageHandlerContextConverter :
         writer.WriteStartObject();
 
         var headers = ExtendableOptionsHelper.CleanedHeaders(context.Headers);
-        if (headers.Count == 1)
-        {
-            writer.WriteMember(context, headers.Single(), "Headers");
-        }
-        else
-        {
-            writer.WriteMember(context, headers, "Headers");
-        }
-
+        writer.WriteListOrSingleMember(context, headers, "Headers");
         var messageHeaders = ExtendableOptionsHelper.CleanedHeaders(context.MessageHeaders);
-        if (messageHeaders.Count == 1)
-        {
-            writer.WriteMember(context, messageHeaders.Single(), "MessageHeaders");
-        }
-        else
-        {
-            writer.WriteMember(context, messageHeaders, "MessageHeaders");
-        }
-
-        var published = context.PublishedMessages;
-        if (published.Length == 1)
-        {
-            writer.WriteMember(context, published.Single(), "Published");
-        }
-        else
-        {
-            writer.WriteMember(context, published, "Published");
-        }
-
-        var replied = context.RepliedMessages;
-        if (replied.Length == 1)
-        {
-            writer.WriteMember(context, replied.Single(), "Replied");
-        }
-        else
-        {
-            writer.WriteMember(context, replied, "Replied");
-        }
-
-        var sent = context.SentMessages;
-        if (sent.Length == 1)
-        {
-            writer.WriteMember(context, sent.Single(), "Sent");
-        }
-        else
-        {
-            writer.WriteMember(context, sent, "Sent");
-        }
-
-        var forwarded = context.ForwardedMessages;
-        if (forwarded.Length == 1)
-        {
-            writer.WriteMember(context, forwarded.Single(), "Forwarded");
-        }
-        else
-        {
-            writer.WriteMember(context, forwarded, "Forwarded");
-        }
-
-        var timeouts = context.TimeoutMessages;
-        if (timeouts.Length == 1)
-        {
-            writer.WriteMember(context, timeouts.Single(), "Timeouts");
-        }
-        else
-        {
-            writer.WriteMember(context, timeouts, "Timeouts");
-        }
+        writer.WriteListOrSingleMember(context, messageHeaders, "MessageHeaders");
+        writer.WriteListOrSingleMember(context, context.PublishedMessages, "Published");
+        writer.WriteListOrSingleMember(context, context.RepliedMessages, "Replied");
+        writer.WriteListOrSingleMember(context, context.SentMessages, "Sent");
+        writer.WriteListOrSingleMember(context, context.ForwardedMessages, "Forwarded");
+        writer.WriteListOrSingleMember(context, context.TimeoutMessages, "Timeouts");
 
         writer.WriteMember(context, context.Extensions, "Extensions");
 
