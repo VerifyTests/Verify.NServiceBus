@@ -1,0 +1,23 @@
+﻿{
+  RepliedMessages: [
+    {
+      TestHandlerContextTests.MyCommand: {}
+    }
+  ],
+  ForwardedMessages: [
+    forward-destination
+  ],
+  SentMessages: [
+    {
+      TestHandlerContextTests.MyCommand: {}
+    }
+  ],
+  PublishedMessages: [
+    {
+      TestHandlerContextTests.MyEvent: {}
+    }
+  ],
+  Extensions: {
+    ExtensionKey: Value
+  }
+}
