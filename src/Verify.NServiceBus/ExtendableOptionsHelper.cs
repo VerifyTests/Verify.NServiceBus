@@ -1,9 +1,12 @@
 ﻿static class ExtendableOptionsHelper
 {
-    public static Dictionary<string, string> GetCleanedHeaders(this ExtendableOptions options)
+    public static Dictionary<string, string> GetCleanedHeaders(this ExtendableOptions options) =>
+        CleanedHeaders(options.GetHeaders());
+
+    public static Dictionary<string, string> CleanedHeaders(IEnumerable<KeyValuePair<string, string>> headers)
     {
         var dictionary = new Dictionary<string, string>();
-        foreach (var header in options.GetHeaders())
+        foreach (var header in headers)
         {
             var key = header.Key;
 
