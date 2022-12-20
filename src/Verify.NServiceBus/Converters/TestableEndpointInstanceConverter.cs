@@ -5,11 +5,11 @@ class TestableEndpointInstanceConverter :
     {
         writer.WriteStartObject();
 
-        writer.WriteMember(instance, instance.Subscriptions, "Subscriptions");
-        writer.WriteMember(instance, instance.Unsubscription, "Unsubscription");
-        writer.WriteMember(instance, instance.PublishedMessages, "PublishedMessages");
-        writer.WriteMember(instance, instance.SentMessages, "SentMessages");
-        writer.WriteMember(instance, instance.TimeoutMessages, "TimeoutMessages");
+        writer.WriteListOrSingleMember(instance, instance.Subscriptions, "Subscriptions");
+        writer.WriteListOrSingleMember(instance, instance.Unsubscription, "Unsubscription");
+        writer.WriteListOrSingleMember(instance, instance.PublishedMessages, "PublishedMessages");
+        writer.WriteListOrSingleMember(instance, instance.SentMessages, "SentMessages");
+        writer.WriteListOrSingleMember(instance, instance.TimeoutMessages, "TimeoutMessages");
 
         writer.WriteEndObject();
     }

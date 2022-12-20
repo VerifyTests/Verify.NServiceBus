@@ -14,7 +14,7 @@
         writer.WriteMember(options, messageId, "MessageId");
 
         var headers = options.GetCleanedHeaders();
-        writer.WriteMember(options, headers, "Headers");
+        writer.WriteListOrSingleMember(options, headers, "Headers");
 
         var extensions = options.GetExtensions();
         if (extensions is not null)
