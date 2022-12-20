@@ -1,8 +1,8 @@
 ﻿static class Extensions
 {
-    public static void WriteListOrSingleMember<T>(this VerifyJsonWriter writer, object target, IEnumerable<T> value, string name)
+    public static void WriteListOrSingleMember<T>(this VerifyJsonWriter writer, object target, IReadOnlyCollection<T> value, string name)
     {
-        if (value.Count() == 1)
+        if (value.Count == 1)
         {
             writer.WriteMember(target, value.Single(), name);
         }
