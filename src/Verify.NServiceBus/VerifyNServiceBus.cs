@@ -13,9 +13,6 @@ public static class VerifyNServiceBus
         VerifierSettings.IgnoreMember<TestableMessageProcessingContext>(x => x.MessageHeaders);
         VerifierSettings.IgnoreMember<TestableInvokeHandlerContext>(x => x.Headers);
         VerifierSettings.IgnoreMember<TestableMessageProcessingContext>(x => x.MessageId);
-        VerifierSettings.IgnoreMember<TestableInvokeHandlerContext>(x => x.MessageHandler);
-        VerifierSettings.IgnoreMember<TestableInvokeHandlerContext>(x => x.MessageBeingHandled);
-        VerifierSettings.IgnoreMember<TestableInvokeHandlerContext>(x => x.MessageMetadata);
         VerifierSettings.IgnoreMember<IMessageProcessingContext>(x => x.ReplyToAddress);
         VerifierSettings.IgnoreMember<TestableOutgoingLogicalMessageContext>(x => x.RoutingStrategies);
         VerifierSettings.IgnoreMember<TestableOutgoingPhysicalMessageContext>(x => x.RoutingStrategies);
@@ -26,6 +23,7 @@ public static class VerifyNServiceBus
             var converters = serializerSettings.Converters;
             converters.Add(new ContextBagConverter());
             converters.Add(new TestableEndpointInstanceConverter());
+            converters.Add(new TestableInvokeHandlerContextConverter());
             converters.Add(new TestableMessageHandlerContextConverter());
             converters.Add(new LogicalMessageConverter());
             converters.Add(new SendOptionsConverter());

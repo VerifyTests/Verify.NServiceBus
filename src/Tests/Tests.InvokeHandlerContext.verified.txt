@@ -1,9 +1,7 @@
 ﻿{
-  SentMessages: [
-    {
-      MyMessage: {}
-    }
-  ],
+  Sent: {
+    MyMessage: {}
+  },
   Extensions: {
     key: value
   }
