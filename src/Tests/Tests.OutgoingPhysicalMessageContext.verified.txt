@@ -1,9 +1,9 @@
 ﻿{
+  MessageId: Guid_1,
   Body: {
     Length: 1,
     IsEmpty: false
   },
-  MessageId: Guid_1,
   Extensions: {
     key: value
   }

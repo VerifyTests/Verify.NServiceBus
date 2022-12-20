@@ -1,28 +1,23 @@
 ﻿{
-  RepliedMessages: [
-    {
-      ReplyMessage: {
-        Property: Value
-      }
+  MessageHeaders: {
+    Key: Value
+  },
+  Published: {
+    PublishMessage: {
+      Property: Value
     }
-  ],
-  ForwardedMessages: [
-    newDestination
-  ],
-  SentMessages: [
-    {
-      SendMessage: {
-        Property: Value
-      }
+  },
+  Replied: {
+    ReplyMessage: {
+      Property: Value
     }
-  ],
-  PublishedMessages: [
-    {
-      PublishMessage: {
-        Property: Value
-      }
+  },
+  Sent: {
+    SendMessage: {
+      Property: Value
     }
-  ],
+  },
+  Forwarded: newDestination,
   Extensions: {
     key: value
   }

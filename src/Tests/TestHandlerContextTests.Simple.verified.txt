@@ -1,4 +1,10 @@
 ﻿{
+  Headers: {
+    HeaderKey: Value
+  },
+  MessageHeaders: {
+    MessageHeaderKey: Value
+  },
   Published: {
     TestHandlerContextTests.MyEvent: {}
   },
