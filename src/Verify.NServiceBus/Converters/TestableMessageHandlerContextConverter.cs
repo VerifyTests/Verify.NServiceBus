@@ -15,6 +15,16 @@ class TestableMessageHandlerContextConverter :
         writer.WriteListOrSingleMember(context, context.ForwardedMessages, "Forwarded");
         writer.WriteListOrSingleMember(context, context.TimeoutMessages, "Timeouts");
 
+        if (context.DoNotContinueDispatchingCurrentMessageToHandlersWasCalled)
+        {
+            writer.WriteMember(context, true, "DoNotContinueDispatchingCurrentMessageToHandlersWasCalled");
+        }
+
+        if (context.HandlerInvocationAborted)
+        {
+            writer.WriteMember(context, true, "HandlerInvocationAborted");
+        }
+
         writer.WriteMember(context, context.Extensions, "Extensions");
 
         writer.WriteEndObject();

@@ -10,8 +10,5 @@
         #endregion
 
         VerifyDiffPlex.Initialize();
-        VerifierSettings.IgnoreMembers<TestableInvokeHandlerContext>(
-            _ => _.DoNotContinueDispatchingCurrentMessageToHandlersWasCalled,
-            _ => _.HandlerInvocationAborted);
     }
 }

@@ -16,6 +16,15 @@ class TestableInvokeHandlerContextConverter :
         writer.WriteListOrSingleMember(context, context.TimeoutMessages, "Timeouts");
 
         writer.WriteMember(context, context.Extensions, "Extensions");
+        if (context.DoNotContinueDispatchingCurrentMessageToHandlersWasCalled)
+        {
+            writer.WriteMember(context, true, "DoNotContinueDispatchingCurrentMessageToHandlersWasCalled");
+        }
+
+        if (context.HandlerInvocationAborted)
+        {
+            writer.WriteMember(context, true, "HandlerInvocationAborted");
+        }
 
         writer.WriteEndObject();
     }
