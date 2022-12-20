@@ -1,6 +1,4 @@
-﻿using NServiceBus.Pipeline;
-
-namespace VerifyTests;
+﻿namespace VerifyTests;
 
 public static class VerifyNServiceBus
 {
@@ -18,7 +16,6 @@ public static class VerifyNServiceBus
         VerifierSettings.IgnoreMember<TestableInvokeHandlerContext>(x => x.MessageHandler);
         VerifierSettings.IgnoreMember<TestableInvokeHandlerContext>(x => x.MessageBeingHandled);
         VerifierSettings.IgnoreMember<TestableInvokeHandlerContext>(x => x.MessageMetadata);
-        VerifierSettings.IgnoreMember<LogicalMessage>(x => x.Metadata);
         VerifierSettings.IgnoreMember<IMessageProcessingContext>(x => x.ReplyToAddress);
         VerifierSettings.IgnoreMember<TestableEndpointInstance>(x => x.EndpointStopped);
         VerifierSettings.IgnoreMember<TestableOutgoingLogicalMessageContext>(x => x.RoutingStrategies);
@@ -30,6 +27,7 @@ public static class VerifyNServiceBus
             var converters = serializerSettings.Converters;
             converters.Add(new ContextBagConverter());
             converters.Add(new TestableMessageHandlerContextConverter());
+            converters.Add(new LogicalMessageConverter());
             converters.Add(new SendOptionsConverter());
             converters.Add(new ExtendableOptionsConverter());
             converters.Add(new UnsubscriptionConverter());
