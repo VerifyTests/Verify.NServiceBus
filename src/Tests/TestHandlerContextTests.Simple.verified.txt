@@ -1,22 +1,14 @@
 ﻿{
-  RepliedMessages: [
-    {
-      TestHandlerContextTests.MyCommand: {}
-    }
-  ],
-  ForwardedMessages: [
-    forward-destination
-  ],
-  SentMessages: [
-    {
-      TestHandlerContextTests.MyCommand: {}
-    }
-  ],
-  PublishedMessages: [
-    {
-      TestHandlerContextTests.MyEvent: {}
-    }
-  ],
+  Published: {
+    TestHandlerContextTests.MyEvent: {}
+  },
+  Replied: {
+    TestHandlerContextTests.MyCommand: {}
+  },
+  Sent: {
+    TestHandlerContextTests.MyCommand: {}
+  },
+  Forwarded: forward-destination,
   Extensions: {
     ExtensionKey: Value
   }

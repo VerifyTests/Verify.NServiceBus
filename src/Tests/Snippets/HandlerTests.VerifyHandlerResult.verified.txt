@@ -1,29 +1,21 @@
 ﻿{
-  RepliedMessages: [
-    {
-      MyReplyMessage: {
-        Property: Value
-      }
+  Published: {
+    MyPublishMessage: {
+      Property: Value
     }
-  ],
-  ForwardedMessages: [
-    newDestination
-  ],
-  SentMessages: [
-    {
-      MySendMessage: {
-        Property: Value
-      },
-      Options: {
-        DeliveryDelay: 12:00:00
-      }
+  },
+  Replied: {
+    MyReplyMessage: {
+      Property: Value
     }
-  ],
-  PublishedMessages: [
-    {
-      MyPublishMessage: {
-        Property: Value
-      }
+  },
+  Sent: {
+    MySendMessage: {
+      Property: Value
+    },
+    Options: {
+      DeliveryDelay: 12:00:00
     }
-  ]
+  },
+  Forwarded: newDestination
 }

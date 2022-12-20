@@ -65,6 +65,16 @@ class TestableMessageHandlerContextConverter :
             writer.WriteMember(context, forwarded, "Forwarded");
         }
 
+        var timeouts = context.TimeoutMessages;
+        if (timeouts.Length == 1)
+        {
+            writer.WriteMember(context, timeouts.Single(), "Timeouts");
+        }
+        else
+        {
+            writer.WriteMember(context, timeouts, "Timeouts");
+        }
+
         writer.WriteMember(context, context.Extensions, "Extensions");
 
         writer.WriteEndObject();
