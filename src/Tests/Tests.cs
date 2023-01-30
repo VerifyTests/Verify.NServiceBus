@@ -190,7 +190,7 @@ public class Tests
         await Verify(new
         {
             context,
-            saga.Data
+            saga
         });
     }
 

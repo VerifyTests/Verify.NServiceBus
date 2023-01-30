@@ -33,6 +33,7 @@ public static class VerifyNServiceBus
             converters.Add(new ExtendableOptionsConverter());
             converters.Add(new UnsubscriptionConverter());
             converters.Add(new TimeoutMessageConverter());
+            converters.Add(new SagaConverter());
             converters.Add(new MessageToHandlerMapConverter());
             converters.Add(new SubscriptionConverter());
             converters.Add(new OutgoingMessageConverter());
