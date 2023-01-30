@@ -202,7 +202,7 @@ The resulting context verification file is as follows:
       }
     ]
   },
-  Data: {
+  saga: {
     MessageCount: 1
   }
 }
