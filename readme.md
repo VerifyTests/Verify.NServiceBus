@@ -180,7 +180,7 @@ public async Task VerifySagaResult()
     await Verify(new
     {
         context,
-        saga.Data
+        saga
     });
 }
 ```

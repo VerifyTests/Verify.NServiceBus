@@ -18,7 +18,7 @@ public class SagaTests
         await Verify(new
         {
             context,
-            saga.Data
+            saga
         });
     }
 

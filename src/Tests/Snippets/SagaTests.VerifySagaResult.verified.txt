@@ -8,7 +8,7 @@
       }
     ]
   },
-  Data: {
+  saga: {
     MessageCount: 1
   }
 }
