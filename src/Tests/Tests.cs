@@ -193,6 +193,24 @@ public class Tests
             saga
         });
     }
+    [Fact]
+    public async Task CompletedSaga()
+    {
+        var saga = new MySaga
+        {
+            Data = new()
+        };
+        saga.MarkCompleted();
+        var context = new TestableMessageHandlerContext();
+
+        await saga.Handle(new(), context);
+
+        await Verify(new
+        {
+            context,
+            saga
+        });
+    }
 
     public class MySaga:
         NServiceBus.Saga<MySagaData>,
@@ -212,6 +230,9 @@ public class Tests
 
         public Task Timeout(MySagaMessage state, IMessageHandlerContext context) =>
             Task.CompletedTask;
+
+        public void MarkCompleted() =>
+            MarkAsComplete();
     }
 
     public class MySagaMessage

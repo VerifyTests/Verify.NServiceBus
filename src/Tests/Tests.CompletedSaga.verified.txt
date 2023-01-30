@@ -1,0 +1,52 @@
+﻿{
+  context: {
+    RepliedMessages: [
+      {
+        Tests.MySagaMessage: {}
+      }
+    ],
+    TimeoutMessages: [
+      {
+        Within: 01:00:00,
+        Tests.MySagaMessage: {},
+        Options: {
+          DeliveryDelay: 01:00:00,
+          Headers: {
+            IsSagaTimeoutMessage: True,
+            SagaId: Guid_Empty,
+            SagaType: Tests+MySaga
+          },
+          Extensions: {
+            NServiceBus.UnicastSendRouter+State: {
+              Option: RouteToAnyInstanceOfThisEndpoint
+            }
+          }
+        }
+      }
+    ],
+    SentMessages: [
+      {
+        Tests.MySagaMessage: {},
+        Options: {
+          DeliveryDelay: 01:00:00,
+          Headers: {
+            IsSagaTimeoutMessage: True,
+            SagaId: Guid_Empty,
+            SagaType: Tests+MySaga
+          },
+          Extensions: {
+            NServiceBus.UnicastSendRouter+State: {
+              Option: RouteToAnyInstanceOfThisEndpoint
+            }
+          }
+        }
+      }
+    ]
+  },
+  saga: {
+    Data: {
+      Member: the data
+    },
+    Completed: true
+  }
+}
