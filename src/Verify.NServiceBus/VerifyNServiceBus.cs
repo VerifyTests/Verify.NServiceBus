@@ -4,8 +4,19 @@ namespace VerifyTests;
 
 public static class VerifyNServiceBus
 {
-    public static void Enable(bool captureLogs = true)
+    [Obsolete("Use Initialize")]
+    public static void Enable(bool captureLogs = true) =>
+        Initialize(captureLogs);
+
+    public static bool Initialized { get; private set; }
+
+    public static void Initialize(bool captureLogs = true)
     {
+        if (Initialized)
+        {
+            throw new("Already Initialized");
+        }
+
         InnerVerifier.ThrowIfVerifyHasBeenRun();
         if (captureLogs)
         {

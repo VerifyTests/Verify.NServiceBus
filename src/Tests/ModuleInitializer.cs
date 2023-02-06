@@ -4,14 +4,14 @@
 
     [ModuleInitializer]
     public static void Initialize() =>
-        VerifyNServiceBus.Enable();
+        VerifyNServiceBus.Initialize();
 
     #endregion
 
     [ModuleInitializer]
     public static void InitializeOther()
     {
-        VerifyDiffPlex.Initialize();
+        VerifierSettings.InitializePlugins();
         VerifierSettings.IgnoreMembers<TestableInvokeHandlerContext>(
             _ => _.DoNotContinueDispatchingCurrentMessageToHandlersWasCalled,
             _ => _.HandlerInvocationAborted);

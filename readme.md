@@ -18,7 +18,7 @@ https://nuget.org/packages/Verify.NServiceBus/
 ```cs
 [ModuleInitializer]
 public static void Initialize() =>
-    VerifyNServiceBus.Enable();
+    VerifyNServiceBus.Initialize();
 ```
 <sup><a href='/src/Tests/ModuleInitializer.cs#L3-L9' title='Snippet source file'>snippet source</a> | <a href='#snippet-enable' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
