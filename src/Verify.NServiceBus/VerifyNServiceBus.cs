@@ -17,6 +17,8 @@ public static class VerifyNServiceBus
             throw new("Already Initialized");
         }
 
+        Initialized = true;
+
         InnerVerifier.ThrowIfVerifyHasBeenRun();
         if (captureLogs)
         {
