@@ -38,9 +38,9 @@ public static class VerifyNServiceBus
         VerifierSettings.IgnoreMember<TestableOutgoingPhysicalMessageContext>(x => x.RoutingStrategies);
         VerifierSettings.IgnoreMember<TestableRoutingContext>(x => x.RoutingStrategies);
         VerifierSettings.IgnoreInstance<ContextBag>(x => !ContextBagHelper.HasContent(x));
-        VerifierSettings.AddExtraSettings(serializerSettings =>
+        VerifierSettings.AddExtraSettings(serializer =>
         {
-            var converters = serializerSettings.Converters;
+            var converters = serializer.Converters;
             converters.Add(new ContextBagConverter());
             converters.Add(new SendOptionsConverter());
             converters.Add(new ExtendableOptionsConverter());
