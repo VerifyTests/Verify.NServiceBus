@@ -33,6 +33,11 @@
                     return;
                 }
 
+                if (RoutingToDispatchConnectorHelper.TryWriteRoute(writer, key, value))
+                {
+                    return;
+                }
+
                 writer.WriteMember(options, value, key);
                 return;
             }

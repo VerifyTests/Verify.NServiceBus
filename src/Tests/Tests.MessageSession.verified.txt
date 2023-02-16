@@ -3,9 +3,7 @@
     {
       MessageType: MyMessage,
       Options: {
-        NServiceBus.RoutingToDispatchConnector+State: {
-          ImmediateDispatch: true
-        }
+        ImmediateDispatch: true
       }
     }
   ],
@@ -13,9 +11,7 @@
     {
       MessageType: MyMessage,
       Options: {
-        NServiceBus.RoutingToDispatchConnector+State: {
-          ImmediateDispatch: true
-        }
+        ImmediateDispatch: true
       }
     }
   ]

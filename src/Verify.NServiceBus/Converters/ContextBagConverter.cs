@@ -11,6 +11,11 @@
                 continue;
             }
 
+            if (RoutingToDispatchConnectorHelper.TryWriteRoute(writer, key, value))
+            {
+                continue;
+            }
+
             writer.WriteMember(bag, value, key);
         }
 

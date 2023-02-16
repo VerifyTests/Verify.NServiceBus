@@ -6,7 +6,7 @@
 
     static UnicastRouterHelper()
     {
-        var type = typeof(IMessage).Assembly.GetType("NServiceBus.UnicastSendRouter+State", true)!;
+        var type = typeof(IMessage).Assembly.GetType(TypeName, true)!;
         explicitDestinationProperty = type.GetProperty("ExplicitDestination")!;
         specificInstanceProperty = type.GetProperty("SpecificInstance")!;
         optionProperty = type.GetProperty("Option")!;
@@ -20,17 +20,11 @@
     public static object GetOption(object value) =>
         optionProperty.GetValue(value)!;
 
-    public static string? GetSpecificInstance(object value)
-    {
-        var specificInstance = (string?) specificInstanceProperty.GetValue(value);
-        return specificInstance;
-    }
+    public static string? GetSpecificInstance(object value) =>
+        (string?) specificInstanceProperty.GetValue(value);
 
-    public static string? GetExplicitDestination(object value)
-    {
-        var explicitDestination = (string?) explicitDestinationProperty.GetValue(value);
-        return explicitDestination;
-    }
+    public static string? GetExplicitDestination(object value) =>
+        (string?) explicitDestinationProperty.GetValue(value);
 
     public static bool TryWriteRoute(VerifyJsonWriter writer, string key, object value)
     {
