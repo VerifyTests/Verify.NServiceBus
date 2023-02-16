@@ -41,7 +41,7 @@
         do
         {
             var stash = (Dictionary<string, object>?) stashField.GetValue(current);
-            
+
             if (stash is null)
             {
                 break;
