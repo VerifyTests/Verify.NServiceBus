@@ -16,11 +16,7 @@
             SagaId: Guid_Empty,
             SagaType: Tests+MySaga
           },
-          Extensions: {
-            NServiceBus.UnicastSendRouter+State: {
-              Option: RouteToAnyInstanceOfThisEndpoint
-            }
-          }
+          Route: ToAnyInstanceOfThisEndpoint
         }
       }
     ],
@@ -34,11 +30,7 @@
             SagaId: Guid_Empty,
             SagaType: Tests+MySaga
           },
-          Extensions: {
-            NServiceBus.UnicastSendRouter+State: {
-              Option: RouteToAnyInstanceOfThisEndpoint
-            }
-          }
+          Route: ToAnyInstanceOfThisEndpoint
         }
       }
     ]

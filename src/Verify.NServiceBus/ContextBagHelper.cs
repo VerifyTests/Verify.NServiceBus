@@ -40,11 +40,22 @@
         var current = (ContextBag?)value;
         do
         {
-            var stash = (Dictionary<string, object>) stashField.GetValue(current)!;
+            var stash = (Dictionary<string, object>?) stashField.GetValue(current);
+            
+            if (stash is null)
+            {
+                break;
+            }
             foreach (var item in stash)
             {
-                 yield return new(item.Key, item.Value);
+                if (item.Value is TransportTransaction)
+                {
+                    continue;
+                }
+
+                yield return new(item.Key, item.Value);
             }
+
             current = (ContextBag?) parentBagField.GetValue(current);
         } while (current is not null);
     }

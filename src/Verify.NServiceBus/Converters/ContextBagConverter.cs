@@ -4,14 +4,17 @@
     public override void Write(VerifyJsonWriter writer, ContextBag bag)
     {
         writer.WriteStartObject();
-        foreach (var pair in bag.GetValues())
+        foreach (var (key, value) in bag.GetValues())
         {
-            if (pair.Value is TransportTransaction)
+            if (UnicastRouterHelper.TryWriteRoute(writer, key, value))
             {
                 continue;
             }
-            writer.WriteMember(bag, pair.Value, pair.Key);
+
+            writer.WriteMember(bag, value, key);
         }
+
         writer.WriteEndObject();
     }
+    
 }

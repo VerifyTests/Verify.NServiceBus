@@ -16,13 +16,28 @@
         var headers = options.GetCleanedHeaders();
         writer.WriteMember(options, headers, "Headers");
 
-        var extensions = options.GetExtensions();
-        if (extensions is not null)
+        var bag = options.GetExtensions();
+        if (bag is not null)
         {
-            if (ContextBagHelper.HasContent(extensions))
+            var bagValues = bag.GetValues().ToArray();
+            if (bagValues.Length == 0)
             {
-                writer.WriteMember(options, extensions, "Extensions");
+                return;
             }
+
+            if (bagValues.Length == 1)
+            {
+                var (key, value) = bagValues[0];
+                if (UnicastRouterHelper.TryWriteRoute(writer, key, value))
+                {
+                    return;
+                }
+
+                writer.WriteMember(options, value, key);
+                return;
+            }
+
+            writer.WriteMember(options, bag, "Extensions");
         }
     }
 }

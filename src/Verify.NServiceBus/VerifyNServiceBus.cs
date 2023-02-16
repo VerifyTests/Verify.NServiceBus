@@ -42,6 +42,7 @@ public static class VerifyNServiceBus
         {
             var converters = serializer.Converters;
             converters.Add(new ContextBagConverter());
+            converters.Add(new UnicastSendRouterStateConverter());
             converters.Add(new SendOptionsConverter());
             converters.Add(new ExtendableOptionsConverter());
             converters.Add(new UnsubscriptionConverter());
