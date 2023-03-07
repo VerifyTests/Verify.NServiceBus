@@ -21,7 +21,7 @@ public class Tests
         IHandleMessages<MyMessage>
     {
         static ILog logger = LogManager.GetLogger<MyHandlerWithLogging>();
-        public Task Handle(MyMessage message, IMessageHandlerContext context)
+        public Task Handle(MyMessage message, HandlerContext context)
         {
             logger.Warn("The log message");
             return Task.CompletedTask;
@@ -221,14 +221,14 @@ public class Tests
         {
         }
 
-        public async Task Handle(MySagaMessage message, IMessageHandlerContext context)
+        public async Task Handle(MySagaMessage message, HandlerContext context)
         {
             Data.Member = "the data";
             await context.Reply(new MySagaMessage());
             await RequestTimeout<MySagaMessage>(context, TimeSpan.FromHours(1));
         }
 
-        public Task Timeout(MySagaMessage state, IMessageHandlerContext context) =>
+        public Task Timeout(MySagaMessage state, HandlerContext context) =>
             Task.CompletedTask;
 
         public void MarkCompleted() =>

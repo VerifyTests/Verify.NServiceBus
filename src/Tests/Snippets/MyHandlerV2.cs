@@ -1,7 +1,7 @@
 ﻿public class MyHandlerV2 :
     IHandleMessages<MyRequest>
 {
-    public async Task Handle(MyRequest message, IMessageHandlerContext context)
+    public async Task Handle(MyRequest message, HandlerContext context)
     {
         #region SimpleHandlerV2
 

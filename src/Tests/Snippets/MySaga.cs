@@ -8,7 +8,7 @@ public class MySaga :
         mapper.ConfigureMapping<MyRequest>(message => message.OrderId)
             .ToSaga(sagaData => sagaData.OrderId);
 
-    public async Task Handle(MyRequest message, IMessageHandlerContext context)
+    public async Task Handle(MyRequest message, HandlerContext context)
     {
         await context.Publish(
             new MyPublishMessage

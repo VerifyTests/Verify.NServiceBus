@@ -3,7 +3,7 @@
 public class MyHandler :
     IHandleMessages<MyRequest>
 {
-    public async Task Handle(MyRequest message, IMessageHandlerContext context)
+    public async Task Handle(MyRequest message, HandlerContext context)
     {
         await context.Publish(
             new MyPublishMessage

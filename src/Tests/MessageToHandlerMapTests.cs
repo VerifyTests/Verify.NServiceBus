@@ -59,7 +59,7 @@ public class MessageToHandlerMapTests
 
     class MyHandler : IHandleMessages<MyMessage>
     {
-        public Task Handle(MyMessage message, IMessageHandlerContext context) =>
+        public Task Handle(MyMessage message, HandlerContext context) =>
             null!;
     }
 }
