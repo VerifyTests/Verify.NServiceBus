@@ -13,5 +13,7 @@
     <None Include="$(MSBuildThisFileFullPath)\..\..\license.txt"
           Pack="true"
           PackagePath="license.txt"/>
+    <Using Include="NServiceBus.IMessageHandlerContext"
+           Alias="HandlerContext" />
   </ItemGroup>
 </Project>
