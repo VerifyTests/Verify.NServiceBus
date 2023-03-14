@@ -41,6 +41,7 @@ public static class VerifyNServiceBus
         VerifierSettings.AddExtraSettings(serializer =>
         {
             var converters = serializer.Converters;
+            converters.Add(new IncomingMessageConverter());
             converters.Add(new ContextBagConverter());
             converters.Add(new UnicastSendRouterStateConverter());
             converters.Add(new RoutingToDispatchConnectorStateConverter());

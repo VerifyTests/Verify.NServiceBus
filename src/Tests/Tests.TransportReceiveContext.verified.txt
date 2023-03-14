@@ -4,8 +4,7 @@
     MessageId: MessageId,
     NativeMessageId: MessageId,
     Headers: {
-      key: value,
-      NServiceBus.MessageId: MessageId
+      key: value
     },
     Body: {
       Length: 1,
