@@ -104,7 +104,15 @@ public class Tests
         var context = new TestableIncomingLogicalMessageContext
         {
             Message = BuildLogicalMessage(),
-            Headers = new() {{"Key", "Value"}}
+            Headers = new()
+            {
+                {
+                    "Key", "Value"
+                },
+                {
+                    "NServiceBus.MessageId", "TheId"
+                }
+            }
         };
         context.Extensions.Set("key", "value");
         return Verify(context);
