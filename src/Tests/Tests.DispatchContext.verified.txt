@@ -8,7 +8,8 @@
         },
         MessageId: MessageId,
         Headers: {
-          key: value
+          key: value,
+          NServiceBus.MessageId: TheId
         }
       },
       AddressTag: {

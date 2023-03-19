@@ -1,0 +1,38 @@
+﻿{
+  FailedMessage: {
+    MessageId: TheId,
+    NativeMessageId: NativeMessageId,
+    Headers: {
+      key: value
+    },
+    Body: {
+      Length: 1,
+      IsEmpty: false
+    }
+  },
+  Exception: {
+    $type: Exception,
+    Type: Exception,
+    Message: error
+  },
+  ReceiveAddress: the ReceiveAddress,
+  ImmediateProcessingFailures: 10,
+  DelayedDeliveriesPerformed: 5,
+  RecoverabilityConfiguration: {
+    Immediate: {},
+    Delayed: {},
+    Failed: {
+      ErrorQueue: error
+    }
+  },
+  RecoverabilityAction: {
+    Delay: 1.00:00:00
+  },
+  Metadata: {
+    key: value
+  },
+  IsLocked: false,
+  Extensions: {
+    key: value
+  }
+}

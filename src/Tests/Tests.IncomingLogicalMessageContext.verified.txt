@@ -6,7 +6,8 @@
     }
   },
   Headers: {
-    Key: Value
+    Key: Value,
+    NServiceBus.MessageId: TheId
   },
   MessageHandled: false,
   Extensions: {

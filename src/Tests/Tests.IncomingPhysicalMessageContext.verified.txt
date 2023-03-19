@@ -1,7 +1,7 @@
 ﻿{
   Message: {
-    MessageId: MessageId,
-    NativeMessageId: MessageId,
+    MessageId: TheId,
+    NativeMessageId: NativeMessageId,
     Headers: {
       key: value
     },

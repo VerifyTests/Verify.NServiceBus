@@ -48,7 +48,10 @@ public class Tests
     [Fact]
     public Task AuditContext()
     {
-        var context = new TestableAuditContext();
+        var context = new TestableAuditContext
+        {
+            Message = BuildOutgoingMessage()
+        };
         context.AuditMetadata.Add("Key", "Value");
         context.Extensions.Set("key", "value");
         return Verify(context);
@@ -142,10 +145,52 @@ public class Tests
     }
 
     [Fact]
+    public Task RecoverabilityContext()
+    {
+        var context = new TestableRecoverabilityContext
+        {
+            FailedMessage = BuildIncomingMessage(),
+            Exception = new("error"),
+            ReceiveAddress = "the ReceiveAddress",
+            ImmediateProcessingFailures = 10,
+            DelayedDeliveriesPerformed = 5,
+            RecoverabilityAction = RecoverabilityAction.DelayedRetry(TimeSpan.FromDays(1)),
+            Metadata = new()
+            {
+                {
+                    "key", "value"
+                }
+            }
+        };
+        context.Extensions.Set("key", "value");
+        return Verify(context);
+    }
+
+    [Fact]
+    public Task TimeoutMessageWithin()
+    {
+        var context = new TimeoutMessage<string>("message",new(), TimeSpan.FromDays(10));
+        return Verify(context);
+    }
+    [Fact]
+    public Task TimeoutMessageAt()
+    {
+        var context = new TimeoutMessage<string>("message",new(), new DateTimeOffset(new(2020,10,1)));
+        return Verify(context);
+    }
+
+    [Fact]
     public Task MessageHandlerContext()
     {
         var context = new TestableMessageHandlerContext();
         context.Extensions.Set("key", "value");
+        return Verify(context);
+    }
+
+    [Fact]
+    public Task Unsubscription()
+    {
+        var context = new Unsubscription(typeof(string), new());
         return Verify(context);
     }
 
@@ -201,6 +246,7 @@ public class Tests
             saga
         });
     }
+
     [Fact]
     public async Task CompletedSaga()
     {
@@ -361,7 +407,8 @@ public class Tests
     }
 
     static TransportOperation BuildTransportOperation() =>
-        new(BuildOutgoingMessage(),
+        new(
+            BuildOutgoingMessage(),
             new UnicastAddressTag("destination"),
             new()
             {
@@ -370,16 +417,40 @@ public class Tests
             DispatchConsistency.Isolated);
 
     static OutgoingMessage BuildOutgoingMessage() =>
-        new("MessageId", new() {{"key", "value"}}, new byte[] {1});
+        new(
+            "MessageId",
+            new()
+            {
+                {"key", "value"},
+                {"NServiceBus.MessageId", "TheId"},
+            },
+            new byte[] {1});
 
     static OutgoingLogicalMessage BuildOutgoingLogicalMessage() =>
-        new(typeof(MyMessage), new MyMessage {Property = "Value"});
+        new(
+            typeof(MyMessage),
+            new MyMessage
+            {
+                Property = "Value"
+            });
 
     static IncomingMessage BuildIncomingMessage() =>
-        new("MessageId", new() {{"key", "value"}}, new byte[] {1});
+        new(
+            "NativeMessageId",
+            new()
+            {
+                {"key", "value"},
+                {"NServiceBus.MessageId", "TheId"},
+            },
+            new byte[] {1});
 
     static LogicalMessage BuildLogicalMessage() =>
-        new(new(typeof(MyMessage)), new MyMessage {Property = "Value"});
+        new(
+            new(typeof(MyMessage)),
+            new MyMessage
+            {
+                Property = "Value"
+            });
 }
 
 public class MyMessage

@@ -2,9 +2,14 @@
   AuditAddress: audit-queue-address,
   Message: {
     Body: {
-      IsEmpty: true
+      Length: 1,
+      IsEmpty: false
     },
-    MessageId: Guid_1
+    MessageId: MessageId,
+    Headers: {
+      key: value,
+      NServiceBus.MessageId: TheId
+    }
   },
   AuditMetadata: {
     Key: Value
