@@ -7,7 +7,7 @@
   },
   Headers: {
     key: value,
-    NServiceBus.MessageId: TheId
+    MessageId: TheId
   },
   MessageHandled: false,
   SentMessages: [

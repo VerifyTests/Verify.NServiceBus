@@ -2,7 +2,7 @@
   MessageId: Guid_1,
   Headers: {
     key: value,
-    NServiceBus.MessageId: TheId
+    MessageId: TheId
   },
   SentMessages: [
     {

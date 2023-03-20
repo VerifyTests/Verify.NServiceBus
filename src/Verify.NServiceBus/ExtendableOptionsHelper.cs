@@ -3,7 +3,7 @@
     public static Dictionary<string, string> GetCleanedHeaders(this ExtendableOptions options) =>
         CleanedHeaders(options.GetHeaders());
 
-    public static Dictionary<string, string> CleanedHeaders(IEnumerable<KeyValuePair<string, string>> headers)
+    public static Dictionary<string, string> CleanedHeaders(this IReadOnlyDictionary<string, string> headers)
     {
         var dictionary = new Dictionary<string, string>();
         foreach (var header in headers)
