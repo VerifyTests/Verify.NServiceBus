@@ -10,7 +10,11 @@
         var deliveryDelay = options.GetDeliveryDelay();
         writer.WriteMember(options, deliveryDelay, "DeliveryDelay");
 
-        ExtendableOptionsConverter.WriteBaseMembers(writer, options);
+        writer.WriteMember(options, options.GetMessageId(), "MessageId");
+
+        writer.WriteMember(options, options.GetCleanedHeaders(), "Headers");
+
+        ExtendableOptionsConverter.WriteExtensions(writer, options);
 
         writer.WriteEndObject();
     }
