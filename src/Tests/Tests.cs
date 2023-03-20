@@ -406,6 +406,34 @@ public class Tests
         return Verify(context);
     }
 
+    [Fact]
+    public void ConverterOrder()
+    {
+        var converters = VerifyNServiceBus.converters
+            .Select(_ => _.GetType().BaseType!)
+            .Where(_ => _.IsGenericType)
+            .Select(_ => _.GenericTypeArguments[0])
+            .ToList();
+        for (var index = 0; index < converters.Count - 1; index++)
+        {
+            var converter = converters[index];
+            var next = converters[index + 1];
+            Assert.True(TypeDepth(converter) >= TypeDepth(next), $"{next.Name} should be before {converter.Name}");
+        }
+    }
+
+    static int TypeDepth(Type? type)
+    {
+        var depth = 0;
+        while (type != null)
+        {
+            depth++;
+            type = type.BaseType;
+        }
+
+        return depth;
+    }
+
     static TransportOperation BuildTransportOperation() =>
         new(
             BuildOutgoingMessage(),

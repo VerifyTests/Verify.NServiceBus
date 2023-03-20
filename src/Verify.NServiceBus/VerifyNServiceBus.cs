@@ -1,9 +1,25 @@
-﻿using NServiceBus.Pipeline;
+﻿using Argon;
+using NServiceBus.Pipeline;
 
 namespace VerifyTests;
 
 public static class VerifyNServiceBus
 {
+    internal static List<JsonConverter> converters = new()
+    {
+        new SendOptionsConverter(),
+        new UnsubscriptionConverter(),
+        new SubscriptionConverter(),
+        new IncomingMessageConverter(),
+        new ContextBagConverter(),
+        new UnicastSendRouterStateConverter(),
+        new RoutingToDispatchConnectorStateConverter(),
+        new ExtendableOptionsConverter(),
+        new TimeoutMessageConverter(),
+        new SagaConverter(),
+        new MessageToHandlerMapConverter(),
+        new OutgoingMessageConverter()
+    };
     [Obsolete("Use Initialize")]
     public static void Enable(bool captureLogs = true) =>
         Initialize(captureLogs);
@@ -25,34 +41,19 @@ public static class VerifyNServiceBus
             LogCapture.Initialize();
         }
 
-        VerifierSettings.IgnoreMember<TestableMessageProcessingContext>(x => x.MessageHeaders);
-        VerifierSettings.IgnoreMember<TestableInvokeHandlerContext>(x => x.Headers);
-        VerifierSettings.IgnoreMember<TestableMessageProcessingContext>(x => x.MessageId);
-        VerifierSettings.IgnoreMember<TestableInvokeHandlerContext>(x => x.MessageHandler);
-        VerifierSettings.IgnoreMember<TestableInvokeHandlerContext>(x => x.MessageBeingHandled);
-        VerifierSettings.IgnoreMember<TestableInvokeHandlerContext>(x => x.MessageMetadata);
-        VerifierSettings.IgnoreMember<LogicalMessage>(x => x.Metadata);
-        VerifierSettings.IgnoreMember<IMessageProcessingContext>(x => x.ReplyToAddress);
-        VerifierSettings.IgnoreMember<TestableEndpointInstance>(x => x.EndpointStopped);
-        VerifierSettings.IgnoreMember<TestableOutgoingLogicalMessageContext>(x => x.RoutingStrategies);
-        VerifierSettings.IgnoreMember<TestableOutgoingPhysicalMessageContext>(x => x.RoutingStrategies);
-        VerifierSettings.IgnoreMember<TestableRoutingContext>(x => x.RoutingStrategies);
-        VerifierSettings.IgnoreInstance<ContextBag>(x => !ContextBagHelper.HasContent(x));
-        VerifierSettings.AddExtraSettings(serializer =>
-        {
-            var converters = serializer.Converters;
-            converters.Add(new IncomingMessageConverter());
-            converters.Add(new ContextBagConverter());
-            converters.Add(new UnicastSendRouterStateConverter());
-            converters.Add(new RoutingToDispatchConnectorStateConverter());
-            converters.Add(new SendOptionsConverter());
-            converters.Add(new ExtendableOptionsConverter());
-            converters.Add(new UnsubscriptionConverter());
-            converters.Add(new TimeoutMessageConverter());
-            converters.Add(new SagaConverter());
-            converters.Add(new MessageToHandlerMapConverter());
-            converters.Add(new SubscriptionConverter());
-            converters.Add(new OutgoingMessageConverter());
-        });
+        VerifierSettings.IgnoreMember<TestableMessageProcessingContext>(_ => _.MessageHeaders);
+        VerifierSettings.IgnoreMember<TestableInvokeHandlerContext>(_ => _.Headers);
+        VerifierSettings.IgnoreMember<TestableMessageProcessingContext>(_ => _.MessageId);
+        VerifierSettings.IgnoreMember<TestableInvokeHandlerContext>(_ => _.MessageHandler);
+        VerifierSettings.IgnoreMember<TestableInvokeHandlerContext>(_ => _.MessageBeingHandled);
+        VerifierSettings.IgnoreMember<TestableInvokeHandlerContext>(_ => _.MessageMetadata);
+        VerifierSettings.IgnoreMember<LogicalMessage>(_ => _.Metadata);
+        VerifierSettings.IgnoreMember<IMessageProcessingContext>(_ => _.ReplyToAddress);
+        VerifierSettings.IgnoreMember<TestableEndpointInstance>(_ => _.EndpointStopped);
+        VerifierSettings.IgnoreMember<TestableOutgoingLogicalMessageContext>(_ => _.RoutingStrategies);
+        VerifierSettings.IgnoreMember<TestableOutgoingPhysicalMessageContext>(_ => _.RoutingStrategies);
+        VerifierSettings.IgnoreMember<TestableRoutingContext>(_ => _.RoutingStrategies);
+        VerifierSettings.IgnoreInstance<ContextBag>(_ => !ContextBagHelper.HasContent(_));
+        VerifierSettings.AddExtraSettings(_ => _.Converters.AddRange(converters));
     }
 }

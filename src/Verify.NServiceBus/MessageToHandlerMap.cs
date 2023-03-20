@@ -7,7 +7,7 @@ public class MessageToHandlerMap
 
     public void AddMessagesFromAssembly(Assembly assembly)
     {
-        foreach (var type in assembly.GetTypes().Where(x => x.IsMessage()))
+        foreach (var type in assembly.GetTypes().Where(_ => _.IsMessage()))
         {
             AddMessage(type);
         }
@@ -46,7 +46,7 @@ public class MessageToHandlerMap
 
     public void AddHandlersFromAssembly(Assembly assembly)
     {
-        foreach (var type in assembly.GetTypes().Where(x => x.IsHandler()))
+        foreach (var type in assembly.GetTypes().Where(_ => _.IsHandler()))
         {
             AddHandler(type);
         }

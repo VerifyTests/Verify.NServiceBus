@@ -27,7 +27,7 @@ public static class LogCapture
             return Enumerable.Empty<LogMessage>();
         }
         return LogMessages
-            .Where(x => x.Level > includeLogMessages);
+            .Where(_ => _.Level > includeLogMessages);
     }
 
     public static IReadOnlyList<LogMessage> LogMessages => Context.ToList();
