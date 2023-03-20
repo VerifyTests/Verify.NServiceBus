@@ -311,6 +311,10 @@ public class Tests
         {
             Message = BuildOutgoingLogicalMessage()
         };
+        context.Headers.Add("key","value");
+        context.Publish("publish message");
+        context.Send("send message");
+        context.SendLocal("send local message");
         return Verify(context);
     }
 
