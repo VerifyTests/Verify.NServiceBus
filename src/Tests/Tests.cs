@@ -402,6 +402,7 @@ public class Tests
         await context.Send(new SendMessage { Property = "Value" });
         var options = new SendOptions();
         options.DelayDeliveryWith(TimeSpan.FromDays(1));
+        context.Extensions.Set("key", "value");
         await context.Send(new SendMessage {Property = "ValueWithDelay"},options);
         await Verify(context);
     }
