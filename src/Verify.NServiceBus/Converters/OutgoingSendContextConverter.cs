@@ -1,11 +1,11 @@
-class OutgoingPhysicalMessageContextConverter :
-    WriteOnlyJsonConverter<TestableOutgoingPhysicalMessageContext>
+class OutgoingSendContextConverter :
+    WriteOnlyJsonConverter<TestableOutgoingSendContext>
 {
-    public override void Write(VerifyJsonWriter writer, TestableOutgoingPhysicalMessageContext context)
+    public override void Write(VerifyJsonWriter writer, TestableOutgoingSendContext context)
     {
         writer.WriteStartObject();
 
-        writer.WriteMember(context, context.Body, "Body");
+        writer.WriteMember(context, context.Message, "Message");
         writer.WriteMember(context, context.MessageId, "MessageId");
         writer.WriteMember(context, context.Headers, "Headers");
         writer.WriteMember(context, context.SentMessages, "SentMessages");
