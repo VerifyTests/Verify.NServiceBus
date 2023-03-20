@@ -118,6 +118,7 @@ public class Tests
             }
         };
         context.Extensions.Set("key", "value");
+        context.MessageHeaders.Add("key","value");
         context.Headers.Add("key","value");
         context.Publish("publish message");
         context.Send("send message");
@@ -133,6 +134,7 @@ public class Tests
             Message = BuildIncomingMessage(),
         };
         context.ForwardCurrentMessageTo("forward destination");
+        context.MessageHeaders.Add("key","value");
         context.Reply("reply destination");
         context.Publish("publish message");
         context.Send("Send message");
@@ -195,6 +197,7 @@ public class Tests
         var context = new TestableMessageHandlerContext();
         context.Extensions.Set("key", "value");
         context.Headers.Add("key","value");
+        context.MessageHeaders.Add("key","value");
         context.Publish("publish message");
         context.Send("send message");
         context.SendLocal("send local message");
@@ -240,7 +243,6 @@ public class Tests
         var context = new TestableOutgoingContext();
         context.Headers.Add("Key", "Value");
         context.Extensions.Set("key", "value");
-        context.Headers.Add("key","value");
         context.Publish("publish message");
         context.Send("send message");
         context.SendLocal("send local message");
