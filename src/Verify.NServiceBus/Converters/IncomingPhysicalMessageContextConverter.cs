@@ -12,7 +12,6 @@ class IncomingPhysicalMessageContextConverter :
         writer.WriteMember(context, context.TimeoutMessages, "TimeoutMessages");
         writer.WriteMember(context, context.PublishedMessages, "PublishedMessages");
         writer.WriteMember(context, context.Extensions, "Extensions");
-        writer.WriteMember(context, context.MessageHeaders, "MessageHeaders");
         if (context.ReplyToAddress != "reply address")
         {
             writer.WriteMember(context, context.ReplyToAddress, "ReplyToAddress");
