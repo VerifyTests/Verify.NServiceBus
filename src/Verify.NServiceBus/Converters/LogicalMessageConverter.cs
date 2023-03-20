@@ -6,8 +6,8 @@ class LogicalMessageConverter :
     public override void Write(VerifyJsonWriter writer, LogicalMessage message)
     {
         writer.WriteStartObject();
-        writer.WriteMember(message, message.Instance, "Instance");
         writer.WriteMember(message, message.MessageType, "MessageType");
+        writer.WriteMember(message, message.Instance, "Instance");
         writer.WriteEndObject();
     }
 }

@@ -9,6 +9,7 @@ public static class VerifyNServiceBus
         new MessageHandlerContextConverter(),
         new IncomingPhysicalMessageContextConverter(),
         new InvokeHandlerContextConverter(),
+        new IncomingLogicalMessageContextConverter(),
         new IncomingContextConverter(),
         new OutgoingLogicalMessageContextConverter(),
         new OutgoingPhysicalMessageContextConverter(),
