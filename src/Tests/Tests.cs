@@ -128,6 +128,11 @@ public class Tests
         {
             Message = BuildIncomingMessage(),
         };
+        context.ForwardCurrentMessageTo("forward destination");
+        context.Reply("reply destination");
+        context.Publish("publish message");
+        context.Send("Send message");
+        context.SendLocal("Send local message");
         context.Extensions.Set("key", "value");
         return Verify(context);
     }
