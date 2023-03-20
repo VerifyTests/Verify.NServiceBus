@@ -24,5 +24,8 @@
     {
       string: publish message
     }
-  ]
+  ],
+  Extensions: {
+    key: value
+  }
 }
