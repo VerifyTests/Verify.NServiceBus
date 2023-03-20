@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices.ComTypes;
-
-[UsesVerify]
+﻿[UsesVerify]
 public class Tests
 {
     [Fact]
