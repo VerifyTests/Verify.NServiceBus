@@ -20,5 +20,8 @@
         Property: Value
       }
     }
-  ]
+  ],
+  Extensions: {
+    key: value
+  }
 }
