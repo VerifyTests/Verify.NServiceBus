@@ -330,6 +330,7 @@ public class Tests
         context.Publish("publish message");
         context.Send("send message");
         context.SendLocal("send local message");
+        context.Extensions.Set("key", "value");
         return Verify(context);
     }
 
