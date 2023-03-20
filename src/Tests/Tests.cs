@@ -120,6 +120,10 @@ public class Tests
             }
         };
         context.Extensions.Set("key", "value");
+        context.Headers.Add("key","value");
+        context.Publish("publish message");
+        context.Send("send message");
+        context.SendLocal("send local message");
         return Verify(context);
     }
 
@@ -191,6 +195,10 @@ public class Tests
     {
         var context = new TestableMessageHandlerContext();
         context.Extensions.Set("key", "value");
+        context.Headers.Add("key","value");
+        context.Publish("publish message");
+        context.Send("send message");
+        context.SendLocal("send local message");
         return Verify(context);
     }
 
@@ -233,6 +241,10 @@ public class Tests
         var context = new TestableOutgoingContext();
         context.Headers.Add("Key", "Value");
         context.Extensions.Set("key", "value");
+        context.Headers.Add("key","value");
+        context.Publish("publish message");
+        context.Send("send message");
+        context.SendLocal("send local message");
         return Verify(context);
     }
 
@@ -313,6 +325,10 @@ public class Tests
         {
             Message = BuildOutgoingLogicalMessage()
         };
+        context.Headers.Add("key","value");
+        context.Publish("publish message");
+        context.Send("send message");
+        context.SendLocal("send local message");
         return Verify(context);
     }
 
@@ -324,6 +340,10 @@ public class Tests
             Body = new byte[] {1}
         };
         context.Extensions.Set("key", "value");
+        context.Headers.Add("key","value");
+        context.Publish("publish message");
+        context.Send("send message");
+        context.SendLocal("send local message");
         return Verify(context);
     }
 
@@ -335,6 +355,10 @@ public class Tests
             Message = BuildOutgoingLogicalMessage()
         };
         context.Extensions.Set("key", "value");
+        context.Headers.Add("key","value");
+        context.Publish("publish message");
+        context.Send("send message");
+        context.SendLocal("send local message");
         return Verify(context);
     }
 
@@ -346,6 +370,10 @@ public class Tests
             Message = BuildOutgoingLogicalMessage()
         };
         context.Extensions.Set("key", "value");
+        context.Headers.Add("key","value");
+        context.Publish("publish message");
+        context.Send("send message");
+        context.SendLocal("send local message");
         return Verify(context);
     }
 
@@ -357,6 +385,10 @@ public class Tests
             Message = BuildOutgoingLogicalMessage()
         };
         context.Extensions.Set("key", "value");
+        context.Headers.Add("key","value");
+        context.Publish("publish message");
+        context.Send("send message");
+        context.SendLocal("send local message");
         return Verify(context);
     }
 

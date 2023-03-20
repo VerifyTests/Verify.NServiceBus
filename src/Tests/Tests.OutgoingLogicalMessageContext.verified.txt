@@ -5,5 +5,24 @@
       Property: Value
     }
   },
-  MessageId: Guid_1
+  MessageId: Guid_1,
+  Headers: {
+    key: value
+  },
+  SentMessages: [
+    {
+      string: send message
+    },
+    {
+      string: send local message,
+      Options: {
+        Route: ToAnyInstanceOfThisEndpoint
+      }
+    }
+  ],
+  PublishedMessages: [
+    {
+      string: publish message
+    }
+  ]
 }
