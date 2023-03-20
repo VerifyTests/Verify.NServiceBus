@@ -8,7 +8,7 @@
       MessageId: Guid_1
     },
     AuditMetadata: {
-      Key: Value
+      key: value
     },
     IsLocked: false,
     Extensions: {

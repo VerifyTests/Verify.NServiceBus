@@ -32,7 +32,7 @@ public class Tests
     public Task ExtraState()
     {
         var context = new TestableAuditContext();
-        context.AuditMetadata.Add("Key", "Value");
+        context.AuditMetadata.Add("key", "value");
         context.Extensions.Set("key", "value");
         return Verify(
             new
@@ -52,7 +52,7 @@ public class Tests
         {
             Message = BuildOutgoingMessage()
         };
-        context.AuditMetadata.Add("Key", "Value");
+        context.AuditMetadata.Add("key", "value");
         context.Extensions.Set("key", "value");
         return Verify(context);
     }
@@ -110,7 +110,7 @@ public class Tests
             Headers = new()
             {
                 {
-                    "Key", "Value"
+                    "key", "value"
                 },
                 {
                     "NServiceBus.MessageId", "TheId"
@@ -119,7 +119,6 @@ public class Tests
         };
         context.Extensions.Set("key", "value");
         context.MessageHeaders.Add("key","value");
-        context.Headers.Add("key","value");
         context.Publish("publish message");
         context.Send("send message");
         context.SendLocal("send local message");
@@ -147,8 +146,15 @@ public class Tests
     public async Task InvokeHandlerContext()
     {
         var context = new TestableInvokeHandlerContext
-        {
-            Headers = new() {{"Key", "Value"}},
+        {     Headers = new()
+            {
+                {
+                    "key", "value"
+                },
+                {
+                    "NServiceBus.MessageId", "TheId"
+                }
+            }
         };
         await context.Send(new MyMessage());
         context.Extensions.Set("key", "value");
@@ -194,9 +200,19 @@ public class Tests
     [Fact]
     public Task MessageHandlerContext()
     {
-        var context = new TestableMessageHandlerContext();
+        var context = new TestableMessageHandlerContext
+        {
+            Headers = new()
+            {
+                {
+                    "key", "value"
+                },
+                {
+                    "NServiceBus.MessageId", "TheId"
+                }
+            }
+        };
         context.Extensions.Set("key", "value");
-        context.Headers.Add("key","value");
         context.MessageHeaders.Add("key","value");
         context.Publish("publish message");
         context.Send("send message");
@@ -215,7 +231,7 @@ public class Tests
     public async Task MessageProcessingContext()
     {
         var context = new TestableMessageProcessingContext();
-        context.MessageHeaders.Add("Key", "Value");
+        context.MessageHeaders.Add("key", "value");
         await context.Publish(new PublishMessage {Property = "Value"});
         await context.Reply(new ReplyMessage {Property = "Value"});
         await context.Send(new SendMessage {Property = "Value"});
@@ -240,8 +256,18 @@ public class Tests
     [Fact]
     public Task OutgoingContext()
     {
-        var context = new TestableOutgoingContext();
-        context.Headers.Add("Key", "Value");
+        var context = new TestableOutgoingContext
+        {
+            Headers = new()
+            {
+                {
+                    "key", "value"
+                },
+                {
+                    "NServiceBus.MessageId", "TheId"
+                }
+            }
+        };
         context.Extensions.Set("key", "value");
         context.Publish("publish message");
         context.Send("send message");
@@ -324,9 +350,17 @@ public class Tests
     {
         var context = new TestableOutgoingLogicalMessageContext
         {
-            Message = BuildOutgoingLogicalMessage()
+            Message = BuildOutgoingLogicalMessage(),
+            Headers = new()
+            {
+                {
+                    "key", "value"
+                },
+                {
+                    "NServiceBus.MessageId", "TheId"
+                }
+            }
         };
-        context.Headers.Add("key","value");
         context.Publish("publish message");
         context.Send("send message");
         context.SendLocal("send local message");
@@ -339,10 +373,18 @@ public class Tests
     {
         var context = new TestableOutgoingPhysicalMessageContext
         {
-            Body = new byte[] {1}
+            Body = new byte[] {1},
+            Headers = new()
+            {
+                {
+                    "key", "value"
+                },
+                {
+                    "NServiceBus.MessageId", "TheId"
+                }
+            }
         };
         context.Extensions.Set("key", "value");
-        context.Headers.Add("key","value");
         context.Publish("publish message");
         context.Send("send message");
         context.SendLocal("send local message");
@@ -354,10 +396,18 @@ public class Tests
     {
         var context = new TestableOutgoingPublishContext
         {
-            Message = BuildOutgoingLogicalMessage()
+            Message = BuildOutgoingLogicalMessage(),
+            Headers = new()
+            {
+                {
+                    "key", "value"
+                },
+                {
+                    "NServiceBus.MessageId", "TheId"
+                }
+            }
         };
         context.Extensions.Set("key", "value");
-        context.Headers.Add("key","value");
         context.Publish("publish message");
         context.Send("send message");
         context.SendLocal("send local message");
@@ -369,10 +419,18 @@ public class Tests
     {
         var context = new TestableOutgoingReplyContext
         {
-            Message = BuildOutgoingLogicalMessage()
+            Message = BuildOutgoingLogicalMessage(),
+            Headers = new()
+            {
+                {
+                    "key", "value"
+                },
+                {
+                    "NServiceBus.MessageId", "TheId"
+                }
+            }
         };
         context.Extensions.Set("key", "value");
-        context.Headers.Add("key","value");
         context.Publish("publish message");
         context.Send("send message");
         context.SendLocal("send local message");
@@ -384,10 +442,18 @@ public class Tests
     {
         var context = new TestableOutgoingSendContext
         {
-            Message = BuildOutgoingLogicalMessage()
+            Message = BuildOutgoingLogicalMessage(),
+            Headers = new()
+            {
+                {
+                    "key", "value"
+                },
+                {
+                    "NServiceBus.MessageId", "TheId"
+                }
+            }
         };
         context.Extensions.Set("key", "value");
-        context.Headers.Add("key","value");
         context.Publish("publish message");
         context.Send("send message");
         context.SendLocal("send local message");

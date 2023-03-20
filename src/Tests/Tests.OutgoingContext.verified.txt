@@ -1,7 +1,8 @@
 ﻿{
   MessageId: Guid_1,
   Headers: {
-    Key: Value
+    key: value,
+    NServiceBus.MessageId: TheId
   },
   SentMessages: [
     {

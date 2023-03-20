@@ -12,7 +12,7 @@
     }
   },
   AuditMetadata: {
-    Key: Value
+    key: value
   },
   IsLocked: false,
   Extensions: {
