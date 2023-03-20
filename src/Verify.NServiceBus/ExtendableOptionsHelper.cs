@@ -37,7 +37,8 @@
 
         if (options is SendOptions sendOptions)
         {
-            if (sendOptions.GetDeliveryDate().HasValue || sendOptions.GetDeliveryDelay().HasValue)
+            if (sendOptions.GetDeliveryDate().HasValue ||
+                sendOptions.GetDeliveryDelay().HasValue)
             {
                 return true;
             }
