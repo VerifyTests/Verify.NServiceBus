@@ -6,10 +6,27 @@
     }
   },
   Headers: {
+    key: value,
     Key: Value,
     NServiceBus.MessageId: TheId
   },
   MessageHandled: false,
+  SentMessages: [
+    {
+      string: send message
+    },
+    {
+      string: send local message,
+      Options: {
+        Route: ToAnyInstanceOfThisEndpoint
+      }
+    }
+  ],
+  PublishedMessages: [
+    {
+      string: publish message
+    }
+  ],
   Extensions: {
     key: value
   }
