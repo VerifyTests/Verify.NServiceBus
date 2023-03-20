@@ -22,4 +22,3 @@
         writer.WriteEndObject();
     }
 }
-
