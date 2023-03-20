@@ -1,4 +1,9 @@
 ﻿{
+  PublishedMessages: [
+    {
+      string: message
+    }
+  ],
   Subscriptions: [
     {
       MessageType: MyMessage,
