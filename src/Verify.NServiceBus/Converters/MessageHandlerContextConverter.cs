@@ -4,6 +4,11 @@ class MessageHandlerContextConverter :
     public override void Write(VerifyJsonWriter writer, TestableMessageHandlerContext context)
     {
         writer.WriteStartObject();
+        if (context.HandlerInvocationAborted)
+        {
+            writer.WriteMember(context, true, "HandlerInvocationAborted");
+        }
+
         writer.WriteMember(context, context.RepliedMessages, "RepliedMessages");
         writer.WriteMember(context, context.TimeoutMessages, "TimeoutMessages");
         writer.WriteMember(context, context.ForwardedMessages, "ForwardedMessages");
@@ -14,6 +19,7 @@ class MessageHandlerContextConverter :
         {
             writer.WriteMember(context, context.ReplyToAddress, "ReplyToAddress");
         }
+
         writer.WriteEndObject();
     }
 }
