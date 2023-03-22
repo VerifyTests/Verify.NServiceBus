@@ -244,6 +244,7 @@ public class Tests
     public async Task MessageSession()
     {
         var context = new TestableMessageSession();
+        await context.Publish("message");
         var subscribeOptions = new SubscribeOptions();
         subscribeOptions.RequireImmediateDispatch();
         await context.Subscribe(typeof(MyMessage), subscribeOptions);
