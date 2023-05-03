@@ -11,16 +11,17 @@ public class Tests
         await handler.Handle(new(), context);
         await Verify(
             new
-        {
-            context,
-            LogCapture.LogMessages
-        });
+            {
+                context,
+                LogCapture.LogMessages
+            });
     }
 
     class MyHandlerWithLogging :
         IHandleMessages<MyMessage>
     {
         static ILog logger = LogManager.GetLogger<MyHandlerWithLogging>();
+
         public Task Handle(MyMessage message, HandlerContext context)
         {
             logger.Warn("The log message");
@@ -92,7 +93,7 @@ public class Tests
     public async Task EndpointInstance()
     {
         var context = new TestableEndpointInstance();
-        var session = (IMessageSession)context;
+        var session = (IMessageSession) context;
         await session.Send(
             new SendMessage
             {
@@ -118,7 +119,7 @@ public class Tests
             }
         };
         context.Extensions.Set("key", "value");
-        context.MessageHeaders.Add("key","value");
+        context.MessageHeaders.Add("key", "value");
         context.Publish("publish message");
         context.Send("send message");
         context.SendLocal("send local message");
@@ -133,7 +134,7 @@ public class Tests
             Message = BuildIncomingMessage(),
         };
         context.ForwardCurrentMessageTo("forward destination");
-        context.MessageHeaders.Add("key","value");
+        context.MessageHeaders.Add("key", "value");
         context.Reply("reply destination");
         context.Publish("publish message");
         context.Send("Send message");
@@ -146,7 +147,8 @@ public class Tests
     public async Task InvokeHandlerContext()
     {
         var context = new TestableInvokeHandlerContext
-        {     Headers = new()
+        {
+            Headers = new()
             {
                 {
                     "key", "value"
@@ -186,14 +188,14 @@ public class Tests
     [Fact]
     public Task TimeoutMessageWithin()
     {
-        var context = new TimeoutMessage<string>("message",new(), TimeSpan.FromDays(10));
+        var context = new TimeoutMessage<string>("message", new(), TimeSpan.FromDays(10));
         return Verify(context);
     }
 
     [Fact]
     public Task TimeoutMessageAt()
     {
-        var context = new TimeoutMessage<string>("message",new(), new DateTimeOffset(new(2020,10,1)));
+        var context = new TimeoutMessage<string>("message", new(), new DateTimeOffset(new(2020, 10, 1)));
         return Verify(context);
     }
 
@@ -213,7 +215,7 @@ public class Tests
             }
         };
         context.Extensions.Set("key", "value");
-        context.MessageHeaders.Add("key","value");
+        context.MessageHeaders.Add("key", "value");
         context.Publish("publish message");
         context.Send("send message");
         context.SendLocal("send local message");
@@ -232,9 +234,18 @@ public class Tests
     {
         var context = new TestableMessageProcessingContext();
         context.MessageHeaders.Add("key", "value");
-        await context.Publish(new PublishMessage {Property = "Value"});
-        await context.Reply(new ReplyMessage {Property = "Value"});
-        await context.Send(new SendMessage {Property = "Value"});
+        await context.Publish(new PublishMessage
+        {
+            Property = "Value"
+        });
+        await context.Reply(new ReplyMessage
+        {
+            Property = "Value"
+        });
+        await context.Send(new SendMessage
+        {
+            Property = "Value"
+        });
         await context.ForwardCurrentMessageTo("newDestination");
         context.Extensions.Set("key", "value");
         await Verify(context);
@@ -313,7 +324,7 @@ public class Tests
         });
     }
 
-    public class MySaga:
+    public class MySaga :
         NServiceBus.Saga<MySagaData>,
         IHandleMessages<MySagaMessage>,
         IHandleTimeouts<MySagaMessage>
@@ -374,7 +385,10 @@ public class Tests
     {
         var context = new TestableOutgoingPhysicalMessageContext
         {
-            Body = new byte[] {1},
+            Body = new byte[]
+            {
+                1
+            },
             Headers = new()
             {
                 {
@@ -465,12 +479,21 @@ public class Tests
     public async Task PipelineContext()
     {
         var context = new TestablePipelineContext();
-        await context.Publish(new PublishMessage { Property = "Value" });
-        await context.Send(new SendMessage { Property = "Value" });
+        await context.Publish(new PublishMessage
+        {
+            Property = "Value"
+        });
+        await context.Send(new SendMessage
+        {
+            Property = "Value"
+        });
         var options = new SendOptions();
         options.DelayDeliveryWith(TimeSpan.FromDays(1));
         context.Extensions.Set("key", "value");
-        await context.Send(new SendMessage {Property = "ValueWithDelay"},options);
+        await context.Send(new SendMessage
+        {
+            Property = "ValueWithDelay"
+        }, options);
         await Verify(context);
     }
 
@@ -558,10 +581,17 @@ public class Tests
             "MessageId",
             new()
             {
-                {"key", "value"},
-                {"NServiceBus.MessageId", "TheId"},
+                {
+                    "key", "value"
+                },
+                {
+                    "NServiceBus.MessageId", "TheId"
+                },
             },
-            new byte[] {1});
+            new byte[]
+            {
+                1
+            });
 
     static OutgoingLogicalMessage BuildOutgoingLogicalMessage() =>
         new(
@@ -576,10 +606,17 @@ public class Tests
             "NativeMessageId",
             new()
             {
-                {"key", "value"},
-                {"NServiceBus.MessageId", "TheId"},
+                {
+                    "key", "value"
+                },
+                {
+                    "NServiceBus.MessageId", "TheId"
+                },
             },
-            new byte[] {1});
+            new byte[]
+            {
+                1
+            });
 
     static LogicalMessage BuildLogicalMessage() =>
         new(
