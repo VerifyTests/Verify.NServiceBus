@@ -55,6 +55,6 @@ public static class VerifyNServiceBus
         }
 
         VerifierSettings.IgnoreInstance<ContextBag>(_ => !ContextBagHelper.HasContent(_));
-        VerifierSettings.AddExtraSettings(_ => _.Converters.AddRange(converters));
+        DefaultContractResolver.Converters.AddRange(converters);
     }
 }
