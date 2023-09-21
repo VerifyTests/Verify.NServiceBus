@@ -6,6 +6,8 @@
 
 Adds [Verify](https://github.com/VerifyTests/Verify) support to verify [NServiceBus Test Contexts](https://docs.particular.net/nservicebus/samples/unit-testing/).
 
+**See [Milestones](../../milestones?state=closed) for release notes.**
+
 
 ## NuGet package
 
