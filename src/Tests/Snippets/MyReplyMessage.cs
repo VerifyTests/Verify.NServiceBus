@@ -1,4 +1,4 @@
 ﻿public class MyReplyMessage
 {
-    public string Property { get; set; } = null !;
+    public string Property { get; set; } = null!;
 }
