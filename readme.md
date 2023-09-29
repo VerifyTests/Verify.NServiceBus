@@ -78,12 +78,13 @@ public async Task VerifyHandlerResult()
     var handler = new MyHandler();
     var context = new TestableMessageHandlerContext();
 
-    await handler.Handle(new(), context);
+    var message = new MyRequest();
+    await handler.Handle(message, context);
 
     await Verify(context);
 }
 ```
-<sup><a href='/src/Tests/Snippets/HandlerTests.cs#L4-L17' title='Snippet source file'>snippet source</a> | <a href='#snippet-handlertest' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/HandlerTests.cs#L4-L18' title='Snippet source file'>snippet source</a> | <a href='#snippet-handlertest' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The resulting context verification file is as follows:
@@ -178,7 +179,8 @@ public async Task VerifySagaResult()
 
     var context = new TestableMessageHandlerContext();
 
-    await saga.Handle(new(), context);
+    var message = new MyRequest();
+    await saga.Handle(message, context);
 
     await Verify(new
     {
@@ -187,7 +189,7 @@ public async Task VerifySagaResult()
     });
 }
 ```
-<sup><a href='/src/Tests/Snippets/SagaTests.cs#L4-L25' title='Snippet source file'>snippet source</a> | <a href='#snippet-sagatest' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/SagaTests.cs#L4-L26' title='Snippet source file'>snippet source</a> | <a href='#snippet-sagatest' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The resulting context verification file is as follows:
