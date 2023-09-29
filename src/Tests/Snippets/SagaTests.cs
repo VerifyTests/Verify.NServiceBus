@@ -13,7 +13,8 @@ public class SagaTests
 
         var context = new TestableMessageHandlerContext();
 
-        await saga.Handle(new(), context);
+        var message = new MyRequest();
+        await saga.Handle(message, context);
 
         await Verify(new
         {

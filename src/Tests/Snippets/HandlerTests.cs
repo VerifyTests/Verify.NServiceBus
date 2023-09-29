@@ -9,7 +9,8 @@ public class HandlerTests
         var handler = new MyHandler();
         var context = new TestableMessageHandlerContext();
 
-        await handler.Handle(new(), context);
+        var message = new MyRequest();
+        await handler.Handle(message, context);
 
         await Verify(context);
     }
