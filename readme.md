@@ -87,7 +87,7 @@ public async Task VerifyHandlerResult()
 <sup><a href='/src/Tests/Snippets/HandlerTests.cs#L4-L18' title='Snippet source file'>snippet source</a> | <a href='#snippet-handlertest' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
-The resulting context verification file is as follows:
+The resulting verification file is as follows:
 
 <!-- snippet: HandlerTests.VerifyHandlerResult.verified.txt -->
 <a id='snippet-HandlerTests.VerifyHandlerResult.verified.txt'></a>
@@ -192,7 +192,7 @@ public async Task VerifySagaResult()
 <sup><a href='/src/Tests/Snippets/SagaTests.cs#L4-L26' title='Snippet source file'>snippet source</a> | <a href='#snippet-sagatest' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
-The resulting context verification file is as follows:
+The resulting verification file is as follows:
 
 <!-- snippet: SagaTests.VerifySagaResult.verified.txt -->
 <a id='snippet-SagaTests.VerifySagaResult.verified.txt'></a>
