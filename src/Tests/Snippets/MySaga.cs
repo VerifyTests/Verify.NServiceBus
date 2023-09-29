@@ -25,7 +25,6 @@ public class MySaga :
         public Guid OrderId { get; set; }
         public int MessageCount { get; set; }
     }
-
 }
 
 #endregion

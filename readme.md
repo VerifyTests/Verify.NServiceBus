@@ -126,7 +126,64 @@ The resulting context verification file is as follows:
 <!-- endSnippet -->
 
 
-### Verifying a Saga
+#### Recording
+
+Recording allows all message message interaction with the test context to be captured and then verified.
+
+Switch usages of `TestableMessageHandlerContext` to `RecordingMessageContext`.
+
+<!-- snippet: RecordingHandlerTests -->
+<a id='snippet-recordinghandlertests'></a>
+```cs
+[Fact]
+public async Task VerifyHandlerResult()
+{
+    var handler = new MyHandler();
+    var context = new RecordingMessageContext();
+
+    var message = new MyRequest();
+    await handler.Handle(message, context);
+
+    await Verify("some other data");
+}
+```
+<sup><a href='/src/Tests/Snippets/RecordingHandlerTests.cs#L4-L18' title='Snippet source file'>snippet source</a> | <a href='#snippet-recordinghandlertests' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+The resulting context verification file is as follows:
+
+<!-- snippet: RecordingHandlerTests.VerifyHandlerResult.verified.txt -->
+<a id='snippet-RecordingHandlerTests.VerifyHandlerResult.verified.txt'></a>
+```txt
+{
+  target: some other data,
+  messages: [
+    {
+      Message: {
+        Property: Value
+      }
+    },
+    {
+      Message: {
+        Property: Value
+      }
+    },
+    {
+      Message: {
+        Property: Value
+      },
+      Options: {
+        DeliveryDelay: 12:00:00
+      }
+    }
+  ]
+}
+```
+<sup><a href='/src/Tests/Snippets/RecordingHandlerTests.VerifyHandlerResult.verified.txt#L1-L23' title='Snippet source file'>snippet source</a> | <a href='#snippet-RecordingHandlerTests.VerifyHandlerResult.verified.txt' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+
+#### Verifying a Saga
 
 Given the following handler:
 
@@ -158,10 +215,9 @@ public class MySaga :
         public Guid OrderId { get; set; }
         public int MessageCount { get; set; }
     }
-
 }
 ```
-<sup><a href='/src/Tests/Snippets/MySaga.cs#L1-L31' title='Snippet source file'>snippet source</a> | <a href='#snippet-simplesaga' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/MySaga.cs#L1-L30' title='Snippet source file'>snippet source</a> | <a href='#snippet-simplesaga' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The test that verifies the resulting context:
@@ -251,7 +307,6 @@ await context.ForwardCurrentMessageTo("newDestination");
 
 Then the resulting visualization diff would look as follows:
 
-
 ![visualization diff](/src/approvaltests-diff.png)
 
 
@@ -272,7 +327,7 @@ await Verify(map);
 <sup><a href='/src/Tests/MessageToHandlerMapTests.cs#L7-L12' title='Snippet source file'>snippet source</a> | <a href='#snippet-messagetohandlermap' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
-Would result in: 
+Would result in:
 
 <!-- snippet: MessageToHandlerMapTests.Integration.verified.txt -->
 <a id='snippet-MessageToHandlerMapTests.Integration.verified.txt'></a>
@@ -285,6 +340,7 @@ Would result in:
 ```
 <sup><a href='/src/Tests/MessageToHandlerMapTests.Integration.verified.txt#L1-L5' title='Snippet source file'>snippet source</a> | <a href='#snippet-MessageToHandlerMapTests.Integration.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
+
 
 
 ## Icon
