@@ -47,15 +47,9 @@ public class MessageToHandlerMapTests
     static Task VerifyMap(MessageToHandlerMap map) =>
         Verify(new {map.HandledMessages, map.Messages});
 
-    class MyMessage : IMessage
-    {
+    class MyMessage : IMessage;
 
-    }
-
-    class MessageWithNoHandler : IMessage
-    {
-
-    }
+    class MessageWithNoHandler : IMessage;
 
     class MyHandler : IHandleMessages<MyMessage>
     {

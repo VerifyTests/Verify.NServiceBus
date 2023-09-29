@@ -76,9 +76,7 @@ public class Tests
     }
 
     public class TestableBehaviorContextImp :
-        TestableBehaviorContext
-    {
-    }
+        TestableBehaviorContext;
 
     [Fact]
     public Task DispatchContext()
@@ -347,9 +345,7 @@ public class Tests
             MarkAsComplete();
     }
 
-    public class MySagaMessage
-    {
-    }
+    public class MySagaMessage;
 
     public class MySagaData :
         ContainSagaData
