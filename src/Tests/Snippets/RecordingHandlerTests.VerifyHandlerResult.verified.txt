@@ -1,0 +1,23 @@
+﻿{
+  target: some other data,
+  messages: [
+    {
+      Message: {
+        Property: Value
+      }
+    },
+    {
+      Message: {
+        Property: Value
+      }
+    },
+    {
+      Message: {
+        Property: Value
+      },
+      Options: {
+        DeliveryDelay: 12:00:00
+      }
+    }
+  ]
+}

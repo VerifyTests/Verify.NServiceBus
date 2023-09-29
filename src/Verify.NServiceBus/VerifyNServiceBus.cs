@@ -56,5 +56,16 @@ public static class VerifyNServiceBus
 
         VerifierSettings.IgnoreInstance<ContextBag>(_ => !ContextBagHelper.HasContent(_));
         VerifierSettings.AddExtraSettings(_ => _.Converters.AddRange(converters));
+
+        VerifierSettings.RegisterJsonAppender(_ =>
+        {
+            var entries = RecordingMessageContext.Stop();
+            if (entries is null)
+            {
+                return null;
+            }
+
+            return new ToAppend("messages", entries);
+        });
     }
 }
