@@ -128,7 +128,7 @@ The resulting verification file is as follows:
 
 #### Recording
 
-Recording allows all message message interaction with the test context to be captured and then verified.
+Recording allows all message interaction with the test context to be captured and then verified.
 
 Switch usages of `TestableMessageHandlerContext` to `RecordingMessageContext`.
 
