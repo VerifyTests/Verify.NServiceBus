@@ -65,6 +65,11 @@ public static class VerifyNServiceBus
                 return null;
             }
 
+            if (!entries.Any())
+            {
+                return null;
+            }
+
             return new ToAppend("messages", entries);
         });
     }

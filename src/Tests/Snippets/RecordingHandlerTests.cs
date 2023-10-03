@@ -16,4 +16,12 @@ public class RecordingHandlerTests
     }
 
     #endregion
+
+    [Fact]
+    public async Task NoMessages()
+    {
+        var context = new RecordingHandlerContext();
+
+        await Verify("some other data");
+    }
 }
