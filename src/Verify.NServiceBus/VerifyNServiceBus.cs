@@ -59,7 +59,7 @@ public static class VerifyNServiceBus
 
         VerifierSettings.RegisterJsonAppender(_ =>
         {
-            var entries = RecordingMessageContext.Stop();
+            var entries = RecordingState.Stop();
             if (entries is null)
             {
                 return null;
