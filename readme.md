@@ -160,21 +160,21 @@ The resulting context verification file is as follows:
   messages: [
     {
       Publish: {
-        Message: {
+        MyPublishMessage: {
           Property: Value
         }
       }
     },
     {
       Reply: {
-        Message: {
+        MyReplyMessage: {
           Property: Value
         }
       }
     },
     {
       Send: {
-        Message: {
+        MySendMessage: {
           Property: Value
         },
         Options: {
