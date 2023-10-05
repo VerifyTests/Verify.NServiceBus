@@ -6,7 +6,6 @@ public static class VerifyNServiceBus
 {
     internal static List<JsonConverter> converters = new()
     {
-        new LogEntryConverter(),
         new MessageHandlerContextConverter(),
         new IncomingPhysicalMessageContextConverter(),
         new InvokeHandlerContextConverter(),
@@ -35,7 +34,8 @@ public static class VerifyNServiceBus
         new RoutingToDispatchConnectorStateConverter(),
         new TimeoutMessageConverter(),
         new SagaConverter(),
-        new OutgoingMessageConverter()
+        new OutgoingMessageConverter(),
+        new LogEntryConverter(),
     };
 
     public static bool Initialized { get; private set; }
