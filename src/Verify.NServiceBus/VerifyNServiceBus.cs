@@ -35,7 +35,7 @@ public static class VerifyNServiceBus
         new TimeoutMessageConverter(),
         new SagaConverter(),
         new OutgoingMessageConverter(),
-        new LogEntryConverter(),
+        new RecordedMessageConverter(),
     };
 
     public static bool Initialized { get; private set; }

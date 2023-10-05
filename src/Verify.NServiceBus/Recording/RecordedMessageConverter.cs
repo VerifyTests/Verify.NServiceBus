@@ -1,7 +1,7 @@
-class LogEntryConverter :
-    WriteOnlyJsonConverter<LogEntry>
+class RecordedMessageConverter :
+    WriteOnlyJsonConverter<RecordedMessage>
 {
-    public override void Write(VerifyJsonWriter writer, LogEntry entry)
+    public override void Write(VerifyJsonWriter writer, RecordedMessage entry)
     {
         writer.WriteStartObject();
 

@@ -6,29 +6,29 @@
     public RecordingState() =>
         asyncLocal.Value = state =new();
 
-    internal static List<KeyValuePair<string, LogEntry>>? Stop()
+    internal static List<KeyValuePair<string, RecordedMessage>>? Stop()
     {
         var state = asyncLocal.Value;
         asyncLocal.Value = null;
-        return state?.Events;
+        return state?.Messages;
     }
 
     class State
     {
-        internal List<KeyValuePair<string, LogEntry>> Events = new();
+        internal List<KeyValuePair<string, RecordedMessage>> Messages = new();
 
         public void Add(string action, object? message, ExtendableOptions options, Type? eventType)
         {
-            LogEntry logEntry;
+            RecordedMessage recordedMessage;
             if (!options.HasValue())
             {
-                logEntry = new(message, null, eventType);
+                recordedMessage = new(message, null, eventType);
             }
             else
             {
-                logEntry = new(message, options, eventType);
+                recordedMessage = new(message, options, eventType);
             }
-            Events.Add(new(action, logEntry));
+            Messages.Add(new(action, recordedMessage));
         }
     }
 
@@ -40,8 +40,6 @@
 
     public void Send(object message, SendOptions options) =>
         state.Add("Send", message, options, null);
-
-
 
     public void Unsubscribe(Type eventType, UnsubscribeOptions options) =>
         state.Add("Unsubscribe", null, options, eventType);
