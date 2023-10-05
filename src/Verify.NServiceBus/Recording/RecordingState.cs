@@ -41,12 +41,7 @@
     public void Send(object message, SendOptions options) =>
         state.Add("Send", message, options, null);
 
-    internal class LogEntry(object? message, ExtendableOptions? options, Type? eventType)
-    {
-        public object? Message { get; } = message;
-        public Type? EventType { get; } = eventType;
-        public ExtendableOptions? Options { get; } = options;
-    }
+
 
     public void Unsubscribe(Type eventType, UnsubscribeOptions options) =>
         state.Add("Unsubscribe", null, options, eventType);

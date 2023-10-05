@@ -11,7 +11,6 @@ public class RecordingMessageSession :
         return base.Publish(message, options, cancel);
     }
 
-
     public override Task Send(object message, SendOptions options, Cancel cancel = default)
     {
         state.Send(message, options);

@@ -130,7 +130,7 @@ The resulting verification file is as follows:
 
 Recording allows all message interaction with the test context to be captured and then verified.
 
-Switch usages of `TestableMessageHandlerContext` to `RecordingMessageContext`.
+Switch usages of `TestableMessageHandlerContext` to `RecordingHandlerContext`.
 
 <!-- snippet: RecordingHandlerTests -->
 <a id='snippet-recordinghandlertests'></a>

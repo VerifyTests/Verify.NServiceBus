@@ -6,6 +6,7 @@ public static class VerifyNServiceBus
 {
     internal static List<JsonConverter> converters = new()
     {
+        new LogEntryConverter(),
         new MessageHandlerContextConverter(),
         new IncomingPhysicalMessageContextConverter(),
         new InvokeHandlerContextConverter(),

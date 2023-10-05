@@ -20,7 +20,7 @@ public class RecordingHandlerTests
     [Fact]
     public async Task NoMessages()
     {
-        var context = new RecordingHandlerContext();
+        new RecordingHandlerContext();
 
         await Verify("some other data");
     }
