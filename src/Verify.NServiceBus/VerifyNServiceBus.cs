@@ -74,4 +74,7 @@ public static class VerifyNServiceBus
             return new ToAppend("messages", entries);
         });
     }
+
+    public static void ClearRecordedMessages() =>
+        RecordingState.ClearRecordedMessages();
 }

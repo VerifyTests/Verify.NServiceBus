@@ -6,6 +6,9 @@
     public RecordingState() =>
         asyncLocal.Value = state =new();
 
+    public static void ClearRecordedMessages() =>
+        asyncLocal.Value?.Messages.Clear();
+
     internal static List<KeyValuePair<string, RecordedMessage>>? Stop()
     {
         var state = asyncLocal.Value;
