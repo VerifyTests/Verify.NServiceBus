@@ -22,16 +22,17 @@
 
         public void Add(string action, object? message, ExtendableOptions options, Type? eventType)
         {
-            RecordedMessage recordedMessage;
-            if (!options.HasValue())
+            RecordedMessage recorded;
+            if (options.HasValue())
             {
-                recordedMessage = new(message, null, eventType);
+                recorded = new(message, options, eventType);
             }
             else
             {
-                recordedMessage = new(message, options, eventType);
+                recorded = new(message, null, eventType);
             }
-            Messages.Add(new(action, recordedMessage));
+
+            Messages.Add(new(action, recorded));
         }
     }
 
