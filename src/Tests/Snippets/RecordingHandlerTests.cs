@@ -6,6 +6,7 @@ public class RecordingHandlerTests
     [Fact]
     public async Task VerifyHandlerResult()
     {
+        Recording.Start();
         var handler = new MyHandler();
         var context = new RecordingHandlerContext();
 
@@ -20,20 +21,9 @@ public class RecordingHandlerTests
     [Fact]
     public async Task NoMessages()
     {
+        Recording.Start();
         new RecordingHandlerContext();
 
-        await Verify("some other data");
-    }
-
-    [Fact]
-    public async Task Clear()
-    {
-        var handler = new MyHandler();
-        var context = new RecordingHandlerContext();
-
-        var message = new MyRequest();
-        await handler.Handle(message, context);
-        VerifyNServiceBus.ClearRecordedMessages();
         await Verify("some other data");
     }
 }

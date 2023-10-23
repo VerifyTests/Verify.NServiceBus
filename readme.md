@@ -138,6 +138,7 @@ Switch usages of `TestableMessageHandlerContext` to `RecordingHandlerContext`.
 [Fact]
 public async Task VerifyHandlerResult()
 {
+    Recording.Start();
     var handler = new MyHandler();
     var context = new RecordingHandlerContext();
 
@@ -147,7 +148,7 @@ public async Task VerifyHandlerResult()
     await Verify("some other data");
 }
 ```
-<sup><a href='/src/Tests/Snippets/RecordingHandlerTests.cs#L4-L18' title='Snippet source file'>snippet source</a> | <a href='#snippet-recordinghandlertests' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/RecordingHandlerTests.cs#L4-L19' title='Snippet source file'>snippet source</a> | <a href='#snippet-recordinghandlertests' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The resulting context verification file is as follows:

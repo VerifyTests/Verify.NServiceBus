@@ -7,7 +7,7 @@ public class RecordingHandlerContext :
 
     public override Task Publish(object message, PublishOptions options)
     {
-        state.Publish(message, options);
+        RecordingState.Publish(message, options);
         return base.Publish(message, options);
     }
 

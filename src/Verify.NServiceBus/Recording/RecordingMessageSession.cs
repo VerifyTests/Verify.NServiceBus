@@ -7,7 +7,7 @@ public class RecordingMessageSession :
 
     public override Task Publish(object message, PublishOptions options, Cancel cancel = default)
     {
-        state.Publish(message, options);
+        RecordingState.Publish(message, options);
         return base.Publish(message, options, cancel);
     }
 
