@@ -4,17 +4,13 @@ public class Tests
     [Fact]
     public async Task Logging()
     {
+        Recording.Start();
         var handler = new MyHandlerWithLogging();
         var context = new TestableMessageHandlerContext();
         context.Extensions.Set("key", "value");
 
         await handler.Handle(new(), context);
-        await Verify(
-            new
-            {
-                context,
-                LogCapture.LogMessages
-            });
+        await Verify(context);
     }
 
     class MyHandlerWithLogging :

@@ -52,7 +52,7 @@ public static class VerifyNServiceBus
         InnerVerifier.ThrowIfVerifyHasBeenRun();
         if (captureLogs)
         {
-            LogCapture.Initialize();
+            LogManager.Use<Logger>();
         }
 
         VerifierSettings.IgnoreInstance<ContextBag>(_ => !ContextBagHelper.HasContent(_));

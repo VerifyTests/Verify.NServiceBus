@@ -1,13 +1,11 @@
 ﻿{
-  context: {
+  target: {
     Extensions: {
       key: value
     }
   },
-  LogMessages: [
-    {
-      Level: Warn,
-      Message: The log message
-    }
-  ]
+  logs: {
+    Level: Warn,
+    Message: The log message
+  }
 }
