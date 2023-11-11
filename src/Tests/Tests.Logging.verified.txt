@@ -4,7 +4,7 @@
       key: value
     }
   },
-  logs: {
+  log: {
     Level: Warn,
     Message: The log message
   }
