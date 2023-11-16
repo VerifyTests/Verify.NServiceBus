@@ -4,8 +4,8 @@ namespace VerifyTests;
 
 public static class VerifyNServiceBus
 {
-    internal static List<JsonConverter> converters = new()
-    {
+    internal static List<JsonConverter> converters =
+    [
         new MessageHandlerContextConverter(),
         new IncomingPhysicalMessageContextConverter(),
         new InvokeHandlerContextConverter(),
@@ -35,8 +35,8 @@ public static class VerifyNServiceBus
         new TimeoutMessageConverter(),
         new SagaConverter(),
         new OutgoingMessageConverter(),
-        new RecordedMessageConverter(),
-    };
+        new RecordedMessageConverter()
+    ];
 
     public static bool Initialized { get; private set; }
 
