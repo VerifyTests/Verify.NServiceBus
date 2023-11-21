@@ -18,18 +18,18 @@
         }
 
         return type.GetInterfaces()
-            .Any(x =>
+            .Any(_ =>
             {
-                if (!x.IsGenericType)
+                if (!_.IsGenericType)
                 {
                     return false;
                 }
 
-                var typeDefinition = x.GetGenericTypeDefinition();
+                var typeDefinition = _.GetGenericTypeDefinition();
                 return typeDefinition == typeof(IHandleMessages<>);
             });
     }
 
-    public static bool IsMessage(this Type x) =>
-        typeof(IMessage).IsAssignableFrom(x);
+    public static bool IsMessage(this Type type) =>
+        typeof(IMessage).IsAssignableFrom(type);
 }

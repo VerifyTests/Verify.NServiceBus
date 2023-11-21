@@ -26,14 +26,14 @@ public class MessageToHandlerMap
     {
         foreach (var interfaceType in handlerType
             .GetInterfaces()
-            .Where(x =>
+            .Where(_ =>
             {
-                if (!x.IsGenericType)
+                if (!_.IsGenericType)
                 {
                     return false;
                 }
 
-                var typeDefinition = x.GetGenericTypeDefinition();
+                var typeDefinition = _.GetGenericTypeDefinition();
                 return typeDefinition == typeof(IHandleMessages<>);
             }))
         {
