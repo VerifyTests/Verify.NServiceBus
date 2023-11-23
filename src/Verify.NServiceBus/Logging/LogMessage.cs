@@ -7,7 +7,7 @@ public class LogMessage
         Level = level;
         Message = message;
         Exception = exception;
-        Args = Array.Empty<object>();
+        Args = [];
     }
 
     public LogMessage(LogLevel level, string format, IReadOnlyList<object> args, Exception? exception = null)
