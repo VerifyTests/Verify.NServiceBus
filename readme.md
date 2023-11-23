@@ -158,7 +158,7 @@ The resulting context verification file is as follows:
 ```txt
 {
   target: some other data,
-  messages: [
+  message: [
     {
       Publish: {
         MyPublishMessage: {
