@@ -2,8 +2,8 @@
 
 public class MessageToHandlerMap
 {
-    internal HashSet<Type> Messages = new();
-    internal HashSet<Type> HandledMessages = new();
+    internal HashSet<Type> Messages = [];
+    internal HashSet<Type> HandledMessages = [];
 
     public void AddMessagesFromAssembly(Assembly assembly)
     {
