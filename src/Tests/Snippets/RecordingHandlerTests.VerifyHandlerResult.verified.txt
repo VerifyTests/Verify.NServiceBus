@@ -1,6 +1,6 @@
 ﻿{
   target: some other data,
-  messages: [
+  message: [
     {
       Publish: {
         MyPublishMessage: {

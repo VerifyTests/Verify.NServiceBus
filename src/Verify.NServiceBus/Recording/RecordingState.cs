@@ -12,7 +12,7 @@
             recorded = new(message, null, eventType);
         }
 
-        Recording.TryAdd("messages", new KeyValuePair<string, RecordedMessage>(action, recorded));
+        Recording.TryAdd("message", new KeyValuePair<string, RecordedMessage>(action, recorded));
     }
 
     public static void Publish(object message, PublishOptions options) =>
