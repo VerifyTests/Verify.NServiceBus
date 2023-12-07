@@ -349,7 +349,6 @@ Would result in:
 <!-- endSnippet -->
 
 
-
 ## Icon
 
 [Approval](https://thenounproject.com/term/approval/1759519/) designed by [Mike Zuidgeest](https://thenounproject.com/zuidgeest/) from [The Noun Project](https://thenounproject.com/).
