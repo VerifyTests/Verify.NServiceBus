@@ -1,5 +1,4 @@
-﻿[UsesVerify]
-public class LogMessageTests
+﻿public class LogMessageTests
 {
     [Fact]
     public Task Logging()

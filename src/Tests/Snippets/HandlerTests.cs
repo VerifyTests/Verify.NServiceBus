@@ -1,5 +1,4 @@
-﻿[UsesVerify]
-public class HandlerTests
+﻿public class HandlerTests
 {
     #region HandlerTest
 

@@ -1,4 +1,3 @@
-[UsesVerify]
 public class RecordingHandlerTests
 {
     #region RecordingHandlerTests

@@ -1,5 +1,4 @@
-﻿[UsesVerify]
-public class SagaTests
+﻿public class SagaTests
 {
     #region SagaTest
 

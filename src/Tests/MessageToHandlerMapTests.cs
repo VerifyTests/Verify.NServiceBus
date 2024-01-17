@@ -1,5 +1,4 @@
-﻿[UsesVerify]
-public class MessageToHandlerMapTests
+﻿public class MessageToHandlerMapTests
 {
     [Fact]
     public async Task Integration()
