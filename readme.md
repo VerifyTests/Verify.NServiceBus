@@ -84,7 +84,7 @@ public async Task VerifyHandlerResult()
     await Verify(context);
 }
 ```
-<sup><a href='/src/Tests/Snippets/HandlerTests.cs#L4-L18' title='Snippet source file'>snippet source</a> | <a href='#snippet-handlertest' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/HandlerTests.cs#L3-L17' title='Snippet source file'>snippet source</a> | <a href='#snippet-handlertest' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The resulting verification file is as follows:
@@ -148,7 +148,7 @@ public async Task VerifyHandlerResult()
     await Verify("some other data");
 }
 ```
-<sup><a href='/src/Tests/Snippets/RecordingHandlerTests.cs#L4-L19' title='Snippet source file'>snippet source</a> | <a href='#snippet-recordinghandlertests' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/RecordingHandlerTests.cs#L3-L18' title='Snippet source file'>snippet source</a> | <a href='#snippet-recordinghandlertests' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The resulting context verification file is as follows:
@@ -252,7 +252,7 @@ public async Task VerifySagaResult()
     });
 }
 ```
-<sup><a href='/src/Tests/Snippets/SagaTests.cs#L4-L26' title='Snippet source file'>snippet source</a> | <a href='#snippet-sagatest' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/SagaTests.cs#L3-L25' title='Snippet source file'>snippet source</a> | <a href='#snippet-sagatest' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The resulting verification file is as follows:
@@ -331,7 +331,7 @@ map.AddMessagesFromAssembly<MyMessage>();
 map.AddHandlersFromAssembly<MyHandler>();
 await Verify(map);
 ```
-<sup><a href='/src/Tests/MessageToHandlerMapTests.cs#L7-L12' title='Snippet source file'>snippet source</a> | <a href='#snippet-messagetohandlermap' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/MessageToHandlerMapTests.cs#L6-L11' title='Snippet source file'>snippet source</a> | <a href='#snippet-messagetohandlermap' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Would result in:
