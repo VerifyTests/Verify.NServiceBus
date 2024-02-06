@@ -10,14 +10,14 @@ public class LogMessage
         Args = [];
     }
 
-    public LogMessage(LogLevel level, string format, IReadOnlyList<object> args, Exception? exception = null)
+    public LogMessage(LogLevel level, string format, object[] args, Exception? exception = null)
     {
         Level = level;
         Format = format;
         Exception = exception;
         try
         {
-            Message = string.Format(format, args.ToArray());
+            Message = string.Format(format, args);
         }
         catch (Exception formatException)
         {
@@ -31,5 +31,5 @@ public class LogMessage
     public string Message { get; }
     public Exception? Exception { get; }
     public string? Format { get; }
-    public IReadOnlyList<object> Args { get; }
+    public object[] Args { get; }
 }
