@@ -9,7 +9,7 @@
     <PackageReference Include="SimpleInfoName" Version="2.2.0" />
     <PackageReference Include="NServiceBus.Testing" Version="8.1.0" />
     <PackageReference Include="Verify" Version="23.1.0" />
-    <PackageReference Include="ProjectDefaults" Version="1.0.109" PrivateAssets="all" />
+    <PackageReference Include="ProjectDefaults" Version="1.0.110" PrivateAssets="all" />
     <PackageReference Include="Polyfill" Version="2.3.0" PrivateAssets="all" />
     <Using Include="NServiceBus.Testing" />
     <Using Include="VerifyTests.NServiceBus" />
