@@ -96,7 +96,7 @@
     }
 
     [Fact]
-    public Task IncomingLogicalMessageContext()
+    public async Task IncomingLogicalMessageContext()
     {
         var context = new TestableIncomingLogicalMessageContext
         {
@@ -113,27 +113,27 @@
         };
         context.Extensions.Set("key", "value");
         context.MessageHeaders.Add("key", "value");
-        context.Publish("publish message");
-        context.Send("send message");
-        context.SendLocal("send local message");
-        return Verify(context);
+        await context.Publish("publish message");
+        await context.Send("send message");
+        await context.SendLocal("send local message");
+        await Verify(context);
     }
 
     [Fact]
-    public Task IncomingPhysicalMessageContext()
+    public async Task IncomingPhysicalMessageContext()
     {
         var context = new TestableIncomingPhysicalMessageContext
         {
             Message = BuildIncomingMessage(),
         };
-        context.ForwardCurrentMessageTo("forward destination");
+        await context.ForwardCurrentMessageTo("forward destination");
         context.MessageHeaders.Add("key", "value");
-        context.Reply("reply destination");
-        context.Publish("publish message");
-        context.Send("Send message");
-        context.SendLocal("Send local message");
+        await context.Reply("reply destination");
+        await context.Publish("publish message");
+        await context.Send("Send message");
+        await context.SendLocal("Send local message");
         context.Extensions.Set("key", "value");
-        return Verify(context);
+        await Verify(context);
     }
 
     [Fact]
@@ -193,7 +193,7 @@
     }
 
     [Fact]
-    public Task MessageHandlerContext()
+    public async Task MessageHandlerContext()
     {
         var context = new TestableMessageHandlerContext
         {
@@ -209,10 +209,10 @@
         };
         context.Extensions.Set("key", "value");
         context.MessageHeaders.Add("key", "value");
-        context.Publish("publish message");
-        context.Send("send message");
-        context.SendLocal("send local message");
-        return Verify(context);
+        await context.Publish("publish message");
+        await context.Send("send message");
+        await context.SendLocal("send local message");
+        await Verify(context);
     }
 
     [Fact]
@@ -259,7 +259,7 @@
     }
 
     [Fact]
-    public Task OutgoingContext()
+    public async Task OutgoingContext()
     {
         var context = new TestableOutgoingContext
         {
@@ -274,10 +274,10 @@
             }
         };
         context.Extensions.Set("key", "value");
-        context.Publish("publish message");
-        context.Send("send message");
-        context.SendLocal("send local message");
-        return Verify(context);
+        await context.Publish("publish message");
+        await context.Send("send message");
+        await context.SendLocal("send local message");
+        await Verify(context);
     }
 
     [Fact]
@@ -349,7 +349,7 @@
     }
 
     [Fact]
-    public Task OutgoingLogicalMessageContext()
+    public async Task OutgoingLogicalMessageContext()
     {
         var context = new TestableOutgoingLogicalMessageContext
         {
@@ -364,15 +364,15 @@
                 }
             }
         };
-        context.Publish("publish message");
-        context.Send("send message");
-        context.SendLocal("send local message");
+        await context.Publish("publish message");
+        await context.Send("send message");
+        await context.SendLocal("send local message");
         context.Extensions.Set("key", "value");
-        return Verify(context);
+        await Verify(context);
     }
 
     [Fact]
-    public Task OutgoingPhysicalMessageContext()
+    public async Task OutgoingPhysicalMessageContext()
     {
         var context = new TestableOutgoingPhysicalMessageContext
         {
@@ -391,14 +391,14 @@
             }
         };
         context.Extensions.Set("key", "value");
-        context.Publish("publish message");
-        context.Send("send message");
-        context.SendLocal("send local message");
-        return Verify(context);
+        await context.Publish("publish message");
+        await context.Send("send message");
+        await context.SendLocal("send local message");
+        await Verify(context);
     }
 
     [Fact]
-    public Task OutgoingPublishContext()
+    public async Task OutgoingPublishContext()
     {
         var context = new TestableOutgoingPublishContext
         {
@@ -414,14 +414,14 @@
             }
         };
         context.Extensions.Set("key", "value");
-        context.Publish("publish message");
-        context.Send("send message");
-        context.SendLocal("send local message");
-        return Verify(context);
+        await context.Publish("publish message");
+        await context.Send("send message");
+        await context.SendLocal("send local message");
+        await Verify(context);
     }
 
     [Fact]
-    public Task OutgoingReplyContext()
+    public async Task OutgoingReplyContext()
     {
         var context = new TestableOutgoingReplyContext
         {
@@ -437,14 +437,14 @@
             }
         };
         context.Extensions.Set("key", "value");
-        context.Publish("publish message");
-        context.Send("send message");
-        context.SendLocal("send local message");
-        return Verify(context);
+        await context.Publish("publish message");
+        await context.Send("send message");
+        await context.SendLocal("send local message");
+        await Verify(context);
     }
 
     [Fact]
-    public Task OutgoingSendContext()
+    public async Task OutgoingSendContext()
     {
         var context = new TestableOutgoingSendContext
         {
@@ -460,10 +460,10 @@
             }
         };
         context.Extensions.Set("key", "value");
-        context.Publish("publish message");
-        context.Send("send message");
-        context.SendLocal("send local message");
-        return Verify(context);
+        await context.Publish("publish message");
+        await context.Send("send message");
+        await context.SendLocal("send local message");
+        await Verify(context);
     }
 
     [Fact]
