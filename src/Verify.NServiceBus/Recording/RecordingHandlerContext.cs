@@ -3,8 +3,6 @@
 public class RecordingHandlerContext :
     TestableMessageHandlerContext
 {
-    RecordingState state = new();
-
     public override Task Publish(object message, PublishOptions options)
     {
         RecordingState.Publish(message, options);
@@ -13,13 +11,13 @@ public class RecordingHandlerContext :
 
     public override Task Reply(object message, ReplyOptions options)
     {
-        state.Reply(message, options);
+        RecordingState.Reply(message, options);
         return base.Reply(message, options);
     }
 
     public override Task Send(object message, SendOptions options)
     {
-        state.Send(message, options);
+        RecordingState.Send(message, options);
         return base.Send(message, options);
     }
 }

@@ -32,7 +32,7 @@
     static bool TryGetStash(object value)
     {
         var stash = (Dictionary<string, object>?) stashField.GetValue(value);
-        return stash != null && stash.Any();
+        return stash != null && stash.Count != 0;
     }
 
     public static IEnumerable<KeyValuePair<string, object>> GetValues(this ContextBag value)

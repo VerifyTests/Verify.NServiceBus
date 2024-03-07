@@ -1,4 +1,4 @@
-﻿class RecordingState
+﻿static class RecordingState
 {
     public static void Add(string action, object? message, ExtendableOptions options, Type? eventType)
     {
@@ -18,15 +18,15 @@
     public static void Publish(object message, PublishOptions options) =>
         Add("Publish", message, options, null);
 
-    public void Reply(object message, ReplyOptions options) =>
+    public static void Reply(object message, ReplyOptions options) =>
         Add("Reply", message, options, null);
 
-    public void Send(object message, SendOptions options) =>
+    public static void Send(object message, SendOptions options) =>
         Add("Send", message, options, null);
 
-    public void Unsubscribe(Type eventType, UnsubscribeOptions options) =>
+    public static void Unsubscribe(Type eventType, UnsubscribeOptions options) =>
         Add("Unsubscribe", null, options, eventType);
 
-    public void Subscribe(Type eventType, SubscribeOptions options) =>
+    public static void Subscribe(Type eventType, SubscribeOptions options) =>
         Add("Subscribe", null, options, eventType);
 }

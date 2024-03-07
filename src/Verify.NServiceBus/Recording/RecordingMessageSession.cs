@@ -3,8 +3,6 @@
 public class RecordingMessageSession :
     TestableMessageSession
 {
-    RecordingState state = new();
-
     public override Task Publish(object message, PublishOptions options, Cancel cancel = default)
     {
         RecordingState.Publish(message, options);
@@ -13,19 +11,19 @@ public class RecordingMessageSession :
 
     public override Task Send(object message, SendOptions options, Cancel cancel = default)
     {
-        state.Send(message, options);
+        RecordingState.Send(message, options);
         return base.Send(message, options, cancel);
     }
 
     public override Task Unsubscribe(Type eventType, UnsubscribeOptions options, Cancel cancel = default)
     {
-        state.Unsubscribe(eventType, options);
+        RecordingState.Unsubscribe(eventType, options);
         return base.Unsubscribe(eventType, options, cancel);
     }
 
     public override Task Subscribe(Type eventType, SubscribeOptions options, Cancel cancel = default)
     {
-        state.Subscribe(eventType, options);
+        RecordingState.Subscribe(eventType, options);
         return base.Subscribe(eventType, options, cancel);
     }
 }
