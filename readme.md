@@ -32,7 +32,7 @@ public static void Initialize() =>
 Given the following handler:
 
 <!-- snippet: SimpleHandler -->
-<a id='snippet-simplehandler'></a>
+<a id='snippet-SimpleHandler'></a>
 ```cs
 public class MyHandler :
     IHandleMessages<MyRequest>
@@ -64,13 +64,13 @@ public class MyHandler :
     }
 }
 ```
-<sup><a href='/src/Tests/Snippets/MyHandler.cs#L1-L33' title='Snippet source file'>snippet source</a> | <a href='#snippet-simplehandler' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/MyHandler.cs#L1-L33' title='Snippet source file'>snippet source</a> | <a href='#snippet-SimpleHandler' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The test that verifies the resulting context:
 
 <!-- snippet: HandlerTest -->
-<a id='snippet-handlertest'></a>
+<a id='snippet-HandlerTest'></a>
 ```cs
 [Fact]
 public async Task VerifyHandlerResult()
@@ -84,7 +84,7 @@ public async Task VerifyHandlerResult()
     await Verify(context);
 }
 ```
-<sup><a href='/src/Tests/Snippets/HandlerTests.cs#L3-L17' title='Snippet source file'>snippet source</a> | <a href='#snippet-handlertest' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/HandlerTests.cs#L3-L17' title='Snippet source file'>snippet source</a> | <a href='#snippet-HandlerTest' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The resulting verification file is as follows:
@@ -133,7 +133,7 @@ Recording allows all message interaction with the test context to be captured an
 Switch usages of `TestableMessageHandlerContext` to `RecordingHandlerContext`.
 
 <!-- snippet: RecordingHandlerTests -->
-<a id='snippet-recordinghandlertests'></a>
+<a id='snippet-RecordingHandlerTests'></a>
 ```cs
 [Fact]
 public async Task VerifyHandlerResult()
@@ -148,7 +148,7 @@ public async Task VerifyHandlerResult()
     await Verify("some other data");
 }
 ```
-<sup><a href='/src/Tests/Snippets/RecordingHandlerTests.cs#L3-L18' title='Snippet source file'>snippet source</a> | <a href='#snippet-recordinghandlertests' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/RecordingHandlerTests.cs#L3-L18' title='Snippet source file'>snippet source</a> | <a href='#snippet-RecordingHandlerTests' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The resulting context verification file is as follows:
@@ -195,7 +195,7 @@ The resulting context verification file is as follows:
 Given the following handler:
 
 <!-- snippet: SimpleSaga -->
-<a id='snippet-simplesaga'></a>
+<a id='snippet-SimpleSaga'></a>
 ```cs
 public class MySaga :
     NServiceBus.Saga<MySaga.MySagaData>,
@@ -224,13 +224,13 @@ public class MySaga :
     }
 }
 ```
-<sup><a href='/src/Tests/Snippets/MySaga.cs#L1-L30' title='Snippet source file'>snippet source</a> | <a href='#snippet-simplesaga' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/MySaga.cs#L1-L30' title='Snippet source file'>snippet source</a> | <a href='#snippet-SimpleSaga' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The test that verifies the resulting context:
 
 <!-- snippet: SagaTest -->
-<a id='snippet-sagatest'></a>
+<a id='snippet-SagaTest'></a>
 ```cs
 [Fact]
 public async Task VerifySagaResult()
@@ -252,7 +252,7 @@ public async Task VerifySagaResult()
     });
 }
 ```
-<sup><a href='/src/Tests/Snippets/SagaTests.cs#L3-L25' title='Snippet source file'>snippet source</a> | <a href='#snippet-sagatest' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/SagaTests.cs#L3-L25' title='Snippet source file'>snippet source</a> | <a href='#snippet-SagaTest' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The resulting verification file is as follows:
@@ -284,7 +284,7 @@ The resulting verification file is as follows:
 The next time there is a code change, that results in a different resulting interactions with NServiceBus, those changes can be visualized. For example if the `DelayDeliveryWith` is changed from 12 hours to 1 day:
 
 <!-- snippet: SimpleHandlerV2 -->
-<a id='snippet-simplehandlerv2'></a>
+<a id='snippet-SimpleHandlerV2'></a>
 ```cs
 await context.Publish(
     new MyPublishMessage
@@ -309,7 +309,7 @@ await context.Send(
 
 await context.ForwardCurrentMessageTo("newDestination");
 ```
-<sup><a href='/src/Tests/Snippets/MyHandlerV2.cs#L6-L31' title='Snippet source file'>snippet source</a> | <a href='#snippet-simplehandlerv2' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets/MyHandlerV2.cs#L6-L31' title='Snippet source file'>snippet source</a> | <a href='#snippet-SimpleHandlerV2' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Then the resulting visualization diff would look as follows:
@@ -324,14 +324,14 @@ Then the resulting visualization diff would look as follows:
 For example:
 
 <!-- snippet: MessageToHandlerMap -->
-<a id='snippet-messagetohandlermap'></a>
+<a id='snippet-MessageToHandlerMap'></a>
 ```cs
 var map = new MessageToHandlerMap();
 map.AddMessagesFromAssembly<MyMessage>();
 map.AddHandlersFromAssembly<MyHandler>();
 await Verify(map);
 ```
-<sup><a href='/src/Tests/MessageToHandlerMapTests.cs#L6-L11' title='Snippet source file'>snippet source</a> | <a href='#snippet-messagetohandlermap' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/MessageToHandlerMapTests.cs#L6-L11' title='Snippet source file'>snippet source</a> | <a href='#snippet-MessageToHandlerMap' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Would result in:
