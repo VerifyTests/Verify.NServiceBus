@@ -17,7 +17,16 @@
 
             if (header.Key == Headers.SagaType)
             {
-                dictionary.Add(key, Type.GetType(header.Value, throwOnError: true)!.FullName!);
+                var indexOf = header.Value.IndexOf(',');
+                if (indexOf == -1)
+                {
+                    dictionary.Add(key, header.Value);
+                }
+                else
+                {
+                    dictionary.Add(key, header.Value[..indexOf]);
+                }
+
                 continue;
             }
 
