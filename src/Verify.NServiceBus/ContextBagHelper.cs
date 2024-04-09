@@ -1,13 +1,21 @@
 ﻿static class ContextBagHelper
 {
-    static FieldInfo stashField;
-    static FieldInfo parentBagField;
+    [UnsafeAccessor(UnsafeAccessorKind.Field, Name = "stash")]
+    static extern ref Dictionary<string, object>? Stash(this ContextBag bag);
 
-    static ContextBagHelper()
+    static bool TryGetStash(ContextBag value)
     {
-        var bindingFlags = BindingFlags.Instance | BindingFlags.NonPublic;
-        stashField = typeof(ContextBag).GetField("stash", bindingFlags)!;
-        parentBagField = typeof(ContextBag).GetField("parentBag", bindingFlags)!;
+        var stash = value.Stash();
+        return stash != null && stash.Count != 0;
+    }
+
+    [UnsafeAccessor(UnsafeAccessorKind.Field, Name = "parentBag")]
+    static extern ref ContextBag? ParentBag(this ContextBag bag);
+
+    static bool TryGetParentBag(ContextBag value, [NotNullWhen(true)] out ContextBag? parentBag)
+    {
+        parentBag = value.ParentBag();
+        return parentBag != null;
     }
 
     public static bool HasContent(ContextBag contextBag)
@@ -29,18 +37,12 @@
         }
     }
 
-    static bool TryGetStash(object value)
-    {
-        var stash = (Dictionary<string, object>?) stashField.GetValue(value);
-        return stash != null && stash.Count != 0;
-    }
-
     public static IEnumerable<KeyValuePair<string, object>> GetValues(this ContextBag value)
     {
         var current = (ContextBag?)value;
         do
         {
-            var stash = (Dictionary<string, object>?) stashField.GetValue(current);
+            var stash = current?.Stash();
 
             if (stash is null)
             {
@@ -56,13 +58,7 @@
                 yield return new(item.Key, item.Value);
             }
 
-            current = (ContextBag?) parentBagField.GetValue(current);
+            current = current?.ParentBag();
         } while (current is not null);
-    }
-
-    static bool TryGetParentBag(object value, [NotNullWhen(true)] out ContextBag? parentBag)
-    {
-        parentBag = (ContextBag?) parentBagField.GetValue(value);
-        return parentBag != null;
     }
 }
