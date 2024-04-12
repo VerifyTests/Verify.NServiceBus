@@ -6,7 +6,7 @@
 
     static UnicastRouterHelper()
     {
-        var type = typeof(IMessage).Assembly.GetType(TypeName, true)!;
+        var type = typeof(Endpoint).Assembly.GetType(TypeName, true)!;
         explicitDestinationProperty = type.GetProperty("ExplicitDestination")!;
         specificInstanceProperty = type.GetProperty("SpecificInstance")!;
         optionProperty = type.GetProperty("Option")!;

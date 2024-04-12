@@ -4,7 +4,7 @@
 
     static RoutingToDispatchConnectorHelper()
     {
-        var type = typeof(IMessage).Assembly.GetType(TypeName, true)!;
+        var type = typeof(Endpoint).Assembly.GetType(TypeName, true)!;
         immediateDispatchProperty = type.GetProperty("ImmediateDispatch")!;
     }
 
