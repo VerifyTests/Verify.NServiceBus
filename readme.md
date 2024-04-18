@@ -198,7 +198,7 @@ Given the following handler:
 <a id='snippet-SimpleSaga'></a>
 ```cs
 public class MySaga :
-    NServiceBus.Saga<MySaga.MySagaData>,
+    Saga<MySaga.MySagaData>,
     IHandleMessages<MyRequest>
 {
     protected override void ConfigureHowToFindSaga(SagaPropertyMapper<MySagaData> mapper) =>
