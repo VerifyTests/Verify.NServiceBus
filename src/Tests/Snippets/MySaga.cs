@@ -1,7 +1,7 @@
 ﻿#region SimpleSaga
 
 public class MySaga :
-    NServiceBus.Saga<MySaga.MySagaData>,
+    Saga<MySaga.MySagaData>,
     IHandleMessages<MyRequest>
 {
     protected override void ConfigureHowToFindSaga(SagaPropertyMapper<MySagaData> mapper) =>

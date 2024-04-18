@@ -318,7 +318,7 @@
     }
 
     public class MySaga :
-        NServiceBus.Saga<MySagaData>,
+        Saga<MySagaData>,
         IHandleMessages<MySagaMessage>,
         IHandleTimeouts<MySagaMessage>
     {
