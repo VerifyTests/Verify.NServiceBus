@@ -21,5 +21,5 @@
     }
 
     public override bool CanConvert(Type type) =>
-        type.IsAssignableTo(typeof(Saga));
+        type.IsAssignableTo<Saga>();
 }

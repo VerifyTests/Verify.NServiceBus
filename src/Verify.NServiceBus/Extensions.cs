@@ -31,5 +31,5 @@
     }
 
     public static bool IsMessage(this Type type) =>
-        typeof(IMessage).IsAssignableFrom(type);
+        type.IsAssignableTo<IMessage>();
 }
