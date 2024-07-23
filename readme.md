@@ -4,7 +4,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/haolkpausmys1ur4?svg=true)](https://ci.appveyor.com/project/SimonCropp/Verify-NServiceBus)
 [![NuGet Status](https://img.shields.io/nuget/v/Verify.NServiceBus.svg)](https://www.nuget.org/packages/Verify.NServiceBus/)
 
-Adds [Verify](https://github.com/VerifyTests/Verify) support to verify [NServiceBus Test Contexts](https://docs.particular.net/nservicebus/testing/).
+Adds [Verify](https://github.com/VerifyTests/Verify) support to verify NServiceBus Contexts.
 
 **See [Milestones](../../milestones?state=closed) for release notes.**
 
