@@ -5,7 +5,7 @@
     <LangVersion>preview</LangVersion>
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <PackageTags>NServiceBus, Verify</PackageTags>
-    <Description>Adds Verify (https://github.com/VerifyTests/Verify) support to verify NServiceBus Test Contexts (https://docs.particular.net/nservicebus/samples/unit-testing/).</Description>
+    <Description>Adds Verify (https://github.com/VerifyTests/Verify) support to verify NServiceBus.</Description>
     <NoWarn>CS1591;NU5105</NoWarn>
     <PackageLicenseFile>license.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
