@@ -1,31 +1,22 @@
 ﻿class PublishedMessageConverter :
-    WriteOnlyJsonConverter
+    WriteOnlyJsonConverter<Published>
 {
-    static MethodInfo innerWrite;
-
-    static PublishedMessageConverter() =>
-        innerWrite = typeof(PublishedMessageConverter)
-            .GetMethod(nameof(InnerWrite), BindingFlags.Static | BindingFlags.NonPublic)!;
-
-    public override void Write(VerifyJsonWriter writer, object value)
+    public override void Write(VerifyJsonWriter writer, Published value)
     {
-        writer.WriteStartObject();
+        var message = value.Message;
 
-        var genericArguments = value
+        writer.WriteStartObject();
+        var name = message
             .GetType()
-            .GetGenericArguments();
-        innerWrite
-            .MakeGenericMethod(genericArguments)
-            .Invoke(null, [writer, value]);
+            .SimpleName();
+
+        writer.WriteMember(value, message, name);
+        var options = value.Options;
+        if (options.HasValue())
+        {
+            writer.WriteMember(value, options, "Options");
+        }
 
         writer.WriteEndObject();
     }
-
-    static void InnerWrite<T>(VerifyJsonWriter writer, PublishedMessage<T> value)
-        where T : notnull =>
-        OutgoingMessageConverter.WriteBaseMembers(writer, value);
-
-    public override bool CanConvert(Type type) =>
-        type.IsGenericType &&
-        type.GetGenericTypeDefinition() == typeof(PublishedMessage<>);
 }

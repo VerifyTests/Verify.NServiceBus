@@ -5,11 +5,9 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="NServiceBus" />
-    <PackageReference Include="NServiceBus.Testing" />
     <PackageReference Include="Verify" />
     <PackageReference Include="ProjectDefaults" PrivateAssets="all" />
     <PackageReference Include="Polyfill" PrivateAssets="all" />
-    <Using Include="NServiceBus.Testing" />
     <Using Include="VerifyTests.NServiceBus" />
     <Using Include="NServiceBus.Extensibility" />
     <Using Include="NServiceBus.Transport" />

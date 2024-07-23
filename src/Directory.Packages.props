@@ -7,7 +7,6 @@
     <PackageVersion Include="MarkdownSnippets.MsBuild" Version="27.0.2" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
     <PackageVersion Include="NServiceBus" Version="9.1.0" />
-    <PackageVersion Include="NServiceBus.Testing" Version="9.0.0" />
     <PackageVersion Include="Polyfill" Version="6.0.0" />
     <PackageVersion Include="ProjectDefaults" Version="1.0.131" />
     <PackageVersion Include="Verify" Version="26.0.0" />

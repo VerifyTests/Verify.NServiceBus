@@ -10,7 +10,7 @@
             Data = new()
         };
 
-        var context = new TestableMessageHandlerContext();
+        var context = new RecordingHandlerContext();
 
         var message = new MyRequest();
         await saga.Handle(message, context);

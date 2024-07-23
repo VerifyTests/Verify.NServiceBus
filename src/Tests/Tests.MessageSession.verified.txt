@@ -1,20 +1,20 @@
 ﻿{
-  PublishedMessages: [
+  Published: [
     {
       string: message
     }
   ],
-  Subscriptions: [
+  Subscribed: [
     {
-      MessageType: MyMessage,
+      EventType: MyMessage,
       Options: {
         ImmediateDispatch: true
       }
     }
   ],
-  Unsubscriptions: [
+  Unsubscribed: [
     {
-      MessageType: MyMessage,
+      EventType: MyMessage,
       Options: {
         ImmediateDispatch: true
       }

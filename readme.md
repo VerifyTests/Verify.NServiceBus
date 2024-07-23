@@ -4,7 +4,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/haolkpausmys1ur4?svg=true)](https://ci.appveyor.com/project/SimonCropp/Verify-NServiceBus)
 [![NuGet Status](https://img.shields.io/nuget/v/Verify.NServiceBus.svg)](https://www.nuget.org/packages/Verify.NServiceBus/)
 
-Adds [Verify](https://github.com/VerifyTests/Verify) support to verify [NServiceBus Test Contexts](https://docs.particular.net/nservicebus/testing/).
+Adds [Verify](https://github.com/VerifyTests/Verify) support to verify NServiceBus.
 
 **See [Milestones](../../milestones?state=closed) for release notes.**
 
@@ -76,7 +76,7 @@ The test that verifies the resulting context:
 public async Task VerifyHandlerResult()
 {
     var handler = new MyHandler();
-    var context = new TestableMessageHandlerContext();
+    var context = new RecordingHandlerContext();
 
     var message = new MyRequest();
     await handler.Handle(message, context);
@@ -93,30 +93,30 @@ The resulting verification file is as follows:
 <a id='snippet-HandlerTests.VerifyHandlerResult.verified.txt'></a>
 ```txt
 {
-  RepliedMessages: [
+  Forwarded: [
+    newDestination
+  ],
+  Published: [
+    {
+      MyPublishMessage: {
+        Property: Value
+      }
+    }
+  ],
+  Replied: [
     {
       MyReplyMessage: {
         Property: Value
       }
     }
   ],
-  ForwardedMessages: [
-    newDestination
-  ],
-  SentMessages: [
+  Sent: [
     {
       MySendMessage: {
         Property: Value
       },
       Options: {
         DeliveryDelay: 12:00:00
-      }
-    }
-  ],
-  PublishedMessages: [
-    {
-      MyPublishMessage: {
-        Property: Value
       }
     }
   ]
@@ -129,8 +129,6 @@ The resulting verification file is as follows:
 #### Recording
 
 Recording allows all message interaction with the test context to be captured and then verified.
-
-Switch usages of `TestableMessageHandlerContext` to `RecordingHandlerContext`.
 
 <!-- snippet: RecordingHandlerTests -->
 <a id='snippet-RecordingHandlerTests'></a>
@@ -240,7 +238,7 @@ public async Task VerifySagaResult()
         Data = new()
     };
 
-    var context = new TestableMessageHandlerContext();
+    var context = new RecordingHandlerContext();
 
     var message = new MyRequest();
     await saga.Handle(message, context);
@@ -262,7 +260,7 @@ The resulting verification file is as follows:
 ```txt
 {
   context: {
-    PublishedMessages: [
+    Published: [
       {
         MyPublishMessage: {
           Property: Value

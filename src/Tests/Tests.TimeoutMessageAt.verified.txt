@@ -1,4 +1,0 @@
-﻿{
-  At: DateTimeOffset_1,
-  string: message
-}
