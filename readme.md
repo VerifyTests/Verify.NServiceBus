@@ -76,7 +76,7 @@ The test that verifies the resulting context:
 public async Task VerifyHandlerResult()
 {
     var handler = new MyHandler();
-    var context = new TestableMessageHandlerContext();
+    var context = new RecordingHandlerContext();
 
     var message = new MyRequest();
     await handler.Handle(message, context);
@@ -93,30 +93,30 @@ The resulting verification file is as follows:
 <a id='snippet-HandlerTests.VerifyHandlerResult.verified.txt'></a>
 ```txt
 {
-  RepliedMessages: [
+  Forwarded: [
+    newDestination
+  ],
+  Published: [
+    {
+      MyPublishMessage: {
+        Property: Value
+      }
+    }
+  ],
+  Replied: [
     {
       MyReplyMessage: {
         Property: Value
       }
     }
   ],
-  ForwardedMessages: [
-    newDestination
-  ],
-  SentMessages: [
+  Sent: [
     {
       MySendMessage: {
         Property: Value
       },
       Options: {
         DeliveryDelay: 12:00:00
-      }
-    }
-  ],
-  PublishedMessages: [
-    {
-      MyPublishMessage: {
-        Property: Value
       }
     }
   ]
@@ -240,7 +240,7 @@ public async Task VerifySagaResult()
         Data = new()
     };
 
-    var context = new TestableMessageHandlerContext();
+    var context = new RecordingHandlerContext();
 
     var message = new MyRequest();
     await saga.Handle(message, context);
@@ -262,7 +262,7 @@ The resulting verification file is as follows:
 ```txt
 {
   context: {
-    PublishedMessages: [
+    Published: [
       {
         MyPublishMessage: {
           Property: Value

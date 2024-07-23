@@ -6,7 +6,7 @@
     public async Task VerifyHandlerResult()
     {
         var handler = new MyHandler();
-        var context = new TestableMessageHandlerContext();
+        var context = new RecordingHandlerContext();
 
         var message = new MyRequest();
         await handler.Handle(message, context);

@@ -1,9 +1,0 @@
-﻿{
-  SentMessages: [
-    {
-      SendMessage: {
-        Property: Value
-      }
-    }
-  ]
-}

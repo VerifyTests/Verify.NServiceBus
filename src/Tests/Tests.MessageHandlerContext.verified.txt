@@ -1,5 +1,13 @@
 ﻿{
-  SentMessages: [
+  Extensions: {
+    key: value
+  },
+  Published: [
+    {
+      string: publish message
+    }
+  ],
+  Sent: [
     {
       string: send message
     },
@@ -9,13 +17,5 @@
         Route: ToAnyInstanceOfThisEndpoint
       }
     }
-  ],
-  PublishedMessages: [
-    {
-      string: publish message
-    }
-  ],
-  Extensions: {
-    key: value
-  }
+  ]
 }

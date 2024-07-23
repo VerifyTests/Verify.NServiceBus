@@ -1,16 +1,16 @@
 ﻿class SubscriptionConverter :
-    WriteOnlyJsonConverter<Subscription>
+    WriteOnlyJsonConverter<Subscribed>
 {
-    public override void Write(VerifyJsonWriter writer, Subscription subscription)
+    public override void Write(VerifyJsonWriter writer, Subscribed subscribed)
     {
         writer.WriteStartObject();
 
-        writer.WriteMember(subscription, subscription.Message, "MessageType");
+        writer.WriteMember(subscribed, subscribed.EventType, "EventType");
 
-        var options = subscription.Options;
+        var options = subscribed.Options;
         if (options.HasValue())
         {
-            writer.WriteMember(subscription, options, "Options");
+            writer.WriteMember(subscribed, options, "Options");
         }
 
         writer.WriteEndObject();

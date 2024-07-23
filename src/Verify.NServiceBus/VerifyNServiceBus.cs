@@ -7,38 +7,21 @@ public static class VerifyNServiceBus
     internal static List<JsonConverter> converters =
     [
         new MessageHandlerContextConverter(),
-        new IncomingPhysicalMessageContextConverter(),
-        new InvokeHandlerContextConverter(),
-        new IncomingLogicalMessageContextConverter(),
-        new IncomingContextConverter(),
-        new OutgoingLogicalMessageContextConverter(),
-        new OutgoingPhysicalMessageContextConverter(),
-        new OutgoingPublishContextConverter(),
-        new OutgoingReplyContextConverter(),
-        new OutgoingSendContextConverter(),
-        new OutgoingContextConverter(),
+        new RecordingMessageSessionConverter(),
         new SendOptionsConverter(),
-        new MessageProcessingContextConverter(),
         new UnsubscriptionConverter(),
         new SubscriptionConverter(),
-        new EndpointInstanceConverter(),
-        new RoutingContextConverter(),
         new LogicalMessageConverter(),
-        new PipelineContextConverter(),
-        new MessageSessionConverter(),
         new IncomingMessageConverter(),
         new ContextBagConverter(),
         new ExtendableOptionsConverter(),
         new MessageToHandlerMapConverter(),
         new UnicastSendRouterStateConverter(),
         new RoutingToDispatchConnectorStateConverter(),
-        new TimeoutMessageConverter(),
-        new TimeoutMessageConverter(),
         new SentMessageConverter(),
         new RepliedMessageConverter(),
         new PublishedMessageConverter(),
         new SagaConverter(),
-        new OutgoingMessageConverter(),
         new RecordedMessageConverter()
     ];
 
@@ -59,6 +42,9 @@ public static class VerifyNServiceBus
             LogManager.Use<Logger>();
         }
 
+        VerifierSettings.AddNamedGuid(RecordingHandlerContext.DefaultMessageId, "MessageId");
+        VerifierSettings.AddNamedGuid(RecordingHandlerContext.DefaultConversationId, "ConversationId");
+        VerifierSettings.AddNamedGuid(RecordingHandlerContext.DefaultCorrelationId, "CorrelationId");
         VerifierSettings.IgnoreInstance<ContextBag>(_ => !ContextBagHelper.HasContent(_));
         VerifierSettings.AddExtraSettings(_ => _.Converters.AddRange(converters));
     }

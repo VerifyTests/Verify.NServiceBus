@@ -12,8 +12,7 @@
     public static void InitializeOther()
     {
         VerifierSettings.InitializePlugins();
-        VerifierSettings.IgnoreMembers<TestableInvokeHandlerContext>(
-            _ => _.DoNotContinueDispatchingCurrentMessageToHandlersWasCalled,
-            _ => _.HandlerInvocationAborted);
+        VerifierSettings.IgnoreMembers<RecordingHandlerContext>(
+            _ => _.DoNotContinueDispatchingCurrentMessageToHandlersWasCalled);
     }
 }

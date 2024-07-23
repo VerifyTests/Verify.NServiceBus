@@ -1,26 +1,11 @@
 ﻿{
   context: {
-    RepliedMessages: [
+    Replied: [
       {
         Tests.MySagaMessage: {}
       }
     ],
-    TimeoutMessages: [
-      {
-        Within: 01:00:00,
-        Tests.MySagaMessage: {},
-        Options: {
-          DeliveryDelay: 01:00:00,
-          Headers: {
-            IsSagaTimeoutMessage: True,
-            SagaId: Guid_Empty,
-            SagaType: Tests+MySaga
-          },
-          Route: ToAnyInstanceOfThisEndpoint
-        }
-      }
-    ],
-    SentMessages: [
+    Sent: [
       {
         Tests.MySagaMessage: {},
         Options: {

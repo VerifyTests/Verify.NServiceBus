@@ -1,23 +1,107 @@
 ﻿namespace VerifyTests.NServiceBus;
 
 public class RecordingHandlerContext :
-    TestableMessageHandlerContext
+    HandlerContext
 {
-    public override Task Publish(object message, PublishOptions options)
+    public static string DefaultMessageIdString = "c5e12a59-e424-44c8-8875-e7822e534966";
+    public static Guid DefaultMessageId { get; } = new(DefaultMessageIdString);
+
+    public  static string DefaultConversationIdString = "cd154c38-ab73-4a83-a66b-7404b9514080";
+    public static Guid DefaultConversationId { get; } = new(DefaultConversationIdString);
+
+    public static string DefaultCorrelationIdString = "87027093-7b35-4125-aa36-b5c15b9ea478";
+    public static Guid DefaultCorrelationId { get; } = new(DefaultCorrelationIdString);
+
+    public static string DefaultReplyToAddress = "ReplyToAddress";
+
+    static Dictionary<string, string> defaultHeaders = new()
     {
-        RecordingState.Publish(message, options);
-        return base.Publish(message, options);
+        { Headers.MessageId, DefaultMessageIdString },
+        { Headers.ConversationId, DefaultConversationIdString },
+        { Headers.CorrelationId, DefaultCorrelationIdString },
+        { Headers.ReplyToAddress, DefaultReplyToAddress },
+        { "NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z" }
+    };
+
+    public RecordingHandlerContext(Dictionary<string, string>? headers = null)
+    {
+        if (headers == null)
+        {
+            messageHeaders = defaultHeaders;
+        }
+        else
+        {
+            messageHeaders = new(headers);
+            messageHeaders.TryAdd(Headers.MessageId, DefaultMessageIdString);
+            messageHeaders.TryAdd(Headers.ConversationId, DefaultConversationIdString);
+            messageHeaders.TryAdd(Headers.CorrelationId, DefaultCorrelationIdString);
+            messageHeaders.TryAdd(Headers.ReplyToAddress, DefaultReplyToAddress);
+            messageHeaders.TryAdd("NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z");
+        }
     }
 
-    public override Task Reply(object message, ReplyOptions options)
-    {
-        RecordingState.Reply(message, options);
-        return base.Reply(message, options);
-    }
+    public IReadOnlyDictionary<string, string> MessageHeaders => messageHeaders;
+    Dictionary<string, string> messageHeaders;
 
-    public override Task Send(object message, SendOptions options)
+    public Cancel CancellationToken { get; } = Cancel.None;
+    public ContextBag Extensions { get; } = new();
+
+    public IReadOnlyCollection<Sent> Sent => sent;
+    ConcurrentQueue<Sent> sent = new();
+
+    public Task Send(object message, SendOptions options)
     {
         RecordingState.Send(message, options);
-        return base.Send(message, options);
+        sent.Enqueue(new(message, options));
+        return Task.CompletedTask;
     }
+
+    public Task Send<T>(Action<T> messageConstructor, SendOptions options) =>
+        throw new NotImplementedException();
+
+    public IReadOnlyCollection<Published> Published => published;
+    ConcurrentQueue<Published> published = new();
+
+    public Task Publish(object message, PublishOptions options)
+    {
+        RecordingState.Publish(message, options);
+        published.Enqueue(new(message, options));
+        return Task.CompletedTask;
+    }
+
+    public Task Publish<T>(Action<T> messageConstructor, PublishOptions publishOptions) =>
+        throw new NotImplementedException();
+
+    public IReadOnlyCollection<Replied> Replied => replied;
+
+    ConcurrentQueue<Replied> replied = new();
+
+    public Task Reply(object message, ReplyOptions options)
+    {
+        RecordingState.Reply(message, options);
+        replied.Enqueue(new(message, options));
+        return Task.CompletedTask;
+    }
+
+    public Task Reply<T>(Action<T> messageConstructor, ReplyOptions options) =>
+        throw new NotImplementedException();
+
+    public IReadOnlyCollection<string> Forwarded => forwarded;
+    ConcurrentQueue<string> forwarded = new();
+    public Task ForwardCurrentMessageTo(string destination)
+    {
+        forwarded.Enqueue(destination);
+        return Task.CompletedTask;
+    }
+
+    public string MessageId { get; } = DefaultMessageIdString;
+    public string ReplyToAddress { get; } = DefaultReplyToAddress;
+
+    public void DoNotContinueDispatchingCurrentMessageToHandlers() =>
+        DoNotContinueDispatchingCurrentMessageToHandlersWasCalled = true;
+
+    public bool DoNotContinueDispatchingCurrentMessageToHandlersWasCalled { get; private set; }
+
+    public ISynchronizedStorageSession SynchronizedStorageSession =>
+        throw new NotImplementedException();
 }
