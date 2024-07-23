@@ -2,12 +2,12 @@
   Extensions: {
     key: value
   },
-  Published: [
+  Publish: [
     {
       string: publish message
     }
   ],
-  Sent: [
+  Send: [
     {
       string: send message
     },

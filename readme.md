@@ -93,24 +93,24 @@ The resulting verification file is as follows:
 <a id='snippet-HandlerTests.VerifyHandlerResult.verified.txt'></a>
 ```txt
 {
-  Forwarded: [
+  Forward: [
     newDestination
   ],
-  Published: [
+  Publish: [
     {
       MyPublishMessage: {
         Property: Value
       }
     }
   ],
-  Replied: [
+  Reply: [
     {
       MyReplyMessage: {
         Property: Value
       }
     }
   ],
-  Sent: [
+  Send: [
     {
       MySendMessage: {
         Property: Value
@@ -260,7 +260,7 @@ The resulting verification file is as follows:
 ```txt
 {
   context: {
-    Published: [
+    Publish: [
       {
         MyPublishMessage: {
           Property: Value

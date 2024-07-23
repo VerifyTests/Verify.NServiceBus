@@ -51,8 +51,9 @@ public class RecordingHandlerContext :
 
     public Task Send(object message, SendOptions options)
     {
-        RecordingState.Send(message, options);
-        sent.Enqueue(new(message, options));
+        var item = new Sent(message, options);
+        RecordingState.Send(item);
+        sent.Enqueue(item);
         return Task.CompletedTask;
     }
 
@@ -64,8 +65,9 @@ public class RecordingHandlerContext :
 
     public Task Publish(object message, PublishOptions options)
     {
-        RecordingState.Publish(message, options);
-        published.Enqueue(new(message, options));
+        var item = new Published(message, options);
+        RecordingState.Publish(item);
+        published.Enqueue(item);
         return Task.CompletedTask;
     }
 
@@ -78,8 +80,9 @@ public class RecordingHandlerContext :
 
     public Task Reply(object message, ReplyOptions options)
     {
-        RecordingState.Reply(message, options);
-        replied.Enqueue(new(message, options));
+        var item = new Replied(message, options);
+        RecordingState.Reply(item);
+        replied.Enqueue(item);
         return Task.CompletedTask;
     }
 

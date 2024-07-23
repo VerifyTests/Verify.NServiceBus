@@ -11,8 +11,9 @@ public class RecordingMessageSession :
 
     public Task Publish(object message, PublishOptions options, Cancel cancel = default)
     {
-        RecordingState.Publish(message, options);
-        published.Enqueue(new(message, options));
+        var item = new Published(message, options);
+        RecordingState.Publish(item);
+        published.Enqueue(item);
         return Task.CompletedTask;
     }
 
@@ -24,8 +25,9 @@ public class RecordingMessageSession :
 
     public Task Send(object message, SendOptions options, Cancel cancel = default)
     {
-        RecordingState.Send(message, options);
-        sent.Enqueue(new(message, options));
+        var item = new Sent(message, options);
+        RecordingState.Send(item);
+        sent.Enqueue(item);
         return Task.CompletedTask;
     }
 
@@ -34,8 +36,9 @@ public class RecordingMessageSession :
 
     public Task Unsubscribe(Type eventType, UnsubscribeOptions options, Cancel cancel = default)
     {
-        RecordingState.Unsubscribe(eventType, options);
-        unsubscribed.Enqueue(new(eventType, options));
+        var item = new Unsubscribed(eventType, options);
+        RecordingState.Unsubscribe(item);
+        unsubscribed.Enqueue(item);
         return Task.CompletedTask;
     }
 
@@ -44,8 +47,9 @@ public class RecordingMessageSession :
 
     public Task Subscribe(Type eventType, SubscribeOptions options, Cancel cancel = default)
     {
-        RecordingState.Subscribe(eventType, options);
-        subscribed.Enqueue(new(eventType, options));
+        var item = new Subscribed(eventType, options);
+        RecordingState.Subscribe(item);
+        subscribed.Enqueue(item);
         return Task.CompletedTask;
     }
 }

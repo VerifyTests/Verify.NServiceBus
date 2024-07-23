@@ -1,32 +1,17 @@
 ﻿static class RecordingState
 {
-    public static void Add(string action, object? message, ExtendableOptions options, Type? eventType)
-    {
-        RecordedMessage recorded;
-        if (options.HasValue())
-        {
-            recorded = new(message, options, eventType);
-        }
-        else
-        {
-            recorded = new(message, null, eventType);
-        }
+    public static void Publish(Published published) =>
+        Recording.TryAdd("message", new KeyValuePair<string, Published>("Publish", published));
 
-        Recording.TryAdd("message", new KeyValuePair<string, RecordedMessage>(action, recorded));
-    }
+    public static void Reply(Replied replied) =>
+        Recording.TryAdd("message", new KeyValuePair<string, Replied>("Reply", replied));
 
-    public static void Publish(object message, PublishOptions options) =>
-        Add("Publish", message, options, null);
+    public static void Send(Sent sent) =>
+        Recording.TryAdd("message", new KeyValuePair<string, Sent>("Send", sent));
 
-    public static void Reply(object message, ReplyOptions options) =>
-        Add("Reply", message, options, null);
+    public static void Unsubscribe(Unsubscribed unsubscribed) =>
+        Recording.TryAdd("message", new KeyValuePair<string, Unsubscribed>("Unsubscribe", unsubscribed));
 
-    public static void Send(object message, SendOptions options) =>
-        Add("Send", message, options, null);
-
-    public static void Unsubscribe(Type eventType, UnsubscribeOptions options) =>
-        Add("Unsubscribe", null, options, eventType);
-
-    public static void Subscribe(Type eventType, SubscribeOptions options) =>
-        Add("Subscribe", null, options, eventType);
+    public static void Subscribe(Subscribed subscribed) =>
+        Recording.TryAdd("message", new KeyValuePair<string, Subscribed>("Subscribe", subscribed));
 }

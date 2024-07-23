@@ -21,8 +21,7 @@ public static class VerifyNServiceBus
         new SentMessageConverter(),
         new RepliedMessageConverter(),
         new PublishedMessageConverter(),
-        new SagaConverter(),
-        new RecordedMessageConverter()
+        new SagaConverter()
     ];
 
     public static bool Initialized { get; private set; }

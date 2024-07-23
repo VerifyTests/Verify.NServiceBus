@@ -1,11 +1,11 @@
 ﻿{
   context: {
-    Replied: [
+    Reply: [
       {
         Tests.MySagaMessage: {}
       }
     ],
-    Sent: [
+    Send: [
       {
         Tests.MySagaMessage: {},
         Options: {

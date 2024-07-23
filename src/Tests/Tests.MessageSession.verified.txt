@@ -1,10 +1,10 @@
 ﻿{
-  Published: [
+  Publish: [
     {
       string: message
     }
   ],
-  Subscribed: [
+  Subscribe: [
     {
       EventType: MyMessage,
       Options: {
@@ -12,7 +12,7 @@
       }
     }
   ],
-  Unsubscribed: [
+  Unsubscribe: [
     {
       EventType: MyMessage,
       Options: {

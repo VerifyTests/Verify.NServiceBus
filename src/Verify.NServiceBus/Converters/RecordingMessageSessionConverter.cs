@@ -5,10 +5,10 @@ class RecordingMessageSessionConverter :
     {
         writer.WriteStartObject();
 
-        writer.WriteMember(context, context.Published, "Published");
-        writer.WriteMember(context, context.Sent, "Sent");
-        writer.WriteMember(context, context.Subscribed, "Subscribed");
-        writer.WriteMember(context, context.Unsubscribed, "Unsubscribed");
+        writer.WriteMember(context, context.Published, "Publish");
+        writer.WriteMember(context, context.Sent, "Send");
+        writer.WriteMember(context, context.Subscribed, "Subscribe");
+        writer.WriteMember(context, context.Unsubscribed, "Unsubscribe");
 
         writer.WriteEndObject();
     }
