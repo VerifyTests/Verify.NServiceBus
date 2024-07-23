@@ -33,6 +33,10 @@ public static class VerifyNServiceBus
         new UnicastSendRouterStateConverter(),
         new RoutingToDispatchConnectorStateConverter(),
         new TimeoutMessageConverter(),
+        new TimeoutMessageConverter(),
+        new SentMessageConverter(),
+        new RepliedMessageConverter(),
+        new PublishedMessageConverter(),
         new SagaConverter(),
         new OutgoingMessageConverter(),
         new RecordedMessageConverter()

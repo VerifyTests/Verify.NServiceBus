@@ -1,10 +1,10 @@
-﻿class TimeoutMessageConverter :
+class SentMessageConverter :
     WriteOnlyJsonConverter
 {
     static MethodInfo innerWrite;
 
-    static TimeoutMessageConverter() =>
-        innerWrite = typeof(TimeoutMessageConverter)
+    static SentMessageConverter() =>
+        innerWrite = typeof(SentMessageConverter)
             .GetMethod(nameof(InnerWrite), BindingFlags.Static | BindingFlags.NonPublic)!;
 
     public override void Write(VerifyJsonWriter writer, object value)
@@ -22,17 +22,11 @@
         writer.WriteEndObject();
     }
 
-    static void InnerWrite<T>(VerifyJsonWriter writer, TimeoutMessage<T> value)
-        where T : notnull
-    {
-        writer.WriteMember(value, value.At, "At");
-
-        writer.WriteMember(value, value.Within, "Within");
-
+    static void InnerWrite<T>(VerifyJsonWriter writer, SentMessage<T> value)
+        where T : notnull =>
         OutgoingMessageConverter.WriteBaseMembers(writer, value);
-    }
 
     public override bool CanConvert(Type type) =>
         type.IsGenericType &&
-        type.GetGenericTypeDefinition() == typeof(TimeoutMessage<>);
+        type.GetGenericTypeDefinition() == typeof(SentMessage<>);
 }
