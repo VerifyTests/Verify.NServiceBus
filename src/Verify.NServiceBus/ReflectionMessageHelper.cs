@@ -1,4 +1,4 @@
-﻿static class OutgoingMessageHelper
+﻿static class ReflectionMessageHelper
 {
     static BindingFlags bindingFlags = BindingFlags.Instance | BindingFlags.Public;
 
@@ -17,13 +17,13 @@
     static object GetPropertyValue(object target, string name)
     {
         var type = target.GetType();
-        var propertyInfo = type.GetProperty(name, bindingFlags);
-        if (propertyInfo is null)
+        var property = type.GetProperty(name, bindingFlags);
+        if (property is null)
         {
             throw new($"Could not read {name} from {type.FullName}");
         }
 
-        var method = propertyInfo.GetMethod!;
+        var method = property.GetMethod!;
         return method.Invoke(target, null)!;
     }
 }

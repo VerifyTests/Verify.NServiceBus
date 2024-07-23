@@ -5,10 +5,10 @@
     {
         writer.WriteStartObject();
 
-        var at = OutgoingMessageHelper.GetAt(value);
+        var at = ReflectionMessageHelper.GetAt(value);
         writer.WriteMember(value, at, "At");
 
-        var within = OutgoingMessageHelper.GetWithin(value);
+        var within = ReflectionMessageHelper.GetWithin(value);
         writer.WriteMember(value, within, "Within");
 
         OutgoingMessageConverter.WriteBaseMembers(writer, value);

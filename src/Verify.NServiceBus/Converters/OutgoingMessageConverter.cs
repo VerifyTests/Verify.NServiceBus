@@ -1,6 +1,4 @@
-﻿using SimpleInfoName;
-
-class OutgoingMessageConverter :
+﻿class OutgoingMessageConverter :
     WriteOnlyJsonConverter
 {
     public override void Write(VerifyJsonWriter writer, object value)
@@ -12,14 +10,14 @@ class OutgoingMessageConverter :
 
     public static void WriteBaseMembers(VerifyJsonWriter writer, object value)
     {
-        var message = OutgoingMessageHelper.GetMessage(value);
+        var message = ReflectionMessageHelper.GetMessage(value);
 
         var type = message.GetType();
 
         var name = type.SimpleName();
         writer.WriteMember(value, message, name);
 
-        var options = OutgoingMessageHelper.GetOptions(value);
+        var options = ReflectionMessageHelper.GetOptions(value);
         if (options.HasValue())
         {
             writer.WriteMember(value, options, "Options");
