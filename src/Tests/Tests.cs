@@ -86,8 +86,7 @@
     public async Task EndpointInstance()
     {
         var context = new TestableEndpointInstance();
-        var session = (IMessageSession) context;
-        await session.Send(
+        await context.Send(
             new SendMessage
             {
                 Property = "Value"
