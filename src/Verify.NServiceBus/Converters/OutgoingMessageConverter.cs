@@ -1,38 +1,52 @@
 ﻿class OutgoingMessageConverter :
     WriteOnlyJsonConverter
 {
+    static MethodInfo writeBaseMembers;
+
+    static OutgoingMessageConverter()
+    {
+        var writeBaseMembersName = nameof(WriteBaseMembers);
+        writeBaseMembers = typeof(OutgoingMessageConverter)
+            .GetMethod(writeBaseMembersName, BindingFlags.Static | BindingFlags.Public)!;
+    }
+
     public override void Write(VerifyJsonWriter writer, object value)
     {
         writer.WriteStartObject();
-        WriteBaseMembers(writer, value);
+
+        var genericArguments =
+            value
+                .GetType()
+                .GetGenericArguments();
+        writeBaseMembers
+            .MakeGenericMethod(genericArguments)
+            .Invoke(null, [writer, value]);
+
         writer.WriteEndObject();
     }
 
-    public static void WriteBaseMembers(VerifyJsonWriter writer, object value)
+    public static void WriteBaseMembers<TMessage, TOptions>(VerifyJsonWriter writer, OutgoingMessage<TMessage, TOptions> value)
+        where TMessage : notnull
+        where TOptions : ExtendableOptions
     {
-        var message = ReflectionMessageHelper.GetMessage(value);
+        var message = value.Message;
 
-        var type = message.GetType();
+        //TODO: cant use T here since https://github.com/Particular/NServiceBus.Testing/pull/660/files
+        //var name = typeof(T).SimpleName();
+        var name = message
+            .GetType()
+            .SimpleName();
 
-        var name = type.SimpleName();
         writer.WriteMember(value, message, name);
 
-        var options = ReflectionMessageHelper.GetOptions(value);
+        var options = value.Options;
         if (options.HasValue())
         {
             writer.WriteMember(value, options, "Options");
         }
     }
 
-    public override bool CanConvert(Type type)
-    {
-        var baseType = type.BaseType;
-        if (baseType is not {IsGenericType: true})
-        {
-            return false;
-        }
-
-        var typeDefinition = baseType.GetGenericTypeDefinition();
-        return typeDefinition == typeof(OutgoingMessage<,>);
-    }
+    public override bool CanConvert(Type type) =>
+        type.IsGenericType &&
+        type.GetGenericTypeDefinition() == typeof(OutgoingMessage<,>);
 }
