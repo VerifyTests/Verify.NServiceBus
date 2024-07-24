@@ -9,10 +9,6 @@
     #endregion
 
     [ModuleInitializer]
-    public static void InitializeOther()
-    {
+    public static void InitializeOther() =>
         VerifierSettings.InitializePlugins();
-        VerifierSettings.IgnoreMembers<RecordingHandlerContext>(
-            _ => _.DoNotContinueDispatchingCurrentMessageToHandlersWasCalled);
-    }
 }

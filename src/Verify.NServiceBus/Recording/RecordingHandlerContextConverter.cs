@@ -1,4 +1,4 @@
-class MessageHandlerContextConverter :
+class RecordingHandlerContextConverter :
     WriteOnlyJsonConverter<RecordingHandlerContext>
 {
     public override void Write(VerifyJsonWriter writer, RecordingHandlerContext context)

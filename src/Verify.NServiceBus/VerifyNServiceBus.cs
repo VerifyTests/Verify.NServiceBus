@@ -6,7 +6,7 @@ public static class VerifyNServiceBus
 {
     internal static List<JsonConverter> converters =
     [
-        new MessageHandlerContextConverter(),
+        new RecordingHandlerContextConverter(),
         new RecordingMessageSessionConverter(),
         new SendOptionsConverter(),
         new UnsubscriptionConverter(),
