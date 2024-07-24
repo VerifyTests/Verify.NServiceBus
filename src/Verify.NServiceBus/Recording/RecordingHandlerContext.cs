@@ -1,4 +1,6 @@
-﻿namespace VerifyTests.NServiceBus;
+﻿using System.Collections.Frozen;
+
+namespace VerifyTests.NServiceBus;
 
 public class RecordingHandlerContext :
     HandlerContext
@@ -14,34 +16,33 @@ public class RecordingHandlerContext :
 
     public static string DefaultReplyToAddress = "ReplyToAddress";
 
-    static Dictionary<string, string> defaultHeaders = new()
-    {
-        { Headers.MessageId, DefaultMessageIdString },
-        { Headers.ConversationId, DefaultConversationIdString },
-        { Headers.CorrelationId, DefaultCorrelationIdString },
-        { Headers.ReplyToAddress, DefaultReplyToAddress },
-        { "NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z" }
-    };
+    static FrozenDictionary<string, string> defaultHeaders = FrozenDictionary.ToFrozenDictionary<string, string>(
+    [
+        new(Headers.MessageId, DefaultMessageIdString),
+        new(Headers.ConversationId, DefaultConversationIdString),
+        new(Headers.CorrelationId, DefaultCorrelationIdString),
+        new(Headers.ReplyToAddress, DefaultReplyToAddress ),
+        new("NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z" )
+    ]);
 
     public RecordingHandlerContext(IEnumerable<KeyValuePair<string, string>>? headers = null)
     {
         if (headers == null)
         {
-            messageHeaders = defaultHeaders;
+            MessageHeaders = defaultHeaders;
+            return;
         }
-        else
-        {
-            messageHeaders = new(headers);
-            messageHeaders.TryAdd(Headers.MessageId, DefaultMessageIdString);
-            messageHeaders.TryAdd(Headers.ConversationId, DefaultConversationIdString);
-            messageHeaders.TryAdd(Headers.CorrelationId, DefaultCorrelationIdString);
-            messageHeaders.TryAdd(Headers.ReplyToAddress, DefaultReplyToAddress);
-            messageHeaders.TryAdd("NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z");
-        }
+
+        var messageHeaders = new Dictionary<string, string>(headers);
+        messageHeaders.TryAdd(Headers.MessageId, DefaultMessageIdString);
+        messageHeaders.TryAdd(Headers.ConversationId, DefaultConversationIdString);
+        messageHeaders.TryAdd(Headers.CorrelationId, DefaultCorrelationIdString);
+        messageHeaders.TryAdd(Headers.ReplyToAddress, DefaultReplyToAddress);
+        messageHeaders.TryAdd("NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z");
+        MessageHeaders = messageHeaders;
     }
 
-    public IReadOnlyDictionary<string, string> MessageHeaders => messageHeaders;
-    Dictionary<string, string> messageHeaders;
+    public IReadOnlyDictionary<string, string> MessageHeaders { get;}
 
     public Cancel CancellationToken { get; } = Cancel.None;
     public ContextBag Extensions { get; } = new();
