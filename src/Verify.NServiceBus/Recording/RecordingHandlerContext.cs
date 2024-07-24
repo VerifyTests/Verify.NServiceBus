@@ -49,7 +49,7 @@ public class RecordingHandlerContext :
     public IReadOnlyCollection<Sent> Sent => sent;
     ConcurrentQueue<Sent> sent = new();
 
-    public Task Send(object message, SendOptions options)
+    public virtual Task Send(object message, SendOptions options)
     {
         var item = new Sent(message, options);
         RecordingState.Send(item);
@@ -63,7 +63,7 @@ public class RecordingHandlerContext :
     public IReadOnlyCollection<Published> Published => published;
     ConcurrentQueue<Published> published = new();
 
-    public Task Publish(object message, PublishOptions options)
+    public virtual Task Publish(object message, PublishOptions options)
     {
         var item = new Published(message, options);
         RecordingState.Publish(item);
@@ -78,7 +78,7 @@ public class RecordingHandlerContext :
 
     ConcurrentQueue<Replied> replied = new();
 
-    public Task Reply(object message, ReplyOptions options)
+    public virtual Task Reply(object message, ReplyOptions options)
     {
         var item = new Replied(message, options);
         RecordingState.Reply(item);
@@ -91,7 +91,7 @@ public class RecordingHandlerContext :
 
     public IReadOnlyCollection<string> Forwarded => forwarded;
     ConcurrentQueue<string> forwarded = new();
-    public Task ForwardCurrentMessageTo(string destination)
+    public virtual Task ForwardCurrentMessageTo(string destination)
     {
         forwarded.Enqueue(destination);
         return Task.CompletedTask;
@@ -100,10 +100,10 @@ public class RecordingHandlerContext :
     public string MessageId { get; } = DefaultMessageIdString;
     public string ReplyToAddress { get; } = DefaultReplyToAddress;
 
-    public void DoNotContinueDispatchingCurrentMessageToHandlers() =>
+    public virtual void DoNotContinueDispatchingCurrentMessageToHandlers() =>
         DoNotContinueDispatchingCurrentMessageToHandlersWasCalled = true;
 
-    public bool DoNotContinueDispatchingCurrentMessageToHandlersWasCalled { get; private set; }
+    public virtual bool DoNotContinueDispatchingCurrentMessageToHandlersWasCalled { get; private set; }
 
     public ISynchronizedStorageSession SynchronizedStorageSession =>
         throw new NotImplementedException();

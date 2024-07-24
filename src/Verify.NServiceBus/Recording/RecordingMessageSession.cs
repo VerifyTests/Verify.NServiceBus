@@ -9,7 +9,7 @@ public class RecordingMessageSession :
     public IReadOnlyCollection<Published> Published => published;
     ConcurrentQueue<Published> published = new();
 
-    public Task Publish(object message, PublishOptions options, Cancel cancel = default)
+    public virtual Task Publish(object message, PublishOptions options, Cancel cancel = default)
     {
         var item = new Published(message, options);
         RecordingState.Publish(item);
@@ -23,7 +23,7 @@ public class RecordingMessageSession :
     public IReadOnlyCollection<Sent> Sent => sent;
     ConcurrentQueue<Sent> sent = new();
 
-    public Task Send(object message, SendOptions options, Cancel cancel = default)
+    public virtual Task Send(object message, SendOptions options, Cancel cancel = default)
     {
         var item = new Sent(message, options);
         RecordingState.Send(item);
@@ -34,7 +34,7 @@ public class RecordingMessageSession :
     public IReadOnlyCollection<Unsubscribed> Unsubscribed => unsubscribed;
     ConcurrentQueue<Unsubscribed> unsubscribed = new();
 
-    public Task Unsubscribe(Type eventType, UnsubscribeOptions options, Cancel cancel = default)
+    public virtual Task Unsubscribe(Type eventType, UnsubscribeOptions options, Cancel cancel = default)
     {
         var item = new Unsubscribed(eventType, options);
         RecordingState.Unsubscribe(item);
@@ -45,7 +45,7 @@ public class RecordingMessageSession :
     public IReadOnlyCollection<Subscribed> Subscribed => subscribed;
     ConcurrentQueue<Subscribed> subscribed = new();
 
-    public Task Subscribe(Type eventType, SubscribeOptions options, Cancel cancel = default)
+    public virtual Task Subscribe(Type eventType, SubscribeOptions options, Cancel cancel = default)
     {
         var item = new Subscribed(eventType, options);
         RecordingState.Subscribe(item);
