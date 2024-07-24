@@ -16,15 +16,10 @@
     public async Task MessageHandlerContext()
     {
         var context = new RecordingHandlerContext(
-            new()
-            {
-                {
-                    "key", "value"
-                },
-                {
-                    "NServiceBus.MessageId", "TheId"
-                }
-            }
+            [
+               new("key", "value"),
+               new("NServiceBus.MessageId", "TheId"),
+            ]
         );
         context.Extensions.Set("key", "value");
         await context.Publish("publish message");

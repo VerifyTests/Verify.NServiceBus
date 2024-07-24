@@ -23,7 +23,7 @@ public class RecordingHandlerContext :
         { "NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z" }
     };
 
-    public RecordingHandlerContext(Dictionary<string, string>? headers = null)
+    public RecordingHandlerContext(IEnumerable<KeyValuePair<string, string>>? headers = null)
     {
         if (headers == null)
         {
