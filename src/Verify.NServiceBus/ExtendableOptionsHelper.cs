@@ -38,8 +38,7 @@
 
     public static bool HasValue(this ExtendableOptions options)
     {
-        var messageId = options.GetMessageId();
-        if (messageId is not null)
+        if (HasMessageId(options))
         {
             return true;
         }
@@ -54,11 +53,12 @@
         }
 
         var headers = options.GetHeaders();
-        if (headers.Any())
-        {
-            return true;
-        }
+        return headers.Any() ||
+               options.HasContent();
+    }
 
+    static bool HasContent(this ExtendableOptions options)
+    {
         var extensions = options.GetExtensions();
         if (extensions is not null)
         {
@@ -67,4 +67,7 @@
 
         return false;
     }
+
+    static bool HasMessageId(this ExtendableOptions options) =>
+        options.GetMessageId() is not null;
 }
