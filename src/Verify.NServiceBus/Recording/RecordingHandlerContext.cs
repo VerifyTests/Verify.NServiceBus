@@ -8,7 +8,7 @@ public class RecordingHandlerContext :
     public static string DefaultMessageIdString = "c5e12a59-e424-44c8-8875-e7822e534966";
     public static Guid DefaultMessageId { get; } = new(DefaultMessageIdString);
 
-    public  static string DefaultConversationIdString = "cd154c38-ab73-4a83-a66b-7404b9514080";
+    public static string DefaultConversationIdString = "cd154c38-ab73-4a83-a66b-7404b9514080";
     public static Guid DefaultConversationId { get; } = new(DefaultConversationIdString);
 
     public static string DefaultCorrelationIdString = "87027093-7b35-4125-aa36-b5c15b9ea478";
@@ -16,14 +16,15 @@ public class RecordingHandlerContext :
 
     public static string DefaultReplyToAddress = "ReplyToAddress";
 
-    static FrozenDictionary<string, string> defaultHeaders = FrozenDictionary.ToFrozenDictionary<string, string>(
-    [
-        new(Headers.MessageId, DefaultMessageIdString),
-        new(Headers.ConversationId, DefaultConversationIdString),
-        new(Headers.CorrelationId, DefaultCorrelationIdString),
-        new(Headers.ReplyToAddress, DefaultReplyToAddress ),
-        new("NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z" )
-    ]);
+    static FrozenDictionary<string, string> defaultHeaders = FrozenDictionary
+        .ToFrozenDictionary<string, string>(
+        [
+            new(Headers.MessageId, DefaultMessageIdString),
+            new(Headers.ConversationId, DefaultConversationIdString),
+            new(Headers.CorrelationId, DefaultCorrelationIdString),
+            new(Headers.ReplyToAddress, DefaultReplyToAddress),
+            new("NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z")
+        ]);
 
     public RecordingHandlerContext(IEnumerable<KeyValuePair<string, string>>? headers = null)
     {
@@ -42,7 +43,7 @@ public class RecordingHandlerContext :
         MessageHeaders = messageHeaders;
     }
 
-    public IReadOnlyDictionary<string, string> MessageHeaders { get;}
+    public IReadOnlyDictionary<string, string> MessageHeaders { get; }
 
     public Cancel CancellationToken { get; } = Cancel.None;
     public ContextBag Extensions { get; } = new();
@@ -92,6 +93,7 @@ public class RecordingHandlerContext :
 
     public IReadOnlyCollection<string> Forwarded => forwarded;
     ConcurrentQueue<string> forwarded = new();
+
     public virtual Task ForwardCurrentMessageTo(string destination)
     {
         forwarded.Enqueue(destination);
