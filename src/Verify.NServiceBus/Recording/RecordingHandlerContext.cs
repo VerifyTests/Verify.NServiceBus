@@ -45,8 +45,9 @@ public class RecordingHandlerContext :
 
     public IReadOnlyDictionary<string, string> MessageHeaders { get; }
 
+    public static ContextBag SharedContextBag { get; } = new();
     public Cancel CancellationToken { get; } = Cancel.None;
-    public ContextBag Extensions { get; } = new();
+    public ContextBag Extensions { get; } = new(SharedContextBag);
 
     public IReadOnlyCollection<Sent> Sent => sent;
     ConcurrentQueue<Sent> sent = new();
