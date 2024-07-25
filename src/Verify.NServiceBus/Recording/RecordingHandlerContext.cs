@@ -13,6 +13,7 @@ public class RecordingHandlerContext :
 
     public static string DefaultCorrelationIdString = "87027093-7b35-4125-aa36-b5c15b9ea478";
     public static Guid DefaultCorrelationId { get; } = new(DefaultCorrelationIdString);
+    public static string DefaultOriginatingEndpoint = "DefaultOriginatingEndpoint";
 
     public static string DefaultReplyToAddress = "ReplyToAddress";
 
@@ -23,6 +24,7 @@ public class RecordingHandlerContext :
             new(Headers.ConversationId, DefaultConversationIdString),
             new(Headers.CorrelationId, DefaultCorrelationIdString),
             new(Headers.ReplyToAddress, DefaultReplyToAddress),
+            new(Headers.OriginatingEndpoint, DefaultOriginatingEndpoint),
             new("NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z")
         ]);
 
@@ -39,6 +41,7 @@ public class RecordingHandlerContext :
         messageHeaders.TryAdd(Headers.ConversationId, DefaultConversationIdString);
         messageHeaders.TryAdd(Headers.CorrelationId, DefaultCorrelationIdString);
         messageHeaders.TryAdd(Headers.ReplyToAddress, DefaultReplyToAddress);
+        messageHeaders.TryAdd(Headers.OriginatingEndpoint, DefaultOriginatingEndpoint);
         messageHeaders.TryAdd("NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z");
         MessageHeaders = messageHeaders;
     }
