@@ -28,6 +28,14 @@ public class RecordingHandlerContext :
             new("NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z")
         ]);
 
+    public static void AddSharedHeader(string key, string value)
+    {
+        var dictionary = new Dictionary<string, string>(defaultHeaders)
+        {
+            [key] = value
+        };
+        defaultHeaders = dictionary.ToFrozenDictionary();
+    }
     public RecordingHandlerContext(IEnumerable<KeyValuePair<string, string>>? headers = null)
     {
         if (headers == null)
