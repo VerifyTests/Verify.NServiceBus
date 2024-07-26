@@ -20,11 +20,11 @@ public class RecordingHandlerContext :
     static FrozenDictionary<string, string> defaultHeaders = FrozenDictionary
         .ToFrozenDictionary<string, string>(
         [
-            new(Headers.MessageId, DefaultMessageIdString),
-            new(Headers.ConversationId, DefaultConversationIdString),
-            new(Headers.CorrelationId, DefaultCorrelationIdString),
-            new(Headers.ReplyToAddress, DefaultReplyToAddress),
-            new(Headers.OriginatingEndpoint, DefaultOriginatingEndpoint),
+            new(global::NServiceBus.Headers.MessageId, DefaultMessageIdString),
+            new(global::NServiceBus.Headers.ConversationId, DefaultConversationIdString),
+            new(global::NServiceBus.Headers.CorrelationId, DefaultCorrelationIdString),
+            new(global::NServiceBus.Headers.ReplyToAddress, DefaultReplyToAddress),
+            new(global::NServiceBus.Headers.OriginatingEndpoint, DefaultOriginatingEndpoint),
             new("NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z")
         ]);
 
@@ -36,7 +36,6 @@ public class RecordingHandlerContext :
         };
         defaultHeaders = dictionary.ToFrozenDictionary();
     }
-
 
     public static void AddSharedHeaders(IEnumerable<KeyValuePair<string, string>> headers)
     {
@@ -52,21 +51,43 @@ public class RecordingHandlerContext :
     {
         if (headers == null)
         {
-            MessageHeaders = defaultHeaders;
             return;
         }
 
         var messageHeaders = new Dictionary<string, string>(headers);
-        messageHeaders.TryAdd(Headers.MessageId, DefaultMessageIdString);
-        messageHeaders.TryAdd(Headers.ConversationId, DefaultConversationIdString);
-        messageHeaders.TryAdd(Headers.CorrelationId, DefaultCorrelationIdString);
-        messageHeaders.TryAdd(Headers.ReplyToAddress, DefaultReplyToAddress);
-        messageHeaders.TryAdd(Headers.OriginatingEndpoint, DefaultOriginatingEndpoint);
+        messageHeaders.TryAdd(global::NServiceBus.Headers.MessageId, DefaultMessageIdString);
+        messageHeaders.TryAdd(global::NServiceBus.Headers.ConversationId, DefaultConversationIdString);
+        messageHeaders.TryAdd(global::NServiceBus.Headers.CorrelationId, DefaultCorrelationIdString);
+        messageHeaders.TryAdd(global::NServiceBus.Headers.ReplyToAddress, DefaultReplyToAddress);
+        messageHeaders.TryAdd(global::NServiceBus.Headers.OriginatingEndpoint, DefaultOriginatingEndpoint);
         messageHeaders.TryAdd("NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z");
-        MessageHeaders = messageHeaders;
     }
 
-    public IReadOnlyDictionary<string, string> MessageHeaders { get; }
+    Dictionary<string, string>? writableHeaders;
+    public Dictionary<string, string> Headers
+    {
+        get
+        {
+            if (writableHeaders == null)
+            {
+                writableHeaders = new(defaultHeaders);
+            }
+            return writableHeaders;
+        }
+        set => writableHeaders = value;
+    }
+
+    IReadOnlyDictionary<string, string> IMessageProcessingContext.MessageHeaders
+    {
+        get
+        {
+            if (writableHeaders == null)
+            {
+                return defaultHeaders;
+            }
+            return writableHeaders;
+        }
+    }
 
     public static ContextBag SharedContextBag { get; } = new();
     public Cancel CancellationToken { get; } = Cancel.None;
@@ -83,7 +104,7 @@ public class RecordingHandlerContext :
         return Task.CompletedTask;
     }
 
-    public Task Send<T>(Action<T> messageConstructor, SendOptions options) =>
+    Task IPipelineContext.Send<T>(Action<T> messageConstructor, SendOptions options) =>
         throw new NotImplementedException();
 
     public IReadOnlyCollection<Published> Published => published;
@@ -97,7 +118,7 @@ public class RecordingHandlerContext :
         return Task.CompletedTask;
     }
 
-    public Task Publish<T>(Action<T> messageConstructor, PublishOptions publishOptions) =>
+    Task IPipelineContext.Publish<T>(Action<T> messageConstructor, PublishOptions publishOptions) =>
         throw new NotImplementedException();
 
     public IReadOnlyCollection<Replied> Replied => replied;
@@ -132,6 +153,6 @@ public class RecordingHandlerContext :
 
     public virtual bool DoNotContinueDispatchingCurrentMessageToHandlersWasCalled { get; private set; }
 
-    public ISynchronizedStorageSession SynchronizedStorageSession =>
+    ISynchronizedStorageSession HandlerContext.SynchronizedStorageSession =>
         throw new NotImplementedException();
 }

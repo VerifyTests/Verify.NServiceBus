@@ -3,7 +3,7 @@
 public class RecordingMessageSession :
     IMessageSession
 {
-    public Task Send<T>(Action<T> messageConstructor, SendOptions options, Cancel cancel = default) =>
+    Task IMessageSession.Send<T>(Action<T> messageConstructor, SendOptions options, Cancel cancel) =>
         throw new NotImplementedException();
 
     public IReadOnlyCollection<Published> Published => published;
@@ -17,7 +17,7 @@ public class RecordingMessageSession :
         return Task.CompletedTask;
     }
 
-    public Task Publish<T>(Action<T> messageConstructor, PublishOptions options, Cancel cancel = default) =>
+    Task IMessageSession.Publish<T>(Action<T> messageConstructor, PublishOptions options, Cancel cancel) =>
         throw new NotImplementedException();
 
     public IReadOnlyCollection<Sent> Sent => sent;
