@@ -36,6 +36,18 @@ public class RecordingHandlerContext :
         };
         defaultHeaders = dictionary.ToFrozenDictionary();
     }
+
+
+    public static void AddSharedHeaders(IEnumerable<KeyValuePair<string, string>> headers)
+    {
+        var dictionary = new Dictionary<string, string>(defaultHeaders);
+        foreach (var pair in headers)
+        {
+            dictionary[pair.Key] = pair.Value;
+        }
+        defaultHeaders = dictionary.ToFrozenDictionary();
+    }
+
     public RecordingHandlerContext(IEnumerable<KeyValuePair<string, string>>? headers = null)
     {
         if (headers == null)
