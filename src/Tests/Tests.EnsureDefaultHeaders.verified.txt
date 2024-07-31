@@ -1,0 +1,9 @@
+﻿{
+  key: value,
+  NServiceBus.ConversationId: ConversationId,
+  NServiceBus.CorrelationId: CorrelationId,
+  NServiceBus.MessageId: TheId,
+  NServiceBus.OriginatingEndpoint: DefaultOriginatingEndpoint,
+  NServiceBus.ReplyToAddress: ReplyToAddress,
+  NServiceBus.TimeSent: 2000-01-01 13:00:00:000000 Z
+}

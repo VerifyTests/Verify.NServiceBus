@@ -59,6 +59,7 @@ public class RecordingHandlerContext :
         messageHeaders.TryAdd(global::NServiceBus.Headers.ReplyToAddress, DefaultReplyToAddress);
         messageHeaders.TryAdd(global::NServiceBus.Headers.OriginatingEndpoint, DefaultOriginatingEndpoint);
         messageHeaders.TryAdd("NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z");
+        writableHeaders = messageHeaders;
     }
 
     Dictionary<string, string>? writableHeaders;

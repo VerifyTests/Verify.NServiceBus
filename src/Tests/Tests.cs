@@ -17,8 +17,8 @@
     {
         var context = new RecordingHandlerContext(
             [
-               new("key", "value"),
-               new("NServiceBus.MessageId", "TheId"),
+                new("key", "value"),
+                new("NServiceBus.MessageId", "TheId"),
             ]
         );
         context.Extensions.Set("key", "value");
@@ -26,6 +26,20 @@
         await context.Send("send message");
         await context.SendLocal("send local message");
         await Verify(context);
+    }
+
+    [Fact]
+    public async Task EnsureDefaultHeaders()
+    {
+        var context = new RecordingHandlerContext(
+            [
+                //one new
+                new("key", "value"),
+                //one overwrite
+                new("NServiceBus.MessageId", "TheId"),
+            ]
+        );
+        await Verify(context.Headers);
     }
 
     [Fact]
