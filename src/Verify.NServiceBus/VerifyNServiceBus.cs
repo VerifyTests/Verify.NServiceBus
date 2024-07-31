@@ -7,6 +7,7 @@ public static partial class VerifyNServiceBus
         new RecordingHandlerContextConverter(),
         new RecordingInvokeHandlerContextConverter(),
         new RecordingIncomingPhysicalMessageContextConverter(),
+        new RecordingIncomingLogicalMessageContextConverter(),
         new RecordingMessageSessionConverter(),
         new SendOptionsConverter(),
         new UnsubscriptionConverter(),
