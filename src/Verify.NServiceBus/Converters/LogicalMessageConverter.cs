@@ -1,5 +1,3 @@
-using NServiceBus.Pipeline;
-
 class LogicalMessageConverter :
     WriteOnlyJsonConverter<LogicalMessage>
 {
