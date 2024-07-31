@@ -1,6 +1,6 @@
 ﻿namespace VerifyTests;
 
-public static class VerifyNServiceBus
+public static partial class VerifyNServiceBus
 {
     internal static List<JsonConverter> converters =
     [
@@ -39,9 +39,9 @@ public static class VerifyNServiceBus
             LogManager.Use<Logger>();
         }
 
-        VerifierSettings.AddNamedGuid(RecordingHandlerContext.DefaultMessageId, "MessageId");
-        VerifierSettings.AddNamedGuid(RecordingHandlerContext.DefaultConversationId, "ConversationId");
-        VerifierSettings.AddNamedGuid(RecordingHandlerContext.DefaultCorrelationId, "CorrelationId");
+        VerifierSettings.AddNamedGuid(DefaultMessageId, "MessageId");
+        VerifierSettings.AddNamedGuid(DefaultConversationId, "ConversationId");
+        VerifierSettings.AddNamedGuid(DefaultCorrelationId, "CorrelationId");
         VerifierSettings.IgnoreInstance<ContextBag>(_ => !ContextBagHelper.HasContent(_));
         VerifierSettings.AddExtraSettings(_ => _.Converters.AddRange(converters));
     }
