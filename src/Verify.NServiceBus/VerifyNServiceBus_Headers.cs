@@ -10,38 +10,41 @@ public static partial class VerifyNServiceBus
 
     public static string DefaultCorrelationIdString = "87027093-7b35-4125-aa36-b5c15b9ea478";
     public static Guid DefaultCorrelationId { get; } = new(DefaultCorrelationIdString);
+
     public static string DefaultOriginatingEndpoint = "DefaultOriginatingEndpoint";
 
     public static string DefaultReplyToAddress = "ReplyToAddress";
 
-    internal static FrozenDictionary<string, string> defaultHeaders = FrozenDictionary
-        .ToFrozenDictionary<string, string>(
-        [
-            new(Headers.MessageId, DefaultMessageIdString),
-            new(Headers.ConversationId, DefaultConversationIdString),
-            new(Headers.CorrelationId, DefaultCorrelationIdString),
-            new(Headers.ReplyToAddress, DefaultReplyToAddress),
-            new(Headers.OriginatingEndpoint, DefaultOriginatingEndpoint),
-            new("NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z")
-        ]);
+    internal static FrozenDictionary<string, string> DefaultHeaders { get; private set; }
+        = FrozenDictionary
+            .ToFrozenDictionary<string, string>(
+            [
+                new(Headers.MessageId, DefaultMessageIdString),
+                new(Headers.ConversationId, DefaultConversationIdString),
+                new(Headers.CorrelationId, DefaultCorrelationIdString),
+                new(Headers.ReplyToAddress, DefaultReplyToAddress),
+                new(Headers.OriginatingEndpoint, DefaultOriginatingEndpoint),
+                new("NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z")
+            ]);
 
     public static void AddSharedHeader(string key, string value)
     {
-        var dictionary = new Dictionary<string, string>(defaultHeaders)
+        var dictionary = new Dictionary<string, string>(DefaultHeaders)
         {
             [key] = value
         };
-        defaultHeaders = dictionary.ToFrozenDictionary();
+        DefaultHeaders = dictionary.ToFrozenDictionary();
     }
 
     public static void AddSharedHeaders(IEnumerable<KeyValuePair<string, string>> headers)
     {
-        var dictionary = new Dictionary<string, string>(defaultHeaders);
+        var dictionary = new Dictionary<string, string>(DefaultHeaders);
         foreach (var pair in headers)
         {
             dictionary[pair.Key] = pair.Value;
         }
-        defaultHeaders = dictionary.ToFrozenDictionary();
+
+        DefaultHeaders = dictionary.ToFrozenDictionary();
     }
 
     internal static Dictionary<string, string> MergeHeaders(IEnumerable<KeyValuePair<string, string>> headers)

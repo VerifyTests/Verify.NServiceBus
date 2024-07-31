@@ -16,12 +16,12 @@ public class RecordingHandlerContext :
     Dictionary<string, string>? writableHeaders;
     public Dictionary<string, string> Headers
     {
-        get => writableHeaders ??= new(VerifyNServiceBus.defaultHeaders);
+        get => writableHeaders ??= new(VerifyNServiceBus.DefaultHeaders);
         set => writableHeaders = value;
     }
 
     IReadOnlyDictionary<string, string> IMessageProcessingContext.MessageHeaders =>
-        writableHeaders == null ? VerifyNServiceBus.defaultHeaders : writableHeaders;
+        writableHeaders == null ? VerifyNServiceBus.DefaultHeaders : writableHeaders;
 
     public static ContextBag SharedContextBag { get; } = new();
     public Cancel CancellationToken { get; } = Cancel.None;
