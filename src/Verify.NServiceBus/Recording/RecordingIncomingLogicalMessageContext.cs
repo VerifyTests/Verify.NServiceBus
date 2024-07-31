@@ -92,11 +92,6 @@ public class RecordingIncomingLogicalMessageContext :
     public string MessageId { get; } = VerifyNServiceBus.DefaultMessageIdString;
     public string ReplyToAddress { get; } = VerifyNServiceBus.DefaultReplyToAddress;
 
-    public virtual void DoNotContinueDispatchingCurrentMessageToHandlers() =>
-        DoNotContinueDispatchingCurrentMessageToHandlersWasCalled = true;
-
-    public virtual bool DoNotContinueDispatchingCurrentMessageToHandlersWasCalled { get; private set; }
-
     [EditorBrowsable(EditorBrowsableState.Never)]
     public override int GetHashCode() =>
         // ReSharper disable once BaseObjectGetHashCodeCallInGetHashCode
