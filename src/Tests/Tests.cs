@@ -39,7 +39,7 @@
                 new("NServiceBus.MessageId", "TheId"),
             ]
         );
-        await Verify(context.Headers);
+        await Verify(context.MessageHeaders);
     }
 
     [Fact]

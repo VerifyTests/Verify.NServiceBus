@@ -3,29 +3,37 @@
 public class RecordingHandlerContext :
     HandlerContext
 {
+    static FrozenDictionary<string, string> defaultHeaders = FrozenDictionary
+        .ToFrozenDictionary<string, string>(
+        [
+            new(Headers.MessageId, VerifyNServiceBus.DefaultMessageIdString),
+            new(Headers.ConversationId, VerifyNServiceBus.DefaultConversationIdString),
+            new(Headers.CorrelationId, VerifyNServiceBus.DefaultCorrelationIdString),
+            new(Headers.ReplyToAddress, VerifyNServiceBus.DefaultReplyToAddress),
+            new("NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z")
+        ]);
+
     public RecordingHandlerContext(IEnumerable<KeyValuePair<string, string>>? headers = null)
     {
         if (headers == null)
         {
+            MessageHeaders = defaultHeaders;
             return;
         }
 
-        writableHeaders = VerifyNServiceBus.MergeHeaders(headers);
+        var messageHeaders = new Dictionary<string, string>(headers);
+        messageHeaders.TryAdd(Headers.MessageId, VerifyNServiceBus.DefaultMessageIdString);
+        messageHeaders.TryAdd(Headers.ConversationId, VerifyNServiceBus.DefaultConversationIdString);
+        messageHeaders.TryAdd(Headers.CorrelationId, VerifyNServiceBus.DefaultCorrelationIdString);
+        messageHeaders.TryAdd(Headers.ReplyToAddress, VerifyNServiceBus.DefaultReplyToAddress);
+        messageHeaders.TryAdd("NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z");
+        MessageHeaders = messageHeaders;
     }
 
-    Dictionary<string, string>? writableHeaders;
-    public Dictionary<string, string> Headers
-    {
-        get => writableHeaders ??= new(VerifyNServiceBus.DefaultHeaders);
-        set => writableHeaders = value;
-    }
+    public IReadOnlyDictionary<string, string> MessageHeaders { get; }
 
-    IReadOnlyDictionary<string, string> IMessageProcessingContext.MessageHeaders =>
-        writableHeaders == null ? VerifyNServiceBus.DefaultHeaders : writableHeaders;
-
-    public static ContextBag SharedContextBag { get; } = new();
     public Cancel CancellationToken { get; } = Cancel.None;
-    public ContextBag Extensions { get; } = new(SharedContextBag);
+    public ContextBag Extensions { get; } = new();
 
     public IReadOnlyCollection<Sent> Sent => sent;
     ConcurrentQueue<Sent> sent = new();
@@ -38,7 +46,7 @@ public class RecordingHandlerContext :
         return Task.CompletedTask;
     }
 
-    Task IPipelineContext.Send<T>(Action<T> messageConstructor, SendOptions options) =>
+    public Task Send<T>(Action<T> messageConstructor, SendOptions options) =>
         throw new NotImplementedException();
 
     public IReadOnlyCollection<Published> Published => published;
@@ -52,7 +60,7 @@ public class RecordingHandlerContext :
         return Task.CompletedTask;
     }
 
-    Task IPipelineContext.Publish<T>(Action<T> messageConstructor, PublishOptions publishOptions) =>
+    public Task Publish<T>(Action<T> messageConstructor, PublishOptions publishOptions) =>
         throw new NotImplementedException();
 
     public IReadOnlyCollection<Replied> Replied => replied;
@@ -87,20 +95,6 @@ public class RecordingHandlerContext :
 
     public virtual bool DoNotContinueDispatchingCurrentMessageToHandlersWasCalled { get; private set; }
 
-    ISynchronizedStorageSession HandlerContext.SynchronizedStorageSession =>
+    public ISynchronizedStorageSession SynchronizedStorageSession =>
         throw new NotImplementedException();
-
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public override int GetHashCode() =>
-        // ReSharper disable once BaseObjectGetHashCodeCallInGetHashCode
-        base.GetHashCode();
-
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public override string? ToString() =>
-        base.ToString();
-
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public override bool Equals(object? obj) =>
-        // ReSharper disable once BaseObjectEqualsIsObjectEquals
-        base.Equals(obj);
 }
