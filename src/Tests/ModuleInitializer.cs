@@ -9,6 +9,15 @@
     #endregion
 
     [ModuleInitializer]
-    public static void InitializeOther() =>
+    public static void InitializeOther()
+    {
+        VerifyNServiceBus.AddSharedHeaders(
+            new Dictionary<string, string>
+            {
+                {
+                    "sharedKey", "sharedValue"
+                }
+            });
         VerifierSettings.InitializePlugins();
+    }
 }

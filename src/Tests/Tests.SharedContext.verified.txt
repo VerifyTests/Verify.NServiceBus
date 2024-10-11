@@ -1,0 +1,18 @@
+﻿{
+  Publish: [
+    {
+      string: publish message
+    }
+  ],
+  Send: [
+    {
+      string: send message
+    },
+    {
+      string: send local message,
+      Options: {
+        Route: ToAnyInstanceOfThisEndpoint
+      }
+    }
+  ]
+}

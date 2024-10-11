@@ -3,30 +3,20 @@
 public class RecordingHandlerContext :
     HandlerContext
 {
-    static FrozenDictionary<string, string> defaultHeaders = FrozenDictionary
-        .ToFrozenDictionary<string, string>(
-        [
-            new(Headers.MessageId, VerifyNServiceBus.DefaultMessageIdString),
-            new(Headers.ConversationId, VerifyNServiceBus.DefaultConversationIdString),
-            new(Headers.CorrelationId, VerifyNServiceBus.DefaultCorrelationIdString),
-            new(Headers.ReplyToAddress, VerifyNServiceBus.DefaultReplyToAddress),
-            new("NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z")
-        ]);
-
     public RecordingHandlerContext(IEnumerable<KeyValuePair<string, string>>? headers = null)
     {
         if (headers == null)
         {
-            MessageHeaders = defaultHeaders;
+            MessageHeaders = VerifyNServiceBus.DefaultHeaders;
             return;
         }
 
         var messageHeaders = new Dictionary<string, string>(headers);
-        messageHeaders.TryAdd(Headers.MessageId, VerifyNServiceBus.DefaultMessageIdString);
-        messageHeaders.TryAdd(Headers.ConversationId, VerifyNServiceBus.DefaultConversationIdString);
-        messageHeaders.TryAdd(Headers.CorrelationId, VerifyNServiceBus.DefaultCorrelationIdString);
-        messageHeaders.TryAdd(Headers.ReplyToAddress, VerifyNServiceBus.DefaultReplyToAddress);
-        messageHeaders.TryAdd("NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z");
+        foreach (var defaultHeader in VerifyNServiceBus.DefaultHeaders)
+        {
+            messageHeaders.TryAdd(defaultHeader.Key, defaultHeader.Value);
+        }
+
         MessageHeaders = messageHeaders;
     }
 
