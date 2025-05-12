@@ -7,6 +7,7 @@
     <PackageReference Include="Verify" />
     <PackageReference Include="ProjectDefaults" PrivateAssets="all" />
     <PackageReference Include="Polyfill" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Sbom.Targets" PrivateAssets="all" />
     <Using Include="VerifyTests.NServiceBus" />
     <Using Include="NServiceBus.Extensibility" />
     <Using Include="NServiceBus.Transport" />
