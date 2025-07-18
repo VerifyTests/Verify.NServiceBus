@@ -1,0 +1,1 @@
+Adds [Verify](https://github.com/VerifyTests/Verify) support to verify NServiceBus.
