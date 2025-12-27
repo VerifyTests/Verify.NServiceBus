@@ -1,7 +1,7 @@
 # <img src="/src/icon.png" height="30px"> Verify.NServiceBus
 
 [![Discussions](https://img.shields.io/badge/Verify-Discussions-yellow?svg=true&label=)](https://github.com/orgs/VerifyTests/discussions)
-[![Build status](https://ci.appveyor.com/api/projects/status/haolkpausmys1ur4?svg=true)](https://ci.appveyor.com/project/SimonCropp/Verify-NServiceBus)
+[![Build status](https://img.shields.io/appveyor/build/SimonCropp/Verify-NServiceBus)](https://ci.appveyor.com/project/SimonCropp/Verify-NServiceBus)
 [![NuGet Status](https://img.shields.io/nuget/v/Verify.NServiceBus.svg)](https://www.nuget.org/packages/Verify.NServiceBus/)
 
 Adds [Verify](https://github.com/VerifyTests/Verify) support to verify NServiceBus.<!-- singleLineInclude: intro. path: /docs/intro.include.md -->
