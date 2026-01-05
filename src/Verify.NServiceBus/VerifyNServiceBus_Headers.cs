@@ -16,15 +16,14 @@ public static partial class VerifyNServiceBus
     public static string DefaultReplyToAddress = "ReplyToAddress";
 
     internal static FrozenDictionary<string, string> DefaultHeaders { get; private set; }
-        = FrozenDictionary
-            .ToFrozenDictionary<string, string>(
+        = FrozenDictionary.Create<string, string>(
             [
                 new(Headers.MessageId, DefaultMessageIdString),
                 new(Headers.ConversationId, DefaultConversationIdString),
                 new(Headers.CorrelationId, DefaultCorrelationIdString),
                 new(Headers.ReplyToAddress, DefaultReplyToAddress),
                 new(Headers.OriginatingEndpoint, DefaultOriginatingEndpoint),
-                new("NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z")
+                new("NServiceBus.TimeSent", "2000-01-01 13:00:00:000000 Z"),
             ]);
 
     public static void AddSharedHeader(string key, string value)
