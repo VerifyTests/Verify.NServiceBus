@@ -3,8 +3,10 @@
 public class RecordingIncomingLogicalMessageContext :
     IIncomingLogicalMessageContext
 {
-    public RecordingIncomingLogicalMessageContext(IEnumerable<KeyValuePair<string, string>>? headers = null)
+    public RecordingIncomingLogicalMessageContext(LogicalMessage message, IServiceProvider builder, IEnumerable<KeyValuePair<string, string>>? headers = null)
     {
+        Message = message;
+        Builder = builder;
         if (headers == null)
         {
             return;
@@ -20,7 +22,7 @@ public class RecordingIncomingLogicalMessageContext :
 
     public object? NewMessageInstance { get; set; }
 
-    public LogicalMessage? Message { get; set; }
+    public LogicalMessage Message { get; set; }
 
     public Dictionary<string, string> Headers
     {
@@ -106,8 +108,5 @@ public class RecordingIncomingLogicalMessageContext :
         // ReSharper disable once BaseObjectEqualsIsObjectEquals
         base.Equals(obj);
 
-#pragma warning disable CS8766 // Nullability doesn't match
-    public IServiceProvider? Builder { get; set; }
-#pragma warning restore CS8766
-
+    public IServiceProvider Builder { get; }
 }

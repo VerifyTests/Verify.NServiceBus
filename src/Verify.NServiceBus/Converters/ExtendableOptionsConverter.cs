@@ -13,10 +13,6 @@
     public static void WriteExtensions(VerifyJsonWriter writer, ExtendableOptions options)
     {
         var bag = options.GetExtensions();
-        if (bag is null)
-        {
-            return;
-        }
 
         var bagValues = bag.GetValues().ToArray();
         if (bagValues.Length == 0)

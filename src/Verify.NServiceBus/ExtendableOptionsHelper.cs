@@ -60,12 +60,7 @@
     static bool HasContent(this ExtendableOptions options)
     {
         var extensions = options.GetExtensions();
-        if (extensions is not null)
-        {
-            return ContextBagHelper.HasContent(extensions);
-        }
-
-        return false;
+        return ContextBagHelper.HasContent(extensions);
     }
 
     static bool HasMessageId(this ExtendableOptions options) =>
