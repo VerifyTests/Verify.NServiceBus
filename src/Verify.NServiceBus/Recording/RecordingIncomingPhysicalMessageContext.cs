@@ -3,8 +3,10 @@
 public class RecordingIncomingPhysicalMessageContext :
     IIncomingPhysicalMessageContext
 {
-    public RecordingIncomingPhysicalMessageContext(IEnumerable<KeyValuePair<string, string>>? headers = null)
+    public RecordingIncomingPhysicalMessageContext(IServiceProvider builder, IncomingMessage message, IEnumerable<KeyValuePair<string, string>>? headers = null)
     {
+        Builder = builder;
+        Message = message;
         if (headers == null)
         {
             return;
@@ -96,16 +98,12 @@ public class RecordingIncomingPhysicalMessageContext :
         // ReSharper disable once BaseObjectEqualsIsObjectEquals
         base.Equals(obj);
 
-#pragma warning disable CS8766 // Nullability doesn't match
-    public IServiceProvider? Builder { get; set; }
-#pragma warning restore CS8766
+    public IServiceProvider Builder { get; }
 
     public void UpdateMessage(ReadOnlyMemory<byte> body) =>
         UpdatedMessage = body;
 
     public ReadOnlyMemory<byte>? UpdatedMessage { get; set; }
 
-#pragma warning disable CS8766 // Nullability doesn't match
-    public IncomingMessage? Message { get; set; }
-#pragma warning restore CS8766
+    public IncomingMessage Message { get;}
 }
