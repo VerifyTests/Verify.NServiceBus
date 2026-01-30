@@ -3,8 +3,9 @@
 public class RecordingIncomingLogicalMessageContext :
     IIncomingLogicalMessageContext
 {
-    public RecordingIncomingLogicalMessageContext(IEnumerable<KeyValuePair<string, string>>? headers = null)
+    public RecordingIncomingLogicalMessageContext(LogicalMessage message, IEnumerable<KeyValuePair<string, string>>? headers = null)
     {
+        Message = message;
         if (headers == null)
         {
             return;
@@ -20,9 +21,7 @@ public class RecordingIncomingLogicalMessageContext :
 
     public object? NewMessageInstance { get; set; }
 
-#pragma warning disable CS8766 // Nullability doesn't match
-    public LogicalMessage? Message { get; set; }
-#pragma warning restore CS8766
+    public LogicalMessage Message { get; set; }
 
     public Dictionary<string, string> Headers
     {
