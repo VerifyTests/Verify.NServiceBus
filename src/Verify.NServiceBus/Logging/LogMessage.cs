@@ -2,7 +2,7 @@
 
 public class LogMessage
 {
-    public LogMessage(LogLevel level, string message, Exception? exception = null)
+    public LogMessage(LogLevel level, string? message, Exception? exception = null)
     {
         Level = level;
         Message = message;
@@ -10,7 +10,7 @@ public class LogMessage
         Args = [];
     }
 
-    public LogMessage(LogLevel level, string format, object[] args, Exception? exception = null)
+    public LogMessage(LogLevel level, string format, object?[] args, Exception? exception = null)
     {
         Level = level;
         Format = format;
@@ -28,8 +28,8 @@ public class LogMessage
     }
 
     public LogLevel Level { get; }
-    public string Message { get; }
+    public string? Message { get; }
     public Exception? Exception { get; }
     public string? Format { get; }
-    public object[] Args { get; }
+    public object?[] Args { get; }
 }

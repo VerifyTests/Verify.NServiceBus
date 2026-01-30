@@ -14,7 +14,9 @@ public class RecordingInvokeHandlerContext :
     }
 
     Dictionary<string, string>? writableHeaders;
+#pragma warning disable CS8766 // Nullability doesn't match
     public MessageHandler? MessageHandler { get; set; }
+#pragma warning restore CS8766
 
     public Dictionary<string, string> Headers
     {
@@ -22,9 +24,13 @@ public class RecordingInvokeHandlerContext :
         set => writableHeaders = value;
     }
 
+#pragma warning disable CS8766 // Nullability doesn't match
     public object? MessageBeingHandled { get; set; }
+#pragma warning restore CS8766
     public bool HandlerInvocationAborted { get; set; }
+#pragma warning disable CS8766 // Nullability doesn't match
     public MessageMetadata? MessageMetadata { get; set; }
+#pragma warning restore CS8766
 
     IReadOnlyDictionary<string, string> IMessageProcessingContext.MessageHeaders =>
         writableHeaders == null ? VerifyNServiceBus.DefaultHeaders : writableHeaders;

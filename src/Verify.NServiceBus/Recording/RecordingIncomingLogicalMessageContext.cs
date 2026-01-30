@@ -20,7 +20,9 @@ public class RecordingIncomingLogicalMessageContext :
 
     public object? NewMessageInstance { get; set; }
 
+#pragma warning disable CS8766 // Nullability doesn't match
     public LogicalMessage? Message { get; set; }
+#pragma warning restore CS8766
 
     public Dictionary<string, string> Headers
     {

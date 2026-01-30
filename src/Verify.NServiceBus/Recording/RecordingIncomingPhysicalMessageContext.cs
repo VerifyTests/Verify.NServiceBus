@@ -105,5 +105,7 @@ public class RecordingIncomingPhysicalMessageContext :
 
     public ReadOnlyMemory<byte>? UpdatedMessage { get; set; }
 
+#pragma warning disable CS8766 // Nullability doesn't match
     public IncomingMessage? Message { get; set; }
+#pragma warning restore CS8766
 }
