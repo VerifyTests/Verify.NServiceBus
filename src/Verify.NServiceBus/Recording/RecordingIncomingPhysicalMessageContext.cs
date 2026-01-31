@@ -3,10 +3,8 @@
 public class RecordingIncomingPhysicalMessageContext :
     IIncomingPhysicalMessageContext
 {
-    public RecordingIncomingPhysicalMessageContext(IServiceProvider builder, IncomingMessage message, IEnumerable<KeyValuePair<string, string>>? headers = null)
+    public RecordingIncomingPhysicalMessageContext(IEnumerable<KeyValuePair<string, string>>? headers = null)
     {
-        Builder = builder;
-        Message = message;
         if (headers == null)
         {
             return;
@@ -16,6 +14,7 @@ public class RecordingIncomingPhysicalMessageContext :
     }
 
     Dictionary<string, string>? writableHeaders;
+
     public Dictionary<string, string> Headers
     {
         get => writableHeaders ??= new(VerifyNServiceBus.DefaultHeaders);
@@ -98,12 +97,13 @@ public class RecordingIncomingPhysicalMessageContext :
         // ReSharper disable once BaseObjectEqualsIsObjectEquals
         base.Equals(obj);
 
-    public IServiceProvider Builder { get; }
-
     public void UpdateMessage(ReadOnlyMemory<byte> body) =>
         UpdatedMessage = body;
 
     public ReadOnlyMemory<byte>? UpdatedMessage { get; set; }
 
-    public IncomingMessage Message { get;}
+#pragma warning disable CS8766 // Nullability doesn't match
+    public IncomingMessage? Message { get; set; }
+    public IServiceProvider? Builder { get; set; }
+#pragma warning restore CS8766
 }

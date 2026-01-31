@@ -3,12 +3,8 @@
 public class RecordingInvokeHandlerContext :
     IInvokeHandlerContext
 {
-    public RecordingInvokeHandlerContext(MessageHandler messageHandler, IServiceProvider builder, object messageBeingHandled, MessageMetadata messageMetadata, IEnumerable<KeyValuePair<string, string>>? headers = null)
+    public RecordingInvokeHandlerContext(IEnumerable<KeyValuePair<string, string>>? headers = null)
     {
-        MessageHandler = messageHandler;
-        Builder = builder;
-        MessageBeingHandled = messageBeingHandled;
-        MessageMetadata = messageMetadata;
         if (headers == null)
         {
             return;
@@ -18,7 +14,6 @@ public class RecordingInvokeHandlerContext :
     }
 
     Dictionary<string, string>? writableHeaders;
-    public MessageHandler MessageHandler { get; }
 
     public Dictionary<string, string> Headers
     {
@@ -26,9 +21,12 @@ public class RecordingInvokeHandlerContext :
         set => writableHeaders = value;
     }
 
-    public object MessageBeingHandled { get; }
+#pragma warning disable CS8766 // Nullability doesn't match
+    public MessageHandler? MessageHandler { get; set; }
+    public object? MessageBeingHandled { get; set; }
     public bool HandlerInvocationAborted { get; set; }
-    public MessageMetadata MessageMetadata { get; }
+    public MessageMetadata? MessageMetadata { get; set; }
+#pragma warning restore CS8766
 
     IReadOnlyDictionary<string, string> IMessageProcessingContext.MessageHeaders =>
         writableHeaders == null ? VerifyNServiceBus.DefaultHeaders : writableHeaders;
@@ -114,5 +112,7 @@ public class RecordingInvokeHandlerContext :
         // ReSharper disable once BaseObjectEqualsIsObjectEquals
         base.Equals(obj);
 
-    public IServiceProvider Builder { get; }
+#pragma warning disable CS8766 // Nullability doesn't match
+    public IServiceProvider? Builder { get; set; }
+#pragma warning restore CS8766
 }
