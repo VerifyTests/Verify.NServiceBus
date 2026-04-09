@@ -16,4 +16,4 @@ Adds [Verify](https://github.com/VerifyTests/Verify) support to verify NServiceB
 
 ### Developed using JetBrains IDEs
 
-[![JetBrains logo.](https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg)](https://jb.gg/OpenSourceSupport)<!-- endInclude -->
+[![JetBrains logo.](https://raw.githubusercontent.com/VerifyTests/Verify.NServiceBus/main/docs/jetbrains.png)](https://jb.gg/OpenSourceSupport)<!-- endInclude -->
