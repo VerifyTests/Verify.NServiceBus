@@ -19,7 +19,8 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="ProjectDefaults" PrivateAssets="all" />
     <ProjectReference Include="..\Verify.NServiceBus\Verify.NServiceBus.csproj" />
-    <Using Include="NServiceBus.Logging" />
+    <Using Include="Microsoft.Extensions.Logging" />
+    <Using Include="VerifyTests.MicrosoftLogging" />
     <Using Include="NServiceBus.Pipeline" />
     <Using Include="NServiceBus.Routing" />
     <Using Include="NServiceBus.Transport" />

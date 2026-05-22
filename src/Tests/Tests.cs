@@ -1,15 +1,26 @@
 ﻿public class Tests
 {
-    class MyHandlerWithLogging :
+    class MyHandlerWithLogging(ILogger logger) :
         IHandleMessages<MyMessage>
     {
-        static ILog logger = LogManager.GetLogger<MyHandlerWithLogging>();
-
         public Task Handle(MyMessage message, HandlerContext context)
         {
-            logger.Warn("The log message");
+            logger.LogWarning("The log message");
             return Task.CompletedTask;
         }
+    }
+
+    [Fact]
+    public async Task HandlerWithLogging()
+    {
+        Recording.Start();
+        var logger = RecordingProvider.CreateLogger<MyHandlerWithLogging>();
+        var handler = new MyHandlerWithLogging(logger);
+        var context = new RecordingHandlerContext();
+
+        await handler.Handle(new(), context);
+
+        await Verify(context);
     }
 
     [Fact]
