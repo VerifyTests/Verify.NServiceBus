@@ -5,13 +5,13 @@
   <ItemGroup>
     <PackageReference Include="NServiceBus" />
     <PackageReference Include="Verify" />
+    <PackageReference Include="Verify.MicrosoftLogging" />
     <PackageReference Include="ProjectDefaults" PrivateAssets="all" />
     <PackageReference Include="Polyfill" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Sbom.Targets" PrivateAssets="all" Condition="'$(CI)' == 'true'" />
     <Using Include="VerifyTests.NServiceBus" />
     <Using Include="NServiceBus.Extensibility" />
     <Using Include="NServiceBus.Transport" />
-    <Using Include="NServiceBus.Logging" />
     <Using Include="System.Diagnostics.CodeAnalysis" />
   </ItemGroup>
 </Project>

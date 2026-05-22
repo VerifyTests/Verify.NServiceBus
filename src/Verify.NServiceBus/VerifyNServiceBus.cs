@@ -37,9 +37,9 @@ public static partial class VerifyNServiceBus
         Initialized = true;
 
         InnerVerifier.ThrowIfVerifyHasBeenRun();
-        if (captureLogs)
+        if (captureLogs && !VerifyMicrosoftLogging.Initialized)
         {
-            LogManager.Use<Logger>();
+            VerifyMicrosoftLogging.Initialize();
         }
 
         VerifierSettings.AddNamedGuid(DefaultMessageId, "MessageId");

@@ -1,0 +1,7 @@
+﻿{
+  target: {},
+  log: {
+    Warning: The log message,
+    Category: MyHandlerWithLogging
+  }
+}
