@@ -6,7 +6,7 @@
   <ItemGroup>
     <PackageVersion Include="MarkdownSnippets.MsBuild" Version="28.3.0" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.6.0" />
-    <PackageVersion Include="NServiceBus" Version="10.2.3" />
+    <PackageVersion Include="NServiceBus" Version="10.2.4" />
     <PackageVersion Include="ProjectDefaults" Version="1.0.174" />
     <PackageVersion Include="Polyfill" Version="10.7.0" />
     <PackageVersion Include="Verify" Version="31.18.0" />
