@@ -68,6 +68,20 @@
     }
 
     [Fact]
+    public async Task OptionsWithOnlyTransportTransaction()
+    {
+        var context = new RecordingMessageSession();
+        var options = new SendOptions();
+        // what NServiceBus stashes when sending inside an ambient transaction. It is filtered
+        // out of the output, so on its own it must not produce an empty Options member.
+        NServiceBus.Extensibility.ExtendableOptionsExtensions
+            .GetExtensions(options)
+            .Set(new TransportTransaction());
+        await context.Send("message", options);
+        await Verify(context);
+    }
+
+    [Fact]
     public async Task Saga()
     {
         var saga = new MySaga
