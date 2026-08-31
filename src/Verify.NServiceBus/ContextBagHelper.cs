@@ -28,7 +28,7 @@
             {
                 foreach (var item in stash)
                 {
-                    if (item.Value is TransportTransaction)
+                    if (WritesNothing(item))
                     {
                         continue;
                     }
@@ -39,5 +39,26 @@
 
             current = current.ParentBag();
         }
+    }
+
+    /// <summary>
+    /// Entries that the writer would emit nothing for. They have to be excluded here rather than
+    /// at the point of writing, so that <see cref="HasContent" /> agrees with the writer and no
+    /// empty "Options" object is left behind.
+    /// </summary>
+    static bool WritesNothing(KeyValuePair<string, object> item)
+    {
+        var value = item.Value;
+
+        // the ambient transaction when sending inside one
+        if (value is TransportTransaction)
+        {
+            return true;
+        }
+
+        // written as a single ImmediateDispatch member, which is dropped when false since
+        // Verify ignores default values
+        return item.Key == RoutingToDispatchConnectorHelper.TypeName &&
+               !RoutingToDispatchConnectorHelper.GetImmediateDispatch(value);
     }
 }
