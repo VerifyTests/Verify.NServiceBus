@@ -1,0 +1,7 @@
+﻿{
+  Send: [
+    {
+      string: message
+    }
+  ]
+}

@@ -68,6 +68,24 @@
     }
 
     [Fact]
+    public async Task OptionsWithOnlyImmediateDispatchFalse()
+    {
+        var context = new RecordingMessageSession();
+        var options = new SendOptions();
+        // RequireImmediateDispatch stashes the state with true. Sending inside an ambient
+        // transaction leaves it false, which writes nothing, so on its own it must not produce
+        // an empty Options member.
+        options.RequireImmediateDispatch();
+        var extensions = NServiceBus.Extensibility.ExtendableOptionsExtensions.GetExtensions(options);
+        var state = extensions.GetValues().Single().Value;
+        state.GetType()
+            .GetProperty("ImmediateDispatch")!
+            .SetValue(state, false);
+        await context.Send("message", options);
+        await Verify(context);
+    }
+
+    [Fact]
     public async Task OptionsWithOnlyTransportTransaction()
     {
         var context = new RecordingMessageSession();
