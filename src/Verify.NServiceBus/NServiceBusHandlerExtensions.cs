@@ -1,4 +1,4 @@
-﻿static class Extensions
+﻿static class NServiceBusHandlerExtensions
 {
     public static bool IsHandler(this Type type)
     {
