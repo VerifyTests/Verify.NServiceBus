@@ -18,6 +18,7 @@
 
     public static IEnumerable<KeyValuePair<string, object>> GetValues(this ContextBag value)
     {
+        // ReSharper disable once CanReplaceCastWithVariableType
         var current = (ContextBag?)value;
         while (current is not null)
         {
