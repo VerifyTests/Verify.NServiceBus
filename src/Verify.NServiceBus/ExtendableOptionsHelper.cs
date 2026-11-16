@@ -53,7 +53,7 @@
         }
 
         var headers = options.GetHeaders();
-        return headers.Any() ||
+        return headers.Count != 0 ||
                options.HasContent();
     }
 
